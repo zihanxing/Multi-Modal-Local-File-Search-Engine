@@ -29,7 +29,7 @@ def define_collection_wine_reviews(client: WeaviateClient, collection_name: str 
         name=collection_name,
         properties=[
             wvc.Property(
-                name="title",
+                name="filename",
                 data_type=wvc.DataType.TEXT,
             ),
             wvc.Property(
@@ -38,7 +38,7 @@ def define_collection_wine_reviews(client: WeaviateClient, collection_name: str 
             )
         ],
         vectorizer_config=wvc.config.Configure.Vectorizer.multi2vec_bind(
-            text_fields=[wvc.config.Multi2VecField(name='title', weight=0.95)],
+            text_fields=[wvc.config.Multi2VecField(name='filename', weight=0.95)],
             vectorize_collection_name=False )
     )
 
@@ -50,7 +50,7 @@ def import_data_wine_reviews(client: WeaviateClient,  collection_name: str = 'Wi
     wines_to_add = [
     wvc.DataObject(
             properties={
-                "title": row["title"] + '.',
+                "filename": row["title"] + '.',
                 "description": row["description"],
             },
         )
@@ -92,7 +92,7 @@ def define_collection_pdfs(client: WeaviateClient, collection_name: str = 'pdfs'
             )
         ],
         vectorizer_config=wvc.config.Configure.Vectorizer.multi2vec_bind(
-            text_fields=[wvc.config.Multi2VecField(name='title', weight=0.95)],
+            text_fields=[wvc.config.Multi2VecField(name='filename', weight=0.95)],
             vectorize_collection_name=False )
     )
 
@@ -235,7 +235,7 @@ def demo_query(client: WeaviateClient):
         print(f"{'*'*10} \t RESULTS: \t {'*'*10}\n")
         for r in response.objects:
             # print(r)
-            print(r.properties["title"])
+            print(r.properties["filename"])
             
 
     print("-"*100)

@@ -53,6 +53,7 @@ if search_text != "" or img is not None:
         )
 
     else:
+        
         big_reponse_list = []
         img_collection = client.collections.get('images')
         wine_reviws_collection = client.collections.get('WineReviews')
@@ -68,7 +69,7 @@ if search_text != "" or img is not None:
             return_metadata=wvc.query.MetadataQuery(distance=True),
             limit=6,
         )
-        big_reponse_list.append(response.objects)
+        big_reponse_list.extend(response.objects)
 
         response = wine_reviws_collection.query.near_text(
             query=search_text,
@@ -79,39 +80,45 @@ if search_text != "" or img is not None:
             return_metadata=wvc.query.MetadataQuery(distance=True),
             limit=6,
         )
-        big_reponse_list.append(response.objects)
+        big_reponse_list.extend(response.objects)
 
 
         response = pdf_collection.query.near_text(
             query=search_text,
             return_properties=[
-                "source",
+                "filename",
                 # "image"  # TODO - return blob when implemented to client
             ],
             return_metadata=wvc.query.MetadataQuery(distance=True),
             limit=6,
         )
-        big_reponse_list.append(response.objects)
+        big_reponse_list.extend(response.objects)
 
 
     st.subheader("Results found:")
-    for i, r in enumerate(response.objects):
+    for i, r in enumerate(big_reponse_list):
         if i % 3 == 0:
             with st.container():
                 columns = st.columns(3)
                 st.divider()
         with columns[i % 3]:
-            st.write(r.properties["filename"])
+
+            try:
+                st.write(r.properties["filename"])
+            except:
+                st.write(r.properties["title"])
             # st.image(base64.b64decode(r.properties["image"]))  # Show blob when implemented to client
 
             # Temporary solution to show image
-            imgpath = Path("data/images") / r.properties["filename"]
-            img = imgpath.read_bytes()
-            st.image(img)
+            try:
+                imgpath = Path("data/images") / r.properties["filename"]
+                img = imgpath.read_bytes()
+                st.image(img)
 
-            # Show distance
-            st.write(f"Distance: {r.metadata.distance:.3f}")
-
+                # Show distance
+                st.write(f"Distance: {r.metadata.distance:.3f}")
+            except:
+                pass
 
 # Hide the Streamlit menu/popup - from https://discuss.streamlit.io/t/removing-the-deploy-button/53621/2
 st.markdown("""
