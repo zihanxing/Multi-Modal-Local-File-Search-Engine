@@ -157,6 +157,7 @@ class WeaviateApp:
 
     # Function to display the data ingestion page
     def data_ingestion_page(self, state):
+        self.display_title()
         st.title("Data Ingestion Page")
 
         state.data_dir = st.text_input("Enter the directory of your data", state.data_dir if hasattr(state, 'data_dir') else './data')
