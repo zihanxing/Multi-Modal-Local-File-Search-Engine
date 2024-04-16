@@ -1,145 +1,135 @@
-from pathlib import Path
-import weaviate
-import weaviate.classes as wvc
-import streamlit as st
 import base64
 from datetime import datetime
+from pathlib import Path
 
-client = weaviate.connect_to_local()
+import streamlit as st
+import weaviate
+import weaviate.classes as wvc
 
-logo_path = Path("assets/weaviate-logo-light-transparent-200.png")
-title_cols = st.columns([0.15, 0.85])
-with title_cols[0]:
-    st.write("")
-    st.image(logo_path.read_bytes(), width=75)
-with title_cols[1]:
-    st.title("Multi-Modality with Weaviate")
 
-st.subheader("Instructions")
-st.write(
-    """
-    Search the dataset by uploading an image or entering free text.
-    The model is multi-lingual as well - try searching in different languages!
+class WeaviateApp:
+    def __init__(self):
+        self.client = weaviate.connect_to_local()
+        self.logo_path = Path("assets/weaviate-logo-light-transparent-200.png")
+        self.big_response_list = []
 
-    (Note: If you enter both, only the image will be used.)
-    """
-)
+    def display_title(self):
+        title_cols = st.columns([0.15, 0.85])
+        with title_cols[0]:
+            st.write("")
+            st.image(self.logo_path.read_bytes(), width=75)
+        with title_cols[1]:
+            st.title("Multi-Modality with Weaviate")
 
-st.subheader("Search the dataset")
+    def display_instructions(self):
+        st.subheader("Instructions")
+        st.write(
+            """
+            Search the dataset by uploading an image or entering free text.
+            The model is multi-lingual as well - try searching in different languages!
 
-srch_cols = st.columns(2)
-with srch_cols[0]:
-    search_text = st.text_area(label="Search by text")
-with srch_cols[1]:
-    img = st.file_uploader(label="Search by image")
+            (Note: If you enter both, only the image will be used.)
+            """
+        )
 
-sort_by = st.selectbox('Sort by', ['Relevance', 'Date'])
-filter_by_relevance = st.checkbox('Filter by Relevance')
-relevance_threshold = st.number_input('Relevance Threshold', value=0.0) if filter_by_relevance else None
-filter_by_date = st.checkbox('Filter by Date')
-date_before = st.text_input('Before Date (YYYY-MM-DD)') if filter_by_date else None
-date_after = st.text_input('After Date (YYYY-MM-DD)') if filter_by_date else None
+    def get_search_inputs(self):
+        st.subheader("Search the dataset")
+        srch_cols = st.columns(2)
+        with srch_cols[0]:
+            search_text = st.text_area(label="Search by text")
+        with srch_cols[1]:
+            img = st.file_uploader(label="Search by image")
+        return search_text, img
 
-if search_text != "" or img is not None:
-    
-    big_reponse_list = []
-    img_collection = client.collections.get('images')
-    wine_reviws_collection = client.collections.get('WineReviews')
-    pdf_collection = client.collections.get('pdf')
-    
-    if img is not None:
-        st.image(img, caption="Uploaded Image", use_column_width=True)
+    def get_sort_filter_inputs(self):
+        sort_by = st.selectbox('Sort by', ['Relevance', 'Date'])
+        filter_by_relevance = st.checkbox('Filter by Relevance')
+        relevance_threshold = st.number_input('Relevance Threshold', value=0.0) if filter_by_relevance else None
+        filter_by_date = st.checkbox('Filter by Date')
+        date_before = st.text_input('Before Date (YYYY-MM-DD)') if filter_by_date else None
+        date_after = st.text_input('After Date (YYYY-MM-DD)') if filter_by_date else None
+        return sort_by, filter_by_relevance, relevance_threshold, filter_by_date, date_before, date_after
+
+    def search_by_image(self, img):
+        img_collection = self.client.collections.get('images')
         imgb64 = base64.b64encode(img.read()).decode()
-
         response = img_collection.query.near_image(
             near_image=imgb64,
-            return_properties=[
-                "filename",
-            ],
+            return_properties=["filename"],
             return_metadata=wvc.query.MetadataQuery(distance=True),
             limit=6,
         )
-        big_reponse_list.extend(response.objects)
+        self.big_response_list.extend(response.objects)
 
-    else:
-        response = img_collection.query.near_text(
-            query=search_text,
-            return_properties=[
-                "filename",
-            ],
-            return_metadata=wvc.query.MetadataQuery(distance=True),
-            limit=6,
-        )
-        big_reponse_list.extend(response.objects)
+    def search_by_text(self, search_text):
+        collections = ['images', 'WineReviews', 'pdf']
+        for collection in collections:
+            collection_obj = self.client.collections.get(collection)
+            response = collection_obj.query.near_text(
+                query=search_text,
+                return_properties=["filename"],
+                return_metadata=wvc.query.MetadataQuery(distance=True),
+                limit=6,
+            )
+            self.big_response_list.extend(response.objects)
 
-        response = wine_reviws_collection.query.near_text(
-            query=search_text,
-            return_properties=[
-                "filename",
-            ],
-            return_metadata=wvc.query.MetadataQuery(distance=True),
-            limit=6,
-        )
-        big_reponse_list.extend(response.objects)
+    def sort_and_filter_results(self, sort_by, filter_by_relevance, relevance_threshold, filter_by_date, date_before, date_after):
+        if sort_by == 'Relevance':
+            self.big_response_list.sort(key=lambda x: x.metadata.distance, reverse=True)
+        elif sort_by == 'Date':
+            self.big_response_list.sort(key=lambda x: x.metadata.creation_time, reverse=True)
 
-        response = pdf_collection.query.near_text(
-            query=search_text,
-            return_properties=[
-                "filename",
-            ],
-            return_metadata=wvc.query.MetadataQuery(distance=True),
-            limit=6,
-        )
-        big_reponse_list.extend(response.objects)
+        if filter_by_relevance:
+            self.big_response_list = [r for r in self.big_response_list if r.metadata.distance >= relevance_threshold]
+        if filter_by_date:
+            if date_before:
+                date_before = datetime.strptime(date_before, '%Y-%m-%d')
+                self.big_response_list = [r for r in self.big_response_list if r.metadata.creation_time <= date_before]
+            if date_after:
+                date_after = datetime.strptime(date_after, '%Y-%m-%d')
+                self.big_response_list = [r for r in self.big_response_list if r.metadata.creation_time >= date_after]
 
-    if sort_by == 'Relevance':
-        big_reponse_list.sort(key=lambda x: x.metadata.distance, reverse=True)
-    elif sort_by == 'Date':
-        big_reponse_list.sort(key=lambda x: x.metadata.creation_time, reverse=True)
+    def display_results(self):
+        st.subheader("Results found:")
+        for i, r in enumerate(self.big_response_list):
+            if i % 3 == 0:
+                with st.container():
+                    columns = st.columns(3)
+                    st.divider()
+            with columns[i % 3]:
+                try:
+                    st.write(r.properties["filename"])
+                except:
+                    st.write(r.properties["title"])
 
-    if filter_by_relevance:
-        big_reponse_list = [r for r in big_reponse_list if r.metadata.distance >= relevance_threshold]
-    if filter_by_date:
-        if date_before:
-            date_before = datetime.strptime(date_before, '%Y-%m-%d')
-            big_reponse_list = [r for r in big_reponse_list if r.metadata.creation_time <= date_before]
-        if date_after:
-            date_after = datetime.strptime(date_after, '%Y-%m-%d')
-            big_reponse_list = [r for r in big_reponse_list if r.metadata.creation_time >= date_after]
+                try:
+                    imgpath = Path("data/images") / r.properties["filename"]
+                    img = imgpath.read_bytes()
+                    st.image(img)
+                    st.write(f"Relevance: {r.metadata.distance:.3f}")
+                except:
+                    pass
 
-    st.subheader("Results found:")
-    for i, r in enumerate(big_reponse_list):
-        if i % 3 == 0:
-            with st.container():
-                columns = st.columns(3)
-                st.divider()
-        with columns[i % 3]:
+                st.write(f"Properties: {r.properties}")
+                st.write(f"Metadata: {r.metadata}")
 
-            try:
-                st.write(r.properties["filename"])
-            except:
-                st.write(r.properties["title"])
+    def run(self):
+        self.display_title()
+        self.display_instructions()
+        search_text, img = self.get_search_inputs()
+        sort_by, filter_by_relevance, relevance_threshold, filter_by_date, date_before, date_after = self.get_sort_filter_inputs()
 
-            try:
-                imgpath = Path("data/images") / r.properties["filename"]
-                img = imgpath.read_bytes()
-                st.image(img)
+        if search_text != "" or img is not None:
+            if img is not None:
+                st.image(img, caption="Uploaded Image", use_column_width=True)
+                self.search_by_image(img)
+            else:
+                self.search_by_text(search_text)
 
-                st.write(f"Relevance: {r.metadata.distance:.3f}")
-            except:
-                pass
+            self.sort_and_filter_results(sort_by, filter_by_relevance, relevance_threshold, filter_by_date, date_before, date_after)
+            self.display_results()
 
-            st.write(f"Properties: {r.properties}")
-            st.write(f"Metadata: {r.metadata}")
 
-st.markdown("""
-    <style>
-        .reportview-container {
-            margin-top: -2em;
-        }
-        #MainMenu {visibility: hidden;}
-        .stDeployButton {display:none;}
-        footer {visibility: hidden;}
-        #stDecoration {display:none;}
-    </style>
-""", unsafe_allow_html=True)
+if __name__ == "__main__":
+    app = WeaviateApp()
+    app.run()
