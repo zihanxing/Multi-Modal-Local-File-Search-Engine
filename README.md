@@ -30,7 +30,7 @@ conda activate local-search-engine
 ```bash
 pip install -r requirements.txt
 ```
-4. Compose the docker containers to start the Weaviate server
+4. Compose the docker containers to start the Weaviate server. Use docker-compose.yml for windows, and docker-compose_1.yml for mac   
 ```bash
 docker compose up -d
 ```
