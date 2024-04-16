@@ -1,3 +1,4 @@
+# Import necessary library
 import streamlit as st
 
 class SessionState(object):
@@ -5,10 +6,10 @@ class SessionState(object):
     
     def __init__(self, **kwargs):
         """
-        Initialize SessionState with given attributes.
+        Initialize the SessionState object with provided key-value pairs.
 
         Args:
-            **kwargs: Arbitrary keyword arguments to set as attributes.
+            **kwargs: Arbitrary keyword arguments to initialize session state variables.
         """
         for key, val in kwargs.items():
             setattr(self, key, val)
