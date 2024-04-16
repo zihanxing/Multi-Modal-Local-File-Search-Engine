@@ -8,6 +8,7 @@ import weaviate
 import weaviate.classes as wvc
 from session_state import *
 
+from datetime import datetime, timezone
 import os
 
 # Define the main application class
@@ -97,31 +98,36 @@ class WeaviateApp:
             # Query the collection with the search text
             response = collection_obj.query.near_text(
                 query=search_text,
-                return_properties=["filename"],
+                # return_properties=["filename"],
                 return_metadata=wvc.query.MetadataQuery(distance=True),
                 limit=6,
             )
             # Extend the big response list with the response objects
             self.big_response_list.extend(response.objects)
 
+
     # Function to sort and filter the results
     def sort_and_filter_results(self, sort_by, filter_by_relevance, relevance_threshold, filter_by_date, date_before, date_after):
         # Sort the results by relevance or date
         if sort_by == 'Relevance':
-            self.big_response_list.sort(key=lambda x: x.metadata.distance, reverse=True)
+            self.big_response_list.sort(key=lambda x: x.metadata.distance)
         elif sort_by == 'Date':
-            self.big_response_list.sort(key=lambda x: x.metadata.creation_time, reverse=True)
+            # Use a default date for items without a 'date_modified' property
+            default_date = datetime.min.replace(tzinfo=timezone.utc)
+            self.big_response_list.sort(key=lambda x: x.properties.get('date_modified', default_date))
 
         # Filter the results by relevance or date
         if filter_by_relevance:
-            self.big_response_list = [r for r in self.big_response_list if r.metadata.distance >= relevance_threshold]
+            self.big_response_list = [r for r in self.big_response_list if r.metadata.distance <= relevance_threshold]
         if filter_by_date:
             if date_before:
-                date_before = datetime.strptime(date_before, '%Y-%m-%d')
-                self.big_response_list = [r for r in self.big_response_list if r.metadata.creation_time <= date_before]
+                date_before = datetime.strptime(date_before, '%Y-%m-%d').replace(tzinfo=timezone.utc)
+                self.big_response_list = [r for r in self.big_response_list if r.properties.get('date_modified', default_date) <= date_before]
             if date_after:
-                date_after = datetime.strptime(date_after, '%Y-%m-%d')
-                self.big_response_list = [r for r in self.big_response_list if r.metadata.creation_time >= date_after]
+                date_after = datetime.strptime(date_after, '%Y-%m-%d').replace(tzinfo=timezone.utc)
+                self.big_response_list = [r for r in self.big_response_list if r.properties.get('date_modified', default_date) >= date_after]
+
+
 
     # Function to display the results
     def display_results(self):
@@ -148,17 +154,6 @@ class WeaviateApp:
                 st.write(f"Properties: {r.properties}")
                 st.write(f"Metadata: {r.metadata}")
 
-    # Function to run the application
-    def run(self):
-        state = get_state()
-
-        st.sidebar.title("Navigation")
-        app_mode = st.sidebar.selectbox("Choose the page", ["Data Ingestion Page", "Search Page"])
-
-        if app_mode == "Data Ingestion Page":
-            self.data_ingestion_page(state)
-        elif app_mode == "Search Page":
-            self.search_page(state)
 
     # Function to display the data ingestion page
     def data_ingestion_page(self, state):
@@ -170,22 +165,43 @@ class WeaviateApp:
             os.system(f"python add_data.py --data-dir {state.data_dir}")
             st.write("Data ingestion completed!")
 
-    # Function to display the search page
-    def search_page(self, state):
-        self.display_title()
-        self.display_instructions()
-        search_text, img = self.get_search_inputs()
-        sort_by, filter_by_relevance, relevance_threshold, filter_by_date, date_before, date_after = self.get_sort_filter_inputs()
+    # Function to run the application
+    def run(self):
+        state = get_state()
 
-        if search_text != "" or img is not None:
-            if img is not None:
-                st.image(img, caption="Uploaded Image", use_column_width=True)
-                self.search_by_image(img)
-            else:
-                self.search_by_text(search_text)
+        st.sidebar.title("Navigation")
+        app_mode = st.sidebar.selectbox("Choose the page", ["Data Ingestion Page", "Search Page"])
 
-            self.sort_and_filter_results(sort_by, filter_by_relevance, relevance_threshold, filter_by_date, date_before, date_after)
-            self.display_results()
+        if app_mode == "Data Ingestion Page":
+            self.data_ingestion_page(state)
+        elif app_mode == "Search Page":
+            self.display_title()
+            self.display_instructions()
+            search_text, img = self.get_search_inputs()
+            sort_by, filter_by_relevance, relevance_threshold, filter_by_date, date_before, date_after = self.get_sort_filter_inputs()
+
+            # Add a search button
+            if st.button('Search'):
+                if search_text != "" or img is not None:
+                    if img is not None:
+                        st.image(img, caption="Uploaded Image", use_column_width=True)
+                        self.search_by_image(img)
+                    else:
+                        self.search_by_text(search_text)
+
+                    self.sort_and_filter_results(sort_by, filter_by_relevance, relevance_threshold, filter_by_date, date_before, date_after)
+                    self.display_results()
+
+                # Display the selected sort and filter options
+                st.subheader("Selected Options")
+                st.write(f"Sort by: {sort_by}")
+                st.write(f"Filter by Relevance: {filter_by_relevance}")
+                if filter_by_relevance:
+                    st.write(f"Relevance Threshold: {relevance_threshold}")
+                st.write(f"Filter by Date: {filter_by_date}")
+                if filter_by_date:
+                    st.write(f"Before Date: {date_before}")
+                    st.write(f"After Date: {date_after}")
 
 # Run the application
 if __name__ == "__main__":

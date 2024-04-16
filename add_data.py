@@ -91,17 +91,17 @@ def main():
     # Connect to Weaviate
     client = connect()
     
-    # # Images
-    # from create_collections.Images import define_collection_images,import_data_images
-    # delete_existing('images',client)
-    # define_collection_images(client)
-    # import_data_images(client)
+    # Images
+    from create_collections.Images import define_collection_images,import_data_images
+    delete_existing('images',client)
+    define_collection_images(client)
+    import_data_images(client)
 
-    # # Wines -- csv
-    # from create_collections.Wines import define_collection_wine_reviews, import_data_wine_reviews
-    # delete_existing('WineReviews',client)
-    # define_collection_wine_reviews(client)
-    # import_data_wine_reviews(client)
+    # Wines -- csv
+    from create_collections.Wines import define_collection_wine_reviews, import_data_wine_reviews
+    delete_existing('WineReviews',client)
+    define_collection_wine_reviews(client)
+    import_data_wine_reviews(client)
 
     # # Pdfs
     # Delete existing 'pdf' collection and define new one
