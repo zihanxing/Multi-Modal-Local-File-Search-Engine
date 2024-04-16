@@ -5,6 +5,8 @@ from weaviate import WeaviateClient
 from weaviate.collections.classes.batch import BatchObjectReturn
 import base64
 from pathlib import Path
+from get_metadata import createFileRecords 
+
 
 def define_collection_images(client: WeaviateClient, collection_name: str = 'images') -> bool:
     client.collections.create(
@@ -24,6 +26,26 @@ def define_collection_images(client: WeaviateClient, collection_name: str = 'ima
                 data_type=wvc.config.DataType.TEXT,
                 skip_vectorization=True,  # Not vectorizing for demonstrative purposes
             ),
+            wvc.Property(
+                name="date_created",
+                # data_type=wvc.DataType.OBJECT_ARRAY,
+                data_type=wvc.DataType.DATE,
+            ),
+            # wvc.Property(
+            #     name="date_modified",
+            #     # data_type=wvc.DataType.OBJECT_ARRAY,
+            #     data_type=wvc.DataType.DATE,
+            # ),
+            # wvc.Property(
+            #     name="file_size",
+            #     # data_type=wvc.DataType.OBJECT_ARRAY,
+            #     data_type=wvc.DataType.TEXT,
+            # ),
+            # wvc.Property(
+            #     name="author",
+            #     # data_type=wvc.DataType.OBJECT_ARRAY,
+            #     data_type=wvc.DataType.TEXT,
+            # ),
         ],
     )
     return True
@@ -36,7 +58,21 @@ def import_data_images(client: WeaviateClient,  collection_name: str = 'images')
 
     for f in imgdir.glob("*.jpg"):
         b64img = base64.b64encode(f.read_bytes()).decode()
-        data_props = {"image": b64img, "filename": f.name}
+        meta_data = createFileRecords(f)
+
+        # print(meta_data['Creation Date'])
+        # print(type(meta_data['Creation Date']))
+
+        data_props = {"image": b64img, 
+                      "filename": f.name,
+                      "date_created":meta_data['Creation Date'].isoformat(),
+                       "date_modified":meta_data['Modified Date'].isoformat(),
+                       "file_size":meta_data['Size (KB)'],
+                       "author":'0'
+                      }
+
+
+
         data_obj = wvc.data.DataObject(
             properties=data_props, uuid=generate_uuid5(f.name)
         )
