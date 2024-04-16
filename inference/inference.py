@@ -1,21 +1,27 @@
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from peft import PeftModel
-import json 
 
-from postprocess import extract_answer
+from inference.postprocess import extract_answer
+import json
 
-
-# base_model = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
-
-# eval_tokenizer = AutoTokenizer.from_pretrained(
-#     base_model,
-#     add_bos_token=True,
-#     trust_remote_code=True,
-# )
-# ft_model = PeftModel.from_pretrained(base_model, "/home/featurize/work/TinyLLaMA/src/outputs/tinyllama-finetune-2024-04-16-16-04/checkpoint-1500")
+# Check if GPU is available and choose the device accordingly
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 def inference(ft_model, eval_tokenizer, query):
+    """
+    Perform inference to extract meta information from the user's query.
+
+    Args:
+        ft_model (PeftModel): Fine-tuned model for extracting meta information.
+        eval_tokenizer (AutoTokenizer): Tokenizer for the evaluation model.
+        query (str): User's query.
+
+    Returns:
+        str: Extracted meta information from the query.
+    """
+    
+
     infer_prompt = f"""You are an expert at extracting useful information from user queries. I need you to extract meta information from the user's query.  The extraction reults contain 'year', 'month', 'day', 'file content', 'file type' information for file retriever to locate the file. The extracted information should exclusively contain key-value pairs. Additionally, please generate 5 synonyms for the extracted 'file content'. Below are 5 examples that meet these requirements:
 Example1
 ### query: Project documentation from January 15, 2024, to February 20, 2024
@@ -44,12 +50,24 @@ Example6
 Now, please extract meta information from this user query:
 ### query: {query}
 ### information: """
-    model_input = eval_tokenizer(infer_prompt, return_tensors="pt").to("cuda")
+
+
+    # Encode the prompt using the evaluation tokenizer
+    model_input = eval_tokenizer(infer_prompt, return_tensors="pt").to(device)
+    
+    # Perform generation using the fine-tuned model
+    with torch.no_grad():
+        prediction = eval_tokenizer.decode(ft_model.generate(**model_input, max_new_tokens=150)[0], skip_special_tokens=True)
+
+    # Extract the answer from the prediction
     prediction = extract_answer(prediction)
+
+    # If no answer is extracted, set it to an empty string
 
     if len(prediction) == 0:
         prediction = " "
     else:
         prediction = prediction["information"]
+
     return prediction
         
