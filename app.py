@@ -11,6 +11,9 @@ from session_state import *
 from datetime import datetime, timezone
 import os
 
+
+debug = False
+
 # Define the main application class
 class WeaviateApp:
     def __init__(self):
@@ -89,28 +92,52 @@ class WeaviateApp:
         self.big_response_list.extend(response.objects)
 
     # Function to search by text
-    def search_by_text(self, search_text):
+    def search_by_text(self, search_text,llm_model):
         # Define the collections to search in
-        collections = ['images', 'WineReviews', 'pdf']
+        collections = ['images', 'pdf']
         for collection in collections:
             # Get the collection object from the client
             collection_obj = self.client.collections.get(collection)
             # Query the collection with the search text
-            response = collection_obj.query.near_text(
-                query=search_text,
-                # return_properties=["filename"],
-                return_metadata=wvc.query.MetadataQuery(distance=True),
-                limit=6,
-            )
+            
+            if llm_model == 'TinyLlamma':
+                response = collection_obj.query.near_text(
+                    query=search_text,
+                    # return_properties=["filename"],
+                    return_metadata=wvc.query.MetadataQuery(distance=True),
+                    limit=6,
+                )
+            elif llm_model == 'BM25':
+                response = collection_obj.query.bm25(
+                    query=search_text,
+                    # return_properties=["filename"],
+                    # return_metadata=wvc.query.MetadataQuery(distance=True),
+                    limit=6,
+                )
+            elif llm_model == 'Vanilla':
+                response = collection_obj.query.near_text(
+                    query=search_text,
+                    # return_properties=["filename"],
+                    # return_metadata=wvc.query.MetadataQuery(distance=True),
+                    limit=6,
+                )
+
             # Extend the big response list with the response objects
             self.big_response_list.extend(response.objects)
+
+            # print(self.big_response_list)
 
 
     # Function to sort and filter the results
     def sort_and_filter_results(self, sort_by, filter_by_relevance, relevance_threshold, filter_by_date, date_before, date_after):
+        default_date = datetime.min.replace(tzinfo=timezone.utc)
+        
         # Sort the results by relevance or date
         if sort_by == 'Relevance':
-            self.big_response_list.sort(key=lambda x: x.metadata.distance)
+            try:
+                self.big_response_list.sort(key=lambda x: x.metadata.distance)
+            except:
+                pass
         elif sort_by == 'Date':
             # Use a default date for items without a 'date_modified' property
             default_date = datetime.min.replace(tzinfo=timezone.utc)
@@ -149,10 +176,13 @@ class WeaviateApp:
                     st.image(img)
                     st.write(f"Relevance: {r.metadata.distance:.3f}")
                 except:
+                    if r.metadata.distance:
+                        st.write(f"Relevance: {r.metadata.distance:.3f}")
                     pass
-
-                st.write(f"Properties: {r.properties}")
-                st.write(f"Metadata: {r.metadata}")
+                    
+                if debug==True:
+                    st.write(f"Properties: {r.properties}")
+                    st.write(f"Metadata: {r.metadata}")
 
 
     # Function to display the data ingestion page
@@ -182,7 +212,7 @@ class WeaviateApp:
             sort_by, filter_by_relevance, relevance_threshold, filter_by_date, date_before, date_after = self.get_sort_filter_inputs()
 
             # Add a toggle for the LLM model
-            llm_model = st.selectbox('LLM Model', ['BM25', 'TinyLlamma'])
+            llm_model = st.selectbox('LLM Model', ['BM25', 'TinyLlamma','Vanilla'])
 
             # Add a search button
             if st.button('Search'):
@@ -191,9 +221,10 @@ class WeaviateApp:
                         st.image(img, caption="Uploaded Image", use_column_width=True)
                         self.search_by_image(img)
                     else:
-                        self.search_by_text(search_text)
+                        self.search_by_text(search_text,llm_model)
 
                     self.sort_and_filter_results(sort_by, filter_by_relevance, relevance_threshold, filter_by_date, date_before, date_after)
+                    
                     self.display_results()
 
                 # Display the selected sort and filter options
