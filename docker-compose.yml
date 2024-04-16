@@ -28,7 +28,14 @@ services:
     mem_limit: 12g
     image: cr.weaviate.io/semitechnologies/multi2vec-bind:imagebind
     environment:
-      ENABLE_CUDA: 0
+      ENABLE_CUDA: '1'
+      NVIDIA_VISIBLE_DEVICES: 'all'
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - capabilities: 
+            - 'gpu'
 volumes:
   weaviate_data:
 ...
