@@ -24,6 +24,14 @@ class WeaviateApp:
         # Initialize an empty list to store the search results
         self.big_response_list = []
 
+        self.sort_by = None
+        self.filter_by_relevance = None
+        self.relevance_threshold = None
+        self.filter_by_date = None
+        self.date_before = None
+        self.date_after = None
+
+
     # Function to display the title of the application
     def display_title(self):
         # Create columns for the title
@@ -101,12 +109,24 @@ class WeaviateApp:
             # Query the collection with the search text
             
             if llm_model == 'TinyLlamma':
+                
+                from get_llama_inference import get_llama_inference
+
+                result = get_llama_inference(search_text)
+
                 response = collection_obj.query.near_text(
-                    query=search_text,
+                    query=result['file content'],
                     # return_properties=["filename"],
                     return_metadata=wvc.query.MetadataQuery(distance=True),
                     limit=6,
                 )
+
+                print(result)
+
+                if result['day'] == [0, 0]:
+                    self.sort_by = 'Date'
+
+
             elif llm_model == 'BM25':
                 response = collection_obj.query.bm25(
                     query=search_text,
@@ -229,7 +249,8 @@ class WeaviateApp:
             self.display_title()
             self.display_instructions()
             search_text, img = self.get_search_inputs()
-            sort_by, filter_by_relevance, relevance_threshold, filter_by_date, date_before, date_after = self.get_sort_filter_inputs()
+
+            self.sort_by, self.filter_by_relevance, self.relevance_threshold, self.filter_by_date, self.date_before, self.date_after = self.get_sort_filter_inputs()
 
             # Add a toggle for the LLM model
             llm_model = st.selectbox('LLM Model', ['BM25', 'TinyLlamma','Vanilla'])
@@ -243,20 +264,20 @@ class WeaviateApp:
                     else:
                         self.search_by_text(search_text,llm_model)
 
-                    self.sort_and_filter_results(sort_by, filter_by_relevance, relevance_threshold, filter_by_date, date_before, date_after)
+                    self.sort_and_filter_results(self.sort_by, self.filter_by_relevance, self.relevance_threshold, self.filter_by_date, self.date_before, self.date_after)
                     
                     self.display_results()
 
                 # Display the selected sort and filter options
                 st.subheader("Selected Options")
-                st.write(f"Sort by: {sort_by}")
-                st.write(f"Filter by Relevance: {filter_by_relevance}")
-                if filter_by_relevance:
-                    st.write(f"Relevance Threshold: {relevance_threshold}")
-                st.write(f"Filter by Date: {filter_by_date}")
-                if filter_by_date:
-                    st.write(f"Before Date: {date_before}")
-                    st.write(f"After Date: {date_after}")
+                st.write(f"Sort by: {self.sort_by}")
+                st.write(f"Filter by Relevance: {self.filter_by_relevance}")
+                if self.filter_by_relevance:
+                    st.write(f"Relevance Threshold: {self.relevance_threshold}")
+                st.write(f"Filter by Date: {self.filter_by_date}")
+                if self.filter_by_date:
+                    st.write(f"Before Date: {self.date_before}")
+                    st.write(f"After Date: {self.date_after}")
                 st.write(f"LLM Model: {llm_model}")
 
 # Run the application

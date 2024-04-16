@@ -3,8 +3,9 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from peft import PeftModel
 import json 
 
-from postprocess import extract_answer
+from inference.postprocess import extract_answer
 
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # base_model = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
 
@@ -44,7 +45,11 @@ Example6
 Now, please extract meta information from this user query:
 ### query: {query}
 ### information: """
-    model_input = eval_tokenizer(infer_prompt, return_tensors="pt").to("cuda")
+
+    model_input = eval_tokenizer(infer_prompt, return_tensors="pt").to(device)
+    with torch.no_grad():
+        prediction = eval_tokenizer.decode(ft_model.generate(**model_input, max_new_tokens=150)[0], skip_special_tokens=True)
+
     prediction = extract_answer(prediction)
 
     if len(prediction) == 0:
