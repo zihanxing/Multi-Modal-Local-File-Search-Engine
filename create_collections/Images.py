@@ -31,21 +31,21 @@ def define_collection_images(client: WeaviateClient, collection_name: str = 'ima
                 # data_type=wvc.DataType.OBJECT_ARRAY,
                 data_type=wvc.DataType.DATE,
             ),
-            # wvc.Property(
-            #     name="date_modified",
-            #     # data_type=wvc.DataType.OBJECT_ARRAY,
-            #     data_type=wvc.DataType.DATE,
-            # ),
-            # wvc.Property(
-            #     name="file_size",
-            #     # data_type=wvc.DataType.OBJECT_ARRAY,
-            #     data_type=wvc.DataType.TEXT,
-            # ),
-            # wvc.Property(
-            #     name="author",
-            #     # data_type=wvc.DataType.OBJECT_ARRAY,
-            #     data_type=wvc.DataType.TEXT,
-            # ),
+            wvc.Property(
+                name="date_modified",
+                # data_type=wvc.DataType.OBJECT_ARRAY,
+                data_type=wvc.DataType.DATE,
+            ),
+            wvc.Property(
+                name="file_size",
+                # data_type=wvc.DataType.OBJECT_ARRAY,
+                data_type=wvc.DataType.TEXT,
+            ),
+            wvc.Property(
+                name="author",
+                # data_type=wvc.DataType.OBJECT_ARRAY,
+                data_type=wvc.DataType.TEXT,
+            ),
         ],
     )
     return True

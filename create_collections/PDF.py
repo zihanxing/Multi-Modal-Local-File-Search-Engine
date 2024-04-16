@@ -53,7 +53,7 @@ def define_collection_pdfs(client: WeaviateClient, collection_name: str = 'pdfs'
             wvc.Property(
                 name="file_size",
                 # data_type=wvc.DataType.OBJECT_ARRAY,
-                data_type=wvc.DataType.INT,
+                data_type=wvc.DataType.TEXT,
             ),
             wvc.Property(
                 name="author",
@@ -96,7 +96,7 @@ def import_data_pdf(client: WeaviateClient,  collection_name: str = 'pdf') -> Ba
                        "date_created":meta_data['Creation Date'].isoformat(),
                        "date_modified":meta_data['Modified Date'].isoformat(),
                        "file_size":meta_data['Size (KB)'],
-                       "author":0
+                       "author": '0'
                        }
 
         data_objects.append(data_object)
