@@ -98,7 +98,7 @@ def evaluate_by_llm(prediction_dir):
             eval_res = response.choices[0].message.content
 
         elif model == "gemini":
-            GOOGLE_API_KEY = "AIzaSyBqZoftQ1rFzYInJGgtKrHB9uAQ4ZPvV3Y"
+            GOOGLE_API_KEY = ""
             genai.configure(api_key=GOOGLE_API_KEY)
 
             # Using Gemini API
