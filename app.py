@@ -13,7 +13,16 @@ import os
 
 # Define the main application class
 class WeaviateApp:
+    """
+    This class defines the main application for Weaviate.
+    It includes methods for displaying the title, instructions, getting search inputs,
+    sorting and filtering results, and displaying the results.
+    """
+
     def __init__(self):
+        """
+        Initialize the Weaviate client, define the logo path, and initialize an empty list for search results.
+        """
         # Connect to the local Weaviate client
         self.client = weaviate.connect_to_local()
         # Define the path to the logo
@@ -23,6 +32,9 @@ class WeaviateApp:
 
     # Function to display the title of the application
     def display_title(self):
+        """
+        Display the title of the application along with the logo.
+        """
         # Create columns for the title
         title_cols = st.columns([0.15, 0.85])
         with title_cols[0]:
@@ -35,6 +47,9 @@ class WeaviateApp:
 
     # Function to display the instructions for using the application
     def display_instructions(self):
+        """
+        Display the instructions for using the application.
+        """
         st.subheader("Instructions")
         st.write(
             """
@@ -46,6 +61,9 @@ class WeaviateApp:
 
     # Function to get the search inputs from the user
     def get_search_inputs(self):
+        """
+        Get the search inputs from the user. This includes text and image inputs.
+        """
         st.subheader("Search")
         srch_cols = st.columns(2)
         with srch_cols[0]:
@@ -58,6 +76,10 @@ class WeaviateApp:
 
     # Function to get the sort and filter inputs from the user
     def get_sort_filter_inputs(self):
+        """
+        Get the sort and filter inputs from the user. This includes options for sorting by relevance or date,
+        and options for filtering by relevance or date.
+        """
         # Get the sort option from the user
         sort_by = st.selectbox('Sort by', ['Relevance', 'Date'])
         # Get the relevance filter option from the user
@@ -74,6 +96,10 @@ class WeaviateApp:
 
     # Function to search by image
     def search_by_image(self, img):
+        """
+        Search by image. This function gets the image collection from the client, converts the image to base64,
+        queries the image collection with the image, and extends the big response list with the response objects.
+        """
         # Get the image collection from the client
         img_collection = self.client.collections.get('images')
         # Convert the image to base64
@@ -90,6 +116,10 @@ class WeaviateApp:
 
     # Function to search by text
     def search_by_text(self, search_text):
+        """
+        Search by text. This function defines the collections to search in, gets the collection object from the client,
+        queries the collection with the search text, and extends the big response list with the response objects.
+        """
         # Define the collections to search in
         collections = ['images', 'WineReviews', 'pdf']
         for collection in collections:
@@ -108,6 +138,9 @@ class WeaviateApp:
 
     # Function to sort and filter the results
     def sort_and_filter_results(self, sort_by, filter_by_relevance, relevance_threshold, filter_by_date, date_before, date_after):
+        """
+        Sort and filter the results. This function sorts the results by relevance or date, and filters the results by relevance or date.
+        """
         # Sort the results by relevance or date
         if sort_by == 'Relevance':
             self.big_response_list.sort(key=lambda x: x.metadata.distance)
@@ -131,6 +164,9 @@ class WeaviateApp:
 
     # Function to display the results
     def display_results(self):
+        """
+        Display the results. This function displays the properties and metadata of each result.
+        """
         st.subheader("Results found:")
         for i, r in enumerate(self.big_response_list):
             if i % 3 == 0:
@@ -157,6 +193,10 @@ class WeaviateApp:
 
     # Function to display the data ingestion page
     def data_ingestion_page(self, state):
+        """
+        Display the data ingestion page. This function displays the title, gets the data directory from the user,
+        and ingests and processes the data.
+        """
         self.display_title()
         st.title("Data Ingestion Page")
 
@@ -168,6 +208,10 @@ class WeaviateApp:
 
     # Function to run the application
     def run(self):
+        """
+        Run the application. This function gets the state, displays the navigation sidebar,
+        and runs the data ingestion page or the search page based on the user's selection.
+        """
         state = get_state()
 
         st.sidebar.title("Navigation")
