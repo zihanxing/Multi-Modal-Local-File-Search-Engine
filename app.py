@@ -181,6 +181,9 @@ class WeaviateApp:
             search_text, img = self.get_search_inputs()
             sort_by, filter_by_relevance, relevance_threshold, filter_by_date, date_before, date_after = self.get_sort_filter_inputs()
 
+            # Add a toggle for the LLM model
+            llm_model = st.selectbox('LLM Model', ['BM25', 'TinyLlamma'])
+
             # Add a search button
             if st.button('Search'):
                 if search_text != "" or img is not None:
@@ -203,6 +206,7 @@ class WeaviateApp:
                 if filter_by_date:
                     st.write(f"Before Date: {date_before}")
                     st.write(f"After Date: {date_after}")
+                st.write(f"LLM Model: {llm_model}")
 
 # Run the application
 if __name__ == "__main__":
