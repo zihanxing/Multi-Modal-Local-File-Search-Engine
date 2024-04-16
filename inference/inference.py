@@ -1,6 +1,7 @@
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from peft import PeftModel
+
 from inference.postprocess import extract_answer
 import json
 
@@ -20,6 +21,7 @@ def inference(ft_model, eval_tokenizer, query):
         str: Extracted meta information from the query.
     """
     
+
     infer_prompt = f"""You are an expert at extracting useful information from user queries. I need you to extract meta information from the user's query.  The extraction reults contain 'year', 'month', 'day', 'file content', 'file type' information for file retriever to locate the file. The extracted information should exclusively contain key-value pairs. Additionally, please generate 5 synonyms for the extracted 'file content'. Below are 5 examples that meet these requirements:
 Example1
 ### query: Project documentation from January 15, 2024, to February 20, 2024
@@ -49,6 +51,7 @@ Now, please extract meta information from this user query:
 ### query: {query}
 ### information: """
 
+
     # Encode the prompt using the evaluation tokenizer
     model_input = eval_tokenizer(infer_prompt, return_tensors="pt").to(device)
     
@@ -60,10 +63,11 @@ Now, please extract meta information from this user query:
     prediction = extract_answer(prediction)
 
     # If no answer is extracted, set it to an empty string
+
     if len(prediction) == 0:
         prediction = " "
     else:
         prediction = prediction["information"]
-    
+
     return prediction
         
