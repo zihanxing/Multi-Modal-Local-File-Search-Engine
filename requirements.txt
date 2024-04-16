@@ -57,3 +57,4 @@ urllib3==2.1.0
 validators==0.22.0
 weaviate-client==4.4b4
 zipp==3.17.0
+unstructured
