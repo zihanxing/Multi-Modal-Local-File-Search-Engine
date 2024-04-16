@@ -10,6 +10,8 @@ from session_state import *
 
 from datetime import datetime, timezone
 import os
+from streamlit import session_state as ss
+from streamlit_pdf_viewer import pdf_viewer
 
 
 debug = True
@@ -65,7 +67,6 @@ class WeaviateApp:
         st.write(
             """
             Search through all your ingested data to find the most relevant results across text, documents, video and audio!
-
             (Note: If you enter both, only the image will be used.)
             """
         )
@@ -137,7 +138,7 @@ class WeaviateApp:
         # collections = ['pdf']
 
         if llm_model == 'TinyLlamma':
-                from get_llama_inference import get_llama_inference
+                from scripts.get_llama_inference import get_llama_inference
                 result = get_llama_inference(search_text)
 
         for collection in collections:
@@ -148,7 +149,7 @@ class WeaviateApp:
             if llm_model == 'TinyLlamma':
                 response = collection_obj.query.near_text(
                     query=result['file content'],
-                    # return_properties=["filename"],
+                    # return_properties=["filename"],                           # enable if required
                     return_metadata=wvc.query.MetadataQuery(distance=True),
                     limit=6,
                 )
@@ -160,22 +161,20 @@ class WeaviateApp:
             elif llm_model == 'BM25':
                 response = collection_obj.query.bm25(
                     query=search_text,
-                    # return_properties=["filename"],
-                    # return_metadata=wvc.query.MetadataQuery(distance=True),
+                    # return_properties=["filename"],                           # enable if required
+                    # return_metadata=wvc.query.MetadataQuery(distance=True),   # enable if required
                     limit=6,
                 )
             elif llm_model == 'Vanilla':
                 response = collection_obj.query.near_text(
                     query=search_text,
-                    # return_properties=["filename"],
-                    # return_metadata=wvc.query.MetadataQuery(distance=True),
+                    # return_properties=["filename"],                           # enable if required
+                    # return_metadata=wvc.query.MetadataQuery(distance=True),   # enable if required
                     limit=6,
                 )
 
             # Extend the big response list with the response objects
             self.big_response_list.extend(response.objects)
-
-            # print(self.big_response_list)
 
 
     # Function to sort and filter the results
@@ -240,9 +239,6 @@ class WeaviateApp:
                         pass
 
                     try:
-                        from streamlit import session_state as ss
-                        from streamlit_pdf_viewer import pdf_viewer
-
                         binary_data = Path("data/pdf") / r.properties["filename"]
                         binary_data = binary_data.read_bytes()
                         # binary_data = ss.pdf_ref.getvalue()

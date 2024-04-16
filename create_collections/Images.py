@@ -6,7 +6,7 @@ from weaviate import WeaviateClient
 from weaviate.collections.classes.batch import BatchObjectReturn
 import base64
 from pathlib import Path
-from get_metadata import createFileRecords  # Assuming get_metadata.py contains the createFileRecords function
+from scripts.get_metadata import createFileRecords 
 
 
 def define_collection_images(client: WeaviateClient, collection_name: str = 'images') -> bool:

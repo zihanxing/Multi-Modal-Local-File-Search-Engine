@@ -2,6 +2,8 @@
 import streamlit as st
 
 class SessionState(object):
+    """Store session state across app reruns."""
+    
     def __init__(self, **kwargs):
         """
         Initialize the SessionState object with provided key-value pairs.
@@ -14,10 +16,10 @@ class SessionState(object):
 
 def get_state(**kwargs):
     """
-    Get the session state and initialize if not already created.
+    Get session state, creating it if necessary.
 
     Args:
-        **kwargs: Arbitrary keyword arguments to initialize session state variables if session state is not present.
+        **kwargs: Arbitrary keyword arguments for initializing SessionState.
 
     Returns:
         SessionState: The session state object.

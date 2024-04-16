@@ -6,8 +6,8 @@ from weaviate import WeaviateClient
 from weaviate.collections.classes.batch import BatchObjectReturn
 from pathlib import Path
 from unstructured.partition.pdf import partition_pdf
-from AbstractExtractor import AbstractExtractor  # Assuming AbstractExtractor.py contains the AbstractExtractor class
-from get_metadata import createFileRecords  # Assuming get_metadata.py contains the createFileRecords function
+from scripts.AbstractExtractor import AbstractExtractor
+from scripts.get_metadata import createFileRecords 
 
 
 def define_collection_pdfs(client: WeaviateClient, collection_name: str = 'pdfs') -> bool:
