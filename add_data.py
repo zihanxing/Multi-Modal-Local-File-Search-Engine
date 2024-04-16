@@ -115,6 +115,9 @@ def main():
     client = connect()
 
     # Define and import collections, and perform demo queries based on user preferences
+    print('-'*100)
+    print("Ingesting Images")
+    print('-'*100)
     if IMAGES:
         # Images
         from create_collections.Images import define_collection_images, import_data_images
@@ -122,6 +125,9 @@ def main():
         define_collection_images(client)
         import_data_images(client)
 
+    print('-'*100)
+    print("Ingesting CSVs")
+    print('-'*100)
     if CSVS:
         # Wines -- csv
         from create_collections.Wines import define_collection_wine_reviews, import_data_wine_reviews
@@ -129,6 +135,9 @@ def main():
         define_collection_wine_reviews(client)
         import_data_wine_reviews(client)
 
+    print('-'*100)
+    print("Ingesting PDFs")
+    print('-'*100)
     if PDFS:
         # Pdfs
         from create_collections.PDF import define_collection_pdfs, import_data_pdf
@@ -136,6 +145,9 @@ def main():
         define_collection_pdfs(client, 'pdf')
         import_data_pdf(client)
 
+    print('-'*100)
+    print("Ingesting Videos")
+    print('-'*100)
     if VIDEOS:
         # Videos
         from create_collections.Videos import define_collection_videos, import_data_videos

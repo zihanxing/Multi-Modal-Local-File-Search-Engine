@@ -12,7 +12,7 @@ from datetime import datetime, timezone
 import os
 
 
-debug = False
+debug = True
 
 # Define the main application class
 class WeaviateApp:
@@ -103,27 +103,26 @@ class WeaviateApp:
     def search_by_text(self, search_text,llm_model):
         # Define the collections to search in
         collections = ['images', 'pdf','videos']
+        # collections = ['pdf']
+
+        if llm_model == 'TinyLlamma':
+                from get_llama_inference import get_llama_inference
+                result = get_llama_inference(search_text)
+
         for collection in collections:
             # Get the collection object from the client
             collection_obj = self.client.collections.get(collection)
             # Query the collection with the search text
             
             if llm_model == 'TinyLlamma':
-                
-                from get_llama_inference import get_llama_inference
-
-                result = get_llama_inference(search_text)
-
                 response = collection_obj.query.near_text(
                     query=result['file content'],
                     # return_properties=["filename"],
                     return_metadata=wvc.query.MetadataQuery(distance=True),
                     limit=6,
                 )
-
                 print(result)
-
-                if result['day'] == [0, 0]:
+                if result['day'] == [0, 0] and result['month'] == [0, 0] and result['year'] == [2024, 2024]:
                     self.sort_by = 'Date'
 
 
@@ -221,8 +220,9 @@ class WeaviateApp:
                     pass
                     
                 if debug==True:
-                    st.write(f"Properties: {r.properties}")
-                    st.write(f"Metadata: {r.metadata}")
+                    st.write(f"date_created: {r.properties['date_modified']}")
+                    st.write(f"date_modified: {r.properties['date_created']}")
+                    # st.write(f"Metadata: {r.metadata}")
 
 
     # Function to display the data ingestion page
@@ -279,6 +279,7 @@ class WeaviateApp:
                     st.write(f"Before Date: {self.date_before}")
                     st.write(f"After Date: {self.date_after}")
                 st.write(f"LLM Model: {llm_model}")
+                self.sort_by = 'Relevance'
 
 # Run the application
 if __name__ == "__main__":
