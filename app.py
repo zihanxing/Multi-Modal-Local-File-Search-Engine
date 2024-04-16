@@ -5,12 +5,14 @@ from pathlib import Path
 import streamlit as st
 import weaviate
 import weaviate.classes as wvc
+from session_state import *
 
+import os
 
 class WeaviateApp:
     def __init__(self):
         self.client = weaviate.connect_to_local()
-        self.logo_path = Path("assets/weaviate-logo-light-transparent-200.png")
+        self.logo_path = Path("assets/logo.jpeg")
         self.big_response_list = []
 
     def display_title(self):
@@ -19,21 +21,20 @@ class WeaviateApp:
             st.write("")
             st.image(self.logo_path.read_bytes(), width=75)
         with title_cols[1]:
-            st.title("Multi-Modality with Weaviate")
+            st.title("Enhanced Local File Search")
 
     def display_instructions(self):
         st.subheader("Instructions")
         st.write(
             """
-            Search the dataset by uploading an image or entering free text.
-            The model is multi-lingual as well - try searching in different languages!
+            Search through all your ingested data to find the most relevant results across text, documents, video and audio!
 
             (Note: If you enter both, only the image will be used.)
             """
         )
 
     def get_search_inputs(self):
-        st.subheader("Search the dataset")
+        st.subheader("Search")
         srch_cols = st.columns(2)
         with srch_cols[0]:
             search_text = st.text_area(label="Search by text")
@@ -114,6 +115,26 @@ class WeaviateApp:
                 st.write(f"Metadata: {r.metadata}")
 
     def run(self):
+        state = get_state()
+
+        st.sidebar.title("Navigation")
+        app_mode = st.sidebar.selectbox("Choose the page", ["Data Ingestion Page", "Search Page"])
+
+        if app_mode == "Data Ingestion Page":
+            self.data_ingestion_page(state)
+        elif app_mode == "Search Page":
+            self.search_page(state)
+
+    def data_ingestion_page(self, state):
+        st.title("Data Ingestion Page")
+
+        state.data_dir = st.text_input("Enter the directory of your data", state.data_dir if hasattr(state, 'data_dir') else './data')
+        if st.button("Ingest & Process Data"):
+            st.write("Ingesting and processing data...")
+            os.system(f"python add_data.py --data-dir {state.data_dir}")
+            st.write("Data ingestion completed!")
+
+    def search_page(self, state):
         self.display_title()
         self.display_instructions()
         search_text, img = self.get_search_inputs()
@@ -128,6 +149,8 @@ class WeaviateApp:
 
             self.sort_and_filter_results(sort_by, filter_by_relevance, relevance_threshold, filter_by_date, date_before, date_after)
             self.display_results()
+
+    
 
 
 if __name__ == "__main__":
