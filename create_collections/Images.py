@@ -1,3 +1,4 @@
+# Import necessary libraries
 import weaviate
 import weaviate.classes as wvc
 from weaviate.util import generate_uuid5
@@ -5,16 +6,26 @@ from weaviate import WeaviateClient
 from weaviate.collections.classes.batch import BatchObjectReturn
 import base64
 from pathlib import Path
-from get_metadata import createFileRecords 
+from get_metadata import createFileRecords  # Assuming get_metadata.py contains the createFileRecords function
 
 
 def define_collection_images(client: WeaviateClient, collection_name: str = 'images') -> bool:
+    """
+    Define a collection for images in Weaviate.
+
+    Args:
+        client (WeaviateClient): The Weaviate client.
+        collection_name (str, optional): The name of the collection. Defaults to 'images'.
+
+    Returns:
+        bool: True if collection creation is successful, otherwise False.
+    """
     client.collections.create(
         name=collection_name,
         description="Image collection",
         vectorizer_config=wvc.config.Configure.Vectorizer.multi2vec_bind(
             image_fields=[wvc.config.Multi2VecField(name='image', weight=0.95)],
-            vectorize_collection_name=False ),
+            vectorize_collection_name=False),
         generative_config=wvc.config.Configure.Generative.openai(),
         properties=[
             wvc.Property(
@@ -28,50 +39,53 @@ def define_collection_images(client: WeaviateClient, collection_name: str = 'ima
             ),
             wvc.Property(
                 name="date_created",
-                # data_type=wvc.DataType.OBJECT_ARRAY,
-                data_type=wvc.DataType.DATE,
+                data_type=wvc.config.DataType.DATE,
             ),
             wvc.Property(
                 name="date_modified",
-                # data_type=wvc.DataType.OBJECT_ARRAY,
-                data_type=wvc.DataType.DATE,
+                data_type=wvc.config.DataType.DATE,
             ),
             wvc.Property(
                 name="file_size",
-                # data_type=wvc.DataType.OBJECT_ARRAY,
-                data_type=wvc.DataType.TEXT,
+                data_type=wvc.config.DataType.TEXT,
             ),
             wvc.Property(
                 name="author",
-                # data_type=wvc.DataType.OBJECT_ARRAY,
-                data_type=wvc.DataType.TEXT,
+                data_type=wvc.config.DataType.TEXT,
             ),
         ],
     )
     return True
 
-def import_data_images(client: WeaviateClient,  collection_name: str = 'images') -> BatchObjectReturn:
+
+def import_data_images(client: WeaviateClient, collection_name: str = 'images') -> BatchObjectReturn:
+    """
+    Import image data into the specified collection in Weaviate.
+
+    Args:
+        client (WeaviateClient): The Weaviate client.
+        collection_name (str, optional): The name of the collection. Defaults to 'images'.
+
+    Returns:
+        BatchObjectReturn: The response object containing information about the import process.
+    """
     mm_coll = client.collections.get(collection_name)
     imgdir = Path("data/images")
-    
+
     data_objs = list()
 
     for f in imgdir.glob("*.jpg"):
         b64img = base64.b64encode(f.read_bytes()).decode()
         meta_data = createFileRecords(f)
 
-        # print(meta_data['Creation Date'])
-        # print(type(meta_data['Creation Date']))
-
-        data_props = {"image": b64img, 
-                      "filename": f.name,
-                      "date_created":meta_data['Creation Date'].isoformat(),
-                       "date_modified":meta_data['Modified Date'].isoformat(),
-                       "file_size":meta_data['Size (KB)'],
-                       "author":'0'
-                      }
-
-
+        data_props = {
+            "image": b64img,
+            "filename": f.name,
+            "date_created": meta_data['Creation Date'].isoformat(),
+            "date_modified": meta_data['Modified Date'].isoformat(),
+            "file_size": meta_data['Size (KB)'],
+            "author": '0'
+        }
 
         data_obj = wvc.data.DataObject(
             properties=data_props, uuid=generate_uuid5(f.name)
@@ -87,6 +101,7 @@ def import_data_images(client: WeaviateClient,  collection_name: str = 'images')
             print(e)
 
     return insert_response
+
 
 # def define_collection_images(client: WeaviateClient, collection_name: str = 'images') -> bool:
 #     client.collections.create(
