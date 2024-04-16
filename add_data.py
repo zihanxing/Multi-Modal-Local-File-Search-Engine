@@ -1,3 +1,4 @@
+# Import necessary libraries
 import weaviate
 import weaviate.classes as wvc
 from weaviate.util import generate_uuid5
@@ -8,17 +9,19 @@ from pathlib import Path
 import pandas as pd
 import json
 
-
+# Function to connect to local Weaviate instance
 def connect() -> WeaviateClient:
     return weaviate.connect_to_local()
 
+# Function to delete existing collection in Weaviate
 def delete_existing(collection_name, client: WeaviateClient) -> bool:
     client.collections.delete(collection_name)
     return True
 
+# Set data limiter
 DATA_LIMITER = 5
 
-
+# Function to perform demo query on Weaviate client
 def demo_query(client: WeaviateClient):
 
     # print("-"*100)
@@ -61,11 +64,14 @@ def demo_query(client: WeaviateClient):
     # print(" "*45 + "PDF Files")
     # print("-"*100)
 
+    # Get 'pdf' collection from client
     pdf_collection = client.collections.get('pdf')
 
+    # Aggregate all objects in 'pdf' collection and print total count
     response = pdf_collection.aggregate.over_all(total_count=True)
     print(f"Object count in the Database: {response.total_count}")
 
+    # Perform hybrid query on 'pdf' collection for each query in list
     for q in ["home prices"]:
         response = pdf_collection.query.hybrid(q, limit=3)
         print(f"\n{'*'*10} \t Query: \t {'*'*10}\n")
@@ -82,6 +88,7 @@ def demo_query(client: WeaviateClient):
 
 
 def main():
+    # Connect to Weaviate
     client = connect()
     
     # # Images
@@ -97,6 +104,7 @@ def main():
     # import_data_wine_reviews(client)
 
     # # Pdfs
+    # Delete existing 'pdf' collection and define new one
     from create_collections.PDF import define_collection_pdfs,import_data_pdf
     delete_existing('pdf',client)
     define_collection_pdfs(client,'pdf')
@@ -129,7 +137,7 @@ def main():
     # #PDF
     # define_collection_pdf(client,'pdf')
 
-    
+    # Perform demo query
     demo_query(client)
 
 
