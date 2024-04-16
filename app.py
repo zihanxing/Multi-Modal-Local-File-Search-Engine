@@ -94,7 +94,7 @@ class WeaviateApp:
     # Function to search by text
     def search_by_text(self, search_text,llm_model):
         # Define the collections to search in
-        collections = ['images', 'pdf']
+        collections = ['images', 'pdf','videos']
         for collection in collections:
             # Get the collection object from the client
             collection_obj = self.client.collections.get(collection)
@@ -176,6 +176,26 @@ class WeaviateApp:
                     st.image(img)
                     st.write(f"Relevance: {r.metadata.distance:.3f}")
                 except:
+                    try:
+                        vidpath = Path("data/videos") / r.properties["filename"]
+                        vid = vidpath.read_bytes()
+                        st.video(vid)
+                        st.write(f"Relevance: {r.metadata.distance:.3f}")
+                    except:
+                        pass
+
+                    try:
+                        from streamlit import session_state as ss
+                        from streamlit_pdf_viewer import pdf_viewer
+
+                        binary_data = Path("data/pdf") / r.properties["filename"]
+                        binary_data = binary_data.read_bytes()
+                        # binary_data = ss.pdf_ref.getvalue()
+                        pdf_viewer(input=binary_data, width=250,height=250,pages_to_render=[1,2])
+
+                    except:
+                        pass
+
                     if r.metadata.distance:
                         st.write(f"Relevance: {r.metadata.distance:.3f}")
                     pass
