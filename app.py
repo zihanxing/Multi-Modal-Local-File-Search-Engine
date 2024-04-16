@@ -3,7 +3,6 @@ import weaviate
 import weaviate.classes as wvc
 import streamlit as st
 import base64
-# from add_data import COLLECTION_NAME
 
 client = weaviate.connect_to_local()
 
@@ -33,38 +32,34 @@ with srch_cols[0]:
 with srch_cols[1]:
     img = st.file_uploader(label="Search by image")
 
+sort_by = st.selectbox('Sort by', ['distance'])
 
 if search_text != "" or img is not None:
     
-    # mm_coll = client.collections.get(COLLECTION_NAME)
-
+    big_reponse_list = []
+    img_collection = client.collections.get('images')
+    wine_reviws_collection = client.collections.get('WineReviews')
+    pdf_collection = client.collections.get('pdf')
+    
     if img is not None:
         st.image(img, caption="Uploaded Image", use_column_width=True)
         imgb64 = base64.b64encode(img.read()).decode()
 
-        response = mm_coll.query.near_image(
+        response = img_collection.query.near_image(
             near_image=imgb64,
             return_properties=[
                 "filename",
-                # "image"
             ],
             return_metadata=wvc.query.MetadataQuery(distance=True),
             limit=6,
         )
+        big_reponse_list.extend(response.objects)
 
     else:
-        
-        big_reponse_list = []
-        img_collection = client.collections.get('images')
-        wine_reviws_collection = client.collections.get('WineReviews')
-        pdf_collection = client.collections.get('pdf')
-        
-
         response = img_collection.query.near_text(
             query=search_text,
             return_properties=[
                 "filename",
-                # "image"  # TODO - return blob when implemented to client
             ],
             return_metadata=wvc.query.MetadataQuery(distance=True),
             limit=6,
@@ -75,25 +70,24 @@ if search_text != "" or img is not None:
             query=search_text,
             return_properties=[
                 "filename",
-                # "image"  # TODO - return blob when implemented to client
             ],
             return_metadata=wvc.query.MetadataQuery(distance=True),
             limit=6,
         )
         big_reponse_list.extend(response.objects)
-
 
         response = pdf_collection.query.near_text(
             query=search_text,
             return_properties=[
                 "filename",
-                # "image"  # TODO - return blob when implemented to client
             ],
             return_metadata=wvc.query.MetadataQuery(distance=True),
             limit=6,
         )
         big_reponse_list.extend(response.objects)
 
+    if sort_by == 'distance':
+        big_reponse_list.sort(key=lambda x: x.metadata.distance, reverse=True)
 
     st.subheader("Results found:")
     for i, r in enumerate(big_reponse_list):
@@ -107,20 +101,19 @@ if search_text != "" or img is not None:
                 st.write(r.properties["filename"])
             except:
                 st.write(r.properties["title"])
-            # st.image(base64.b64decode(r.properties["image"]))  # Show blob when implemented to client
 
-            # Temporary solution to show image
             try:
                 imgpath = Path("data/images") / r.properties["filename"]
                 img = imgpath.read_bytes()
                 st.image(img)
 
-                # Show distance
                 st.write(f"Distance: {r.metadata.distance:.3f}")
             except:
                 pass
 
-# Hide the Streamlit menu/popup - from https://discuss.streamlit.io/t/removing-the-deploy-button/53621/2
+            st.write(f"Properties: {r.properties}")
+            st.write(f"Metadata: {r.metadata}")
+
 st.markdown("""
     <style>
         .reportview-container {
