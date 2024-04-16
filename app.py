@@ -3,6 +3,7 @@ import weaviate
 import weaviate.classes as wvc
 import streamlit as st
 import base64
+from datetime import datetime
 
 client = weaviate.connect_to_local()
 
@@ -32,7 +33,12 @@ with srch_cols[0]:
 with srch_cols[1]:
     img = st.file_uploader(label="Search by image")
 
-sort_by = st.selectbox('Sort by', ['distance'])
+sort_by = st.selectbox('Sort by', ['Relevance', 'Date'])
+filter_by_relevance = st.checkbox('Filter by Relevance')
+relevance_threshold = st.number_input('Relevance Threshold', value=0.0) if filter_by_relevance else None
+filter_by_date = st.checkbox('Filter by Date')
+date_before = st.text_input('Before Date (YYYY-MM-DD)') if filter_by_date else None
+date_after = st.text_input('After Date (YYYY-MM-DD)') if filter_by_date else None
 
 if search_text != "" or img is not None:
     
@@ -86,8 +92,20 @@ if search_text != "" or img is not None:
         )
         big_reponse_list.extend(response.objects)
 
-    if sort_by == 'distance':
+    if sort_by == 'Relevance':
         big_reponse_list.sort(key=lambda x: x.metadata.distance, reverse=True)
+    elif sort_by == 'Date':
+        big_reponse_list.sort(key=lambda x: x.metadata.creation_time, reverse=True)
+
+    if filter_by_relevance:
+        big_reponse_list = [r for r in big_reponse_list if r.metadata.distance >= relevance_threshold]
+    if filter_by_date:
+        if date_before:
+            date_before = datetime.strptime(date_before, '%Y-%m-%d')
+            big_reponse_list = [r for r in big_reponse_list if r.metadata.creation_time <= date_before]
+        if date_after:
+            date_after = datetime.strptime(date_after, '%Y-%m-%d')
+            big_reponse_list = [r for r in big_reponse_list if r.metadata.creation_time >= date_after]
 
     st.subheader("Results found:")
     for i, r in enumerate(big_reponse_list):
@@ -107,7 +125,7 @@ if search_text != "" or img is not None:
                 img = imgpath.read_bytes()
                 st.image(img)
 
-                st.write(f"Distance: {r.metadata.distance:.3f}")
+                st.write(f"Relevance: {r.metadata.distance:.3f}")
             except:
                 pass
 
