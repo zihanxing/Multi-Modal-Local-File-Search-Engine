@@ -1,0 +1,626 @@
+[
+    {
+        "input": "Show me all the latest videos, shorter than 5 minutes, about cat training",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Cat Training Video\",\"Feline Behavior Tutorial\",\"Pet Obedience Lesson\"],\"file_type\":[\"mp4\",\"avi\"],\"video_hour\":[], \"video_minute\":[0, 5]}"
+    },
+    {
+        "input": "Show me the newest medical articles written by Dr. Smith on cancer treatment",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Cancer Treatment Article\",\"Oncology Research Paper\",\"Medical Report\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the oldest science fiction podcast episodes released within the past 3 months",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-3, 0],\"date_day\":[0,0],\"date_sort\":1,\"file_content\":[\"Science Fiction Podcast\",\"Fantasy Audiobook\",\"Supernatural Episode\"],\"file_type\":[\"mp3\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the documents related to gardening uploaded two days ago.",
+        "output": "{\"date_year\":[-2, -2],\"date_month\":[0, 0],\"date_day\":[0, 0],\"date_sort\":0,\"file_content\":[\"Gardening Guide\",\"Plant Care Tips\",\"Landscaping Ideas\"],\"file_type\":[\"doc\", \"pdf\", \"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the newest audio files from last week's project meeting.",
+        "output": "{\"date_year\":[0,0], \"date_month\":[0,0], \"date_day\":[-7,0], \"date_sort\":-1,\"file_content\":[\"Project Meeting Audio\",\"Team Discussion Recording\",\"Meeting Notes Audio\"],\"file_type\":[\"mp3\",\"m4a\",\"wav\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Get me the most recent travel photos from the trip to Denver, roughly around 10 days ago",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[-10, 0],\"date_sort\":-1,\"file_content\":[\"Denver Photos\",\"Colorado Trip Pictures\",\"Travel Snapshots\",\"Denver Memories\"],\"file_type\":[\"jpg\",\"jpeg\",\"png\",\"heif\",\"tiff\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find me all the videos related to cat breeds with a duration between 30 and 45 minutes, and created before June 2023",
+        "output": "{\"date_year\":[0, 2023],\"date_month\":[0, 6],\"date_day\":[0, 0],\"date_sort\":0,\"file_content\":[\"Cat Breeds Video\",\"Feline Information Footage\",\"Pet Encyclopedia Video\"],\"file_type\":[\"mp4\",\"avi\"],\"video_hour\":[], \"video_minute\":[30, 45]}"
+    },
+    {
+        "input": "Find the newest gardening articles longer than 2 hours, released in the last 2 months",
+        "output": "{\"date_year\":[-2,0],\"date_month\":[-2,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Gardening Tips Article\",\"Plant Care Guide\",\"Landscaping Advice\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[2,0], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the most recent 3-hour long videos on Artificial Intelligence created in the last six months",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-6,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"AI Tutorial Video\",\"Machine Learning Lecture\",\"Deep Learning Demonstration\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[3,3],\"video_minute\":[0,0]}"
+    },
+    {
+        "input": "Find presentations on financial planning created within the last 3 months that are longer than 30 minutes",
+        "output": "{\"date_year\":[-3, 0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Financial Planning Presentation\",\"Investment Advice Slides\",\"Budgeting Workshop\"],\"file_type\":[\"ppt\",\"pptx\"],\"video_hour\":[0, 30], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find any pdf files, created within the last six months, about the history of space exploration",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-6,0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"History of Space Exploration\",\"Space Documentary Report\"],\"file_type\":[\"pdf\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the newest travel blog posts written in the past 3 months about budget travel in Europe",
+        "output": "{\"date_year\":[-3,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Budget Travel in Europe\",\"Backpacking Europe on a Budget\",\"Affordable Europe Itinerary\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the newest marketing videos on social media strategies with a duration between 15 and 30 minutes",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Social Media Marketing Video\",\"Digital Marketing Strategy Tutorial\",\"Content Marketing Guide\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[], \"video_minute\":[15, 30]}"
+    },
+    {
+        "input": "Find the latest article on digital marketing, released in the last 6 months",
+        "output": "{\"date_year\":[-1, 0],\"date_month\":[-6, 0],\"date_day\":[0, 0],\"date_sort\":-1,\"file_content\":[\"Digital Marketing Article\",\"Online Marketing Post\",\"E-Commerce Strategy Blog\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Show me the oldest documents downloaded on Egypt history in 2022",
+        "output": "{\"date_year\":[2022,2022],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Egypt History Paper\",\"Pharaoh Civilization\",\"Ancient Egypt Document\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find all instructional videos on saxophone playing that are at most 20 minutes long",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Saxophone Tutorial\",\"Jazz Music Lesson\",\"Wind Instrument Guide\"],\"file_type\":[\"mp4\",\"avi\"],\"video_hour\":[], \"video_minute\":[0,20]}"
+    },
+    {
+        "input": "Find the most recent podcasts on stocks, released in the last 7 days.",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[-7,0],\"date_sort\":-1,\"file_content\":[\"Stock Market Podcast\",\"Investing News Audio\",\"Financial Advice Episode\"],\"file_type\":[\"mp3\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the oldest job application documents submitted in March 2021",
+        "output": "{\"date_year\":[2021,2021],\"date_month\":[3,3],\"date_day\":[0,0],\"date_sort\":1,\"file_content\":[\"Job Application\",\"Resume\",\"CV\",\"Cover Letter\"],\"file_type\":[\"docx\",\"pdf\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find any file with \"cat\" in the file content downloaded before November 5th, 2023",
+        "output": "{\"date_year\":[0,2023],\"date_month\":[0,11],\"date_day\":[0,5],\"date_sort\":0,\"file_content\":[\"Cat Breeds File\",\"Feline Information Document\",\"Pet Encyclopedia\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find documents on digital marketing strategy created in the last 6 months, sorted by newest first.",
+        "output": "{\"date_year\":[0, 0],\"date_month\":[-6, 0], \"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"digital marketing strategy\",\"online marketing plan\",\"social media strategy\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Show me the latest video tutorials on investing for beginners that are under 20 minutes long",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Investing Tutorial Video\",\"Beginner's Guide to Investing\",\"Financial Planning Video\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[], \"video_minute\":[0, 20]}"
+    },
+    {
+        "input": "Find the latest blog posts about Machine Learning released in the last 6 months.",
+        "output": "{\"date_year\":[0, 0], \"date_month\":[-6, 0], \"date_day\": [0, 0], \"date_sort\": -1, \"file_content\": [\"Machine Learning Articles\", \"AI Research Papers\", \"Deep Learning Studies\"], \"file_type\": [\"pdf\", \"docx\", \"txt\"], \"video_hour\": [], \"video_minute\": []}"
+    },
+    {
+        "input": "Find files related to \"neural networks\" within the last month, longer than 1 hour.",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-1,0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Neural Networks Research\",\"Deep Learning Paper\",\"AI Tutorial\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[1,0],\"video_minute\":[0,0]}"
+    },
+    {
+        "input": "Find all financial reports created in 2020, sorted from newest to oldest.",
+        "output": "{\"date_year\":[2020,2020],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Financial Report\",\"Budget Analysis\",\"Investment Summary\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}\n\n### query: Find the most recent videos on cat behavior that are longer than 1 hour\n### information: {\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Cat Behavior Video\",\"Feline Psychology Documentary\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[1, 0],\"video_minute\":[]}\n\n### query: Find the oldest travel photos from my trip to Japan last fall\n### information: {\"date_year\":[0,0],\"date_month\":[9,11],\"date_day\":[0,0],\"date_sort\":1,\"file_content\":[\"Japan Travel Photos\",\"Tokyo Images\",\"Kyoto Snapshots\",\"Japan Memories\"],\"file_type\":[\"jpg\",\"jpeg\",\"png\",\"heif\",\"tiff\"],\"video_hour\":[], \"video_minute\":[]}\n\n### query: Find the newest research papers on quantum computing published in the last 6 months\n### information: {\"date_year\":[0,0],\"date_month\":[-6,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Quantum Computing Research\",\"Quantum Mechanics Paper\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}\n\n### query: Find any files on gardening downloaded within the last 2 weeks\n### information: {\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[-14,0],\"date_sort\":0,\"file_content\":[\"Gardening Tips\",\"Plant Care Guide\",\"Garden Encyclopedia\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find all the downloaded files about ``Biology`` with duration around 19 minutes",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Biology file\",\"Genetics notes\",\"DNA research\"],\"file_type\":[],\"video_hour\":[], \"video_minute\":[19, 19]}"
+    },
+    {
+        "input": "Find the latest videos about AI, longer than 20 minutes long",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"AI Video\",\"Machine Learning Tutorial\",\"Deep Learning Lecture\"],\"file_type\":[\"mp4\",\"avi\",\"mov\"],\"video_hour\":[], \"video_minute\":[20,0]}"
+    },
+    {
+        "input": "Find all the latest podcasts released within this month on health and nutrition",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[-30,0],\"date_sort\":-1,\"file_content\":[\"Health Podcast\",\"Nutrition Tips Audio\",\"Fitness Advice Episode\"],\"file_type\":[\"mp3\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Please show me any files related to \"data analytics\" in the file name, created in the first six months of 2022",
+        "output": "{\"date_year\":[2022, 2022], \"date_month\":[1, 6], \"date_day\":[0, 0], \"date_sort\": 0, \"file_content\":[\"Data Analytics Report\", \"Big Data Analysis\", \"Machine Learning for Data Analytics\"], \"file_type\": [\"pdf\", \"docx\",\"txt\"], \"video_hour\": [], \"video_minute\": []}"
+    },
+    {
+        "input": "Show me the newest videos under 20 minutes about space exploration with less than 10 seconds of introduction, released after October 2021",
+        "output": "{\"date_year\":[2021,0],\"date_month\":[10,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Space Exploration Video\",\"Astronomy Documentary\",\"NASA Footage\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[0,0],\"video_minute\":[0, 20],\"intro_duration\":[0,10]}"
+    },
+    {
+        "input": "Find the documents related to home improvement ideas, created within the last 6 months",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-6, 0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Home Improvement Guide\",\"Interior Design Ideas\",\"Remodeling Tips Document\"],\"file_type\":[\"pdf\",\"docx\"],\"video_hour\":[], \"video_minute\":[]}\n\n### query: Find the oldest videos on space exploration, with a duration of less than 10 minutes\n### information: {\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":1,\"file_content\":[\"Space Exploration Video\",\"Astronomy Documentary\",\"NASA Footage\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[], \"video_minute\":[0, 10]}\n\n### query: Find the terbaru file specifically on digital marketing\n### information: {\"date_year\":[0, 0],\"date_month\":[0, 0],\"date_day\":[0, 0],\"date_sort\":-1,\"file_content\":[\"Digital Marketing Strategy\",\"Online Marketing Campaign\",\"Social Media Marketing Guide\"],\"file_type\":[\"pdf\",\"docx\",\"pptx\"],\"video_hour\":[],\"video_minute\":[]}\n\n### query: Show me the newest photo taken within the last 2 weeks\n### information: {\"date_year\":[0, 0],\"date_month\":[0, 0],\"date_day\":[-14, 0],\"date_sort\":-1,\"file_content\":[\"Photo taken recently\",\"New picture\",\"Latest image\"],\"file_type\":[\"jpg\",\"jpeg\",\"png\",\"heif\",\"tiff\"],\"video_hour\":[],\"video_minute\":[]}\n\n### query: I need to find the latest marketing presentations created in the last year, related to social media marketing\n### information: {\"date_year\":[-1, 0],\"date_month\":[0, 0],\"date_day\":[0, 0],\"date_sort\":-1,\"file_content\":[\"Social Media Marketing Presentation\",\"Digital Marketing Strategy\",\"Online Marketing Plan\"],\"file_type\":[\"pdf\",\"docx\",\"pptx\"],\"video_hour\":[],\"video_minute\":[]}"
+    },
+    {
+        "input": "Find the newest videos with 10 to 20 minutes in duration about machine learning",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Machine Learning Tutorial\",\"AI Research Video\",\"Deep Learning Explanation\"],\"file_type\":[\"mp4\",\"avi\",\"mov\"],\"video_hour\":[], \"video_minute\":[10,20]}"
+    },
+    {
+        "input": "Find the oldest videos related to space exploration, longer than 15 minutes long",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":1,\"file_content\":[\"Space Exploration Video\",\"Astronomy Documentary\",\"NASA Footage\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[0, 15], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find videos about national parks recorded in the last 3 months, longer than 1 hour",
+        "output": "{\"date_year\":[-3, 0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"National Park Video\",\"Park Ranger Footage\",\"Nature Documentary\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[1, 0], \"video_minute\":[0,0]}"
+    },
+    {
+        "input": "Find marketing presentations about E-Commerce strategies with video length between 10 and 30 minutes, created after May 29th, 2023",
+        "output": "{\"date_year\":[2023,0],\"date_month\":[5,0],\"date_day\":[29,0],\"date_sort\":0,\"file_content\":[\"E-Commerce Strategy Deck\",\"Online Marketing Presentation\",\"Digital Commerce Report\"],\"file_type\":[\"ppt\",\"pptx\"],\"video_hour\":[], \"video_minute\":[10, 30]}"
+    },
+    {
+        "input": "Find the newest files with \"climate change\" in the content",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Climate Change Report\",\"Environmental Impact Assessment\",\"Sustainability Study\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Show me the oldest videos related to marine life with a duration under 30 minutes",
+        "output": "{\n\"date_year\": [0, 0], \"date_month\": [0, 0], \"date_day\": [0, 0], \"date_sort\": 1, \"file_content\": [\"Marine Life Video\", \"Oceanography Documentary\", \"Underwater Footage\"], \"file_type\": [\"mp4\", \"mov\"], \"video_hour\": [0, 0], \"video_minute\": [0, 30]\n}"
+    },
+    {
+        "input": "Can you list the newest videos on fashion trends longer than 20 mins?",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Fashion Trends Video\",\"Style Guide\",\"Outfit Ideas\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[0,0], \"video_minute\":[20, 0]}"
+    },
+    {
+        "input": "Find the most recent trip photos from Italy",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Pictures\",\"Holiday Moments\",\"Vacation Snapshots\",\"Travel Memories\",\"Journeys\"],\"file_type\":[\"jpg\",\"jpeg\",\"png\",\"heif\",\"tiff\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Get me some research papers published in the past two months on machine learning",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-2,0],\"date_day\":[0,0],\"date_sort\":1,\"file_content\":[\"Machine Learning Research\",\"AI Paper\",\"Deep Learning Study\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the newest videos on machine learning, less than 30 minutes long",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Machine Learning Video Tutorial\",\"AI Lecture\",\"Deep Learning Explained\"],\"file_type\":[\"mp4\",\"avi\"],\"video_hour\":[], \"video_minute\":[0, 30]}"
+    },
+    {
+        "input": "Find videos about space exploration, longer than 30 minutes long",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Space Exploration Video\",\"Astronomy Documentary\",\"NASA Footage\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[30, 0], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the oldest videos about space exploration, no longer than 30 minutes long",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":1,\"file_content\":[\"Space Exploration Video\",\"Astronomy Documentary\",\"NASA Footage\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[], \"video_minute\":[0, 30]}"
+    },
+    {
+        "input": "Present the latest videos related to the Golden Gate Bridge, created this year, longer than 20 minutes.",
+        "output": "{\"date_year\":[2023,2023],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Golden Gate Bridge Video\",\"San Francisco Landmark Footage\",\"Bay Area Documentary\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[0, 20],\"video_minute\":[]}"
+    },
+    {
+        "input": "Find the latest health videos shorter than 15 minutes, posted in the last month.",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-1,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Health Video\",\"Fitness Tutorial\",\"Wellness Tip\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[], \"video_minute\":[0, 15]}"
+    },
+    {
+        "input": "Find my newest work documents created this February or last February",
+        "output": "{\"date_year\":[0,-1],\"date_month\":[2,2],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Work File\",\"Project Document\",\"Business Report\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the latest audio books that are longer than 1 hour",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Audio Book\",\"Novel Audio\",\"Story Narration\"],\"file_type\":[\"mp3\",\"wav\"],\"video_hour\":[1,0], \"video_minute\":[0, 0]}"
+    },
+    {
+        "input": "Find the oldest videos on bird migration released this month",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":1,\"file_content\":[\"Bird Migration Documentary\",\"Wildlife Footage\",\"Bird Watching Video\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find any documents related to space exploration uploaded within the last 6 months.",
+        "output": "{\"date_year\":[0, 0],\"date_month\":[-6, -1],\"date_day\":[0, 0],\"date_sort\":0,\"file_content\":\"Space Exploration Document\",\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the newest videos about the economy longer than 10 minutes, created last month.",
+        "output": "{\"date_sort\": -1,\"date_year\": [0], \"date_month\": [-1], \"date_day\": [0], \"file_content\":[\"Economic Analysis Video\", \"Finance Documentary\", \"Market Forecast\", \"Econ Talks\"],\"file_type\":[\"mp4\"], \"video_hour\": [0, 10], \"video_minute\": []}"
+    },
+    {
+        "input": "Find the newest video tutorials on machine learning longer than 30 minutes uploaded this week",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[-7,0],\"date_sort\":-1,\"file_content\":[\"Machine Learning Tutorial\",\"AI Video\",\"Neural Network Explanation\"],\"file_type\":[\"mp4\"],\"video_hour\":[0,30],\"video_minute\":[0,0]}"
+    },
+    {
+        "input": "Find the newest cooking videos longer than 30 minutes that demonstrate Italian cooking techniques",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Italian Cooking Video\",\"Pasta Making Demonstration\",\"Pizza Preparation Tutorial\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[], \"video_minute\":[30, 0]}"
+    },
+    {
+        "input": "Find the oldest files related to climate change, longer than 1 hour",
+        "output": "{\"date_year\":[],\"date_month\":[],\"date_day\":[],\"date_sort\":1,\"file_content\":[\"Climate Change Report\",\"Global Warming Study\",\"Environmental Impact Analysis\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[1,0], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the newest podcasts about finance released inthe last quarter",
+        "output": "{\"date_year\":[-1, -1],\"date_month\":[0, -3],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Finance Podcast\",\"Investment Tips Audio\",\"Budgeting Advice Episode\"],\"file_type\":[\"mp3\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the latest files with \"quantum physics\" in the title, created in the last 2 months.",
+        "output": "{\"date_year\":[0, 0],\"date_month\":[-2, 0],\"date_day\":[0, 0],\"date_sort\":-1,\"file_content\":[\"Quantum Physics File\",\"Quantum Mechanics Study\",\"Particle Physics Document\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Retrieve any files on comparative politics released within the last 10 years",
+        "output": "{\"date_year\":[-10, 0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Comparative Politics Document\",\"Political Science Research\",\"Governance Analysis\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find all the reports on climate change created within the last 2 months that are longer than 50 pages",
+        "output": "{\"date_year\":[-2,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Climate Change Report\",\"Global Warming Study\",\"Environmental Analysis\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the latest space exploration videos, uploaded in the last three months with a length less than 15 minutes",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-3,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Space Exploration Video\",\"Astronomy Documentary\",\"NASA Footage\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[],\"video_minute\":[0,15]}"
+    },
+    {
+        "input": "Find any PDF documents containing real estate information dated after January 2021, with content about buying a house.",
+        "output": "{\"date_year\":[2021, 0],\"date_month\":[1, 0],\"date_day\":[0, 0],\"date_sort\":0,\"file_content\":[\"Real Estate Document\",\"Buying a House Guide\",\"Property Investment Information\"],\"file_type\":[\"pdf\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Grab all work items uploaded last week.",
+        "output": "{\"date_year\":[0, 0], \"date_month\":[0, 0], \"date_day\":[-7, 0], \"date_sort\": 0, \"file_content\": [\"Work Items\", \"Project Files\", \"Documents\"], \"file_type\": [\"docx\", \"pdf\", \"pptx\", \"txt\"], \"video_hour\": [], \"video_minute\": []}"
+    },
+    {
+        "input": "Find the latest podcasts about AI ethics released in March 2023",
+        "output": "{\"date_year\":[2023,2023],\"date_month\":[3,3],\"date_day\":[0, 0],\"date_sort\": -1, \"file_content\":[\"AI Ethics Podcast\", \"Ethics in Artificial Intelligence\",\"Responsible AI Discussion\"], \"file_type\": [\"mp3\", \"wav\"], \"video_hour\": [], \"video_minute\": []}"
+    },
+    {
+        "input": "Find marketing presentations created in March 2023 about airlines.",
+        "output": "{\"date_year\":[2023,2023],\"date_month\":[3,3],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Airline Marketing Deck\",\"Aviation Business Presentation\",\"Flight Industry Overview\"],\"file_type\":[\"ppt\",\"pptx\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the most recent files related to the history of the internet, created in the last 3 years.",
+        "output": "{\"date_year\":[-3,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Internet History Essay\",\"Web Evolution Document\",\"Digital Revolution Study\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the latest 3 articles on renewable energy, uploaded in the past month",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-1,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Renewable Energy Article\",\"Green Energy Report\",\"Sustainable Power Study\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find any file related to budget created in March 2023. Ignore videos.",
+        "output": "{\"date_year\":[2023,2023],\"date_month\":[3,3],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Budget file\",\"Finance Document\",\"Expense Report\"],\"file_type\":[\"pdf\",\"xls\",\"xlsx\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the latest three documents on artificial intelligence published last year",
+        "output": "{\"date_year\":[0,-1],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":1,\"file_content\":[\"AI Research Article\",\"Machine Learning Paper\",\"Deep Learning Study\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find videos uploaded within the last 3 months with more than 1 hour of content",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-3,0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Video Content\",\"Visual Material\",\"Recorded Footage\"],\"file_type\":[\"mp4\",\"mov\",\"avi\"],\"video_hour\": [1,0], \"video_minute\": [0, 0]}"
+    },
+    {
+        "input": "Get the oldest file about stock market analysis published in the last 5 years that is at least 30 minutes long",
+        "output": "{\"date_year\":[-5, 0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":1,\"file_content\":[\"Stock Market Analysis Video\",\"Financial Market Commentary\",\"Investment Insights\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[0,30],\"video_minute\":[]}"
+    },
+    {
+        "input": "Show me the most recent financial documents in the shared folder.",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Financial Statement\",\"Budget Report\", \"Accounting Documents\"],\"file_type\":[\"pdf\",\"xls\",\"xlsx\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the most recent cover letters, written after April 15th, 2022.",
+        "output": "{\"date_year\":[2022,0],\"date_month\":[4,0],\"date_day\":[15,0],\"date_sort\":-1,\"file_content\":[\"Cover Letter\",\"Job Application Letter\",\"Resume Attachment\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the latest customer support videos under 5 minutes",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Customer Support Tips\",\"Help Center Tutorial\",\"Troubleshooting Guide\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[], \"video_minute\":[0, 5]}"
+    },
+    {
+        "input": "Find the latest video clips about interviews with famous athletes",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Athlete Interview Video\",\"Player Profile Clip\",\"Sports Star Conversations\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find any video related to astrophysics, longer than 20 minutes created after December 2021",
+        "output": "{\"date_year\":[2021,0],\"date_month\":[12,0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Astrophysics Video\",\"Cosmology Documentary\",\"Space Exploration Footage\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[0,20],\"video_minute\":[0,0]}"
+    },
+    {
+        "input": "Find the latest science videos created in the past 6 months",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-6,0],\"date_day\":[0,0], \"date_sort\":-1,\"file_content\":[\"Science Video\",\"Biology Tutorial\",\"Chemistry Lecture\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[],\"video_minute\":[]}"
+    },
+    {
+        "input": "Find the latest files related to data science released in the past 6 months, in PDF format",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-6,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Data Science Research\",\"Machine Learning Techniques\",\"AI Algorithms\"],\"file_type\":[\"pdf\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the newest tech podcasts on the future of work released in the last 45 days",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[-45,0],\"date_sort\":-1,\"file_content\":[\"Tech Podcast\",\"Future of Work Audio\",\"Workplace Trends Episode\"],\"file_type\":[\"mp3\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the podcasts on climate change downloaded in the last 20 days, longer than 30 minutes",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[-20,0],\"date_sort\":0,\"file_content\":[\"Climate Change Podcast\",\"Environmental Audio\",\"Sustainability Talk\"],\"file_type\":[\"mp3\"],\"video_hour\":[], \"video_minute\":[30,0]}"
+    },
+    {
+        "input": "Find the oldest technical documents on quantum computing with a duration of less than 45 minutes",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":1,\"file_content\":[\"Quantum Computing Whitepaper\",\"QC Technology Overview\",\"Qubits and Gates\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[0, 45]}"
+    },
+    {
+        "input": "Find the latest 3 reports on climate change published after 3rd quarter of 2022.",
+        "output": "{\"date_year\":[0,0],\"date_month\":[10,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Climate Change Report\",\"Environmental Impact Study\", \"Global Warming Paper\"],\"file_type\":[\"pdf\",\"docx\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the latest research paper about neural network, written between July 25, 2023 and October 20, 2023",
+        "output": "{\"date_year\":[2023,2023],\"date_month\":[7,10],\"date_day\":[25,20],\"date_sort\":-1,\"file_content\":[\"Neural Network Research Paper\",\"Deep Learning Study\",\"Machine Learning Document\"],\"file_type\":[\"pdf\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the latest articles on personal finance released last month",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-1,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Personal Finance Article\",\"Investment Tips Guide\",\"Budgeting Advice Post\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find any files on domestic animals created in the past 2 months",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-2, 0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Domestic Animals File\",\"Pet Information Sheet\",\"Animal Care Guide\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the most recent documents on data science created in the last 2 weeks",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[-14,0],\"date_sort\":-1,\"file_content\":[\"Data Science Document\",\"Machine Learning Report\",\"Big Data Analysis\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the newest presentations on E-Commerce strategies, created before March 2022",
+        "output": "{\"date_year\":[0,2022],\"date_month\":[0,3],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"E-Commerce Strategy Deck\",\"Online Marketing Presentation\",\"Digital Commerce Report\"],\"file_type\":[\"ppt\",\"pptx\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the latest IT research papers with \"Python\" and \"Machine Learning\" in the content",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Python Machine Learning Research\",\"Machine Learning for Python\",\"AI Study with Python\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Show me the latest audio recordings longer than 30 minutes on space exploration since last year",
+        "output": "{\"date_year\":[-1,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Space Exploration Interview\",\"Space Documentary Audio\",\"NASA Mission Recording\"],\"file_type\":[\"mp3\",\"wav\",\"ogg\"],\"video_hour\":[], \"video_minute\":[30, 0]}"
+    },
+    {
+        "input": "Find the presentations on marketing with \"digital\" in the content within the last 6 months",
+        "output": "{\"date_year\":[-6,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":1,\"file_content\":[\"Digital Marketing Presentation\",\"Online Marketing Deck\",\"E-Commerce Strategy Report\"],\"file_type\":[\"ppt\",\"pptx\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find any document  related to quantum computing with \"Ion Trap\" in the content",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Ion Trap Quantum Computing\",\"Quantum Entanglement Research\",\"Quantum Bits Document\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the oldest files modified in last 30 days with \"space exploration\" in the content, longer than 15 minutes long.",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[-30,0],\"date_sort\":1,\"file_content\":[\"Space Exploration Video\",\"Astronomy Documentary\",\"NASA Footage\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[0,1],\"video_minute\":[15,0]}"
+    },
+    {
+        "input": "Find the latest articles about politics in the last 6 months",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-6,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Politics Article\",\"Political News\",\"Election Report\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find video tutorials on quantum computing from last month, shorter than 10 minutes",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-1,-1],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Quantum Computing Tutorial\",\"Quantum Mechanics Explained\",\"Superposition And Entanglement Video\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[], \"video_minute\":[0,10]}"
+    },
+    {
+        "input": "Find the photos taken in 2021 in Paris",
+        "output": "{\"date_year\":[2021,2021],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Paris Photo\",\"Paris Cityscape\",\"Eiffel Tower Picture\",\"Paris Image\"],\"file_type\":[\"jpg\",\"jpeg\",\"png\",\"heif\",\"tiff\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "I want to see all the latest presentations on how to save money, created in the last 90 days",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[-90,0],\"date_sort\":-1,\"file_content\":[\"Saving money presentation\",\"Budgeting ppt\",\"Finance lecture\"],\"file_type\":[\"ppt\",\"pptx\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the newest recipe videos that are under 15 minutes long.",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Recipe Video\",\"Cooking Tutorial\",\"Food Demonstration\"],\"file_type\":[\"mp4\",\"avi\"],\"video_hour\":[], \"video_minute\":[0, 15]}"
+    },
+    {
+        "input": "Find the latest podcast episodes longer than 20 minutes on health and wellness",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Healthy Living Podcast\",\"Wellness Tips Audio\",\"Nutrition Advice Episode\"],\"file_type\":[\"mp3\"],\"video_hour\":[], \"video_minute\":[20, 0]}"
+    },
+    {
+        "input": "Find any videos related to deep learning, made between, and after January 1st, 2022.",
+        "output": "{\"date_year\":[2022,0],\"date_month\":[1,0],\"date_day\":[1,0],\"date_sort\":0,\"file_content\":[\"Deep Learning Video\",\"Machine Learning Tutorial\",\"AI Research\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find files with 'Machine Learning' in the title, uploaded after June 7th, 2022, and sort by the oldest",
+        "output": "{\"date_year\":[2022, 0],\"date_month\":[6, 0],\"date_day\":[7, 0],\"date_sort\":1,\"file_content\":[\"Machine Learning\",\"AI Research\", \"Neural Network\", \"Deep Learning\", \"Data Science\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Get the newest files with \"digital\" in the content that are longer than 50 minutes and created within the last 3 months.",
+        "output": "{\"date_year\":[0, 0], \"date_month\": [-3,0], \"date_day\": [0,0], \"date_sort\": -1, \"file_content\": [\"Digital File\", \"Electronic Document\", \"Digitized Text\", \"Computational Data\", \"Online Information\"], \"file_type\": [], \"video_hour\": [0,50], \"video_minute\": []}"
+    },
+    {
+        "input": "Please find any videos related to physical exercises with duration 5 to 15 minutes",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Physical Exercise Video\",\"Fitness Workout Guide\",\"Home Exercises Tutorial\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[], \"video_minute\":[5, 15]}"
+    },
+    {
+        "input": "Find all the videos about cooking with a duration of 15 to 25 minutes uploaded after Dec 1st 2022.",
+        "output": "{\"date_year\":[2022,0],\"date_month\":[12,0],\"date_day\":[1,0],\"date_sort\":0,\"file_content\":[\"Cooking Video\",\"Recipe Tutorial\",\"Food Preparation Guide\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[], \"video_minute\":[15, 25]}"
+    },
+    {
+        "input": "Find the oldest report files on cryptocurrency, over 45 mins long",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":1,\"file_content\":[\"Cryptocurrency Report\",\"Blockchain Analysis\",\"Bitcoin Research\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[0,45], \"video_minute\":[]}"
+    },
+    {
+        "input": "Show all math pdf files downloaded this month",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Math Notes\",\"Algebra Formula Sheet\",\"Calculus Textbook\"],\"file_type\":[\"pdf\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the newest articles on \"space exploration\" published in the last 3 months",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-3, 0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Space Exploration Article\",\"Astronomy Research Paper\",\"NASA Study\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find my files on quantum computers downloaded in the past 3 months.",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-3,0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Quantum Computing Paper\",\"Quantum Physics Document\",\"Supercomputing Research\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the most recent files on quantum computing, created within the last 2 months.",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-2,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Quantum Computing Paper\",\"Qubit Theory Report\",\"Quantum Algorithms Document\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the newest videos on yoga, shorter than 20 minutes long",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Yoga Workout Video\",\"Mindfulness Exercise\",\"Meditation Tutorial\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[], \"video_minute\":[0,20]}"
+    },
+    {
+        "input": "Find the latest blog posts about \"Machine Learning\" created in 2022 and longer than 30 minutes",
+        "output": "{\"date_year\":[2022,2022],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Machine Learning Blog Post\",\"AI Research\",\"Deep Learning Tutorial\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[30, 0]}"
+    },
+    {
+        "input": "ind any files related to \"covid\" downloaded in the last 2 years.\n### {\"date_year\":[0, 0],\"date_month\":[0, 0], \"date_day\":[0, 0],\"date_sort\":0,\"file_content\":[\"covid-19\",\"coronavirus\",\"pandemic\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]",
+        "output": "{\"date_year\":[0, 0],\"date_month\":[0, 0], \"date_day\":[0, 0],\"date_sort\":0,\"file_content\":[\"covid-19\",\"coronavirus\",\"pandemic\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Show me the newest financial reports downloaded within 2 days, sorted by file name in descending order",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,2],\"date_sort\":-1,\"file_content\":[\"Financial Report\",\"Quarterly Earnings\",\"Budget Analysis\"],\"file_type\":[\"pdf\",\"docx\",\"xls\",\"xlsx\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the oldest training videos about dog training released in the last  3 months",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-3,0],\"date_day\":[0,0],\"date_sort\":1,\"file_content\":[\"Dog Training Video\",\"Canine Behavior Course\",\"Pet Obedience Guide\"],\"file_type\":[\"mp4\",\"mkv\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Can you find the latest videos related to astronomy that are longer than 25 minutes?",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Astronomy Video\",\"Space Documentary\",\"Universe Footage\",\"Astrophysics Lecture\"],\"file_type\":[\"mp4\",\"avi\",\"mkv\"],\"video_hour\":[0,1],\"video_minute\":[25, 0]}"
+    },
+    {
+        "input": "Please find the latest documents on cyber security that include network vulnerability.",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Cyber Security Report\",\"Network Vulnerability Assessment\",\"Information Security Audit\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the newest research papers on self-driving cars published within last month",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-1,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Self-Driving Cars Research\",\"Autonomous Vehicles Study\",\"Automated Driving Report\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the newest AI research articles created in the last 3 months",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-3,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"AI Research Article\",\"Machine Learning Paper\",\"Deep Learning Study\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the newest pdf documents on climate change published in the last 3 months.",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-3,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Climate Change Report\",\"Global Warming Analysis\",\"Environmental Study\"],\"file_type\":[\"pdf\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find my presentation on experimental treatments for cancer from the last month",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-1,0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Cancer Research Presentation\",\"Novel Cancer Treatments\"],\"file_type\":[\"pdf\",\"ppt\",\"pptx\",\"docx\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Retrieve the most recent videos on climate change, that are longer than 20 minutes.",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Climate Change Video\",\"Global Warming Documentary\",\"Environmental Footage\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[], \"video_minute\":[20, 0]}"
+    },
+    {
+        "input": "Find science videos uploaded in 2021 with content related to \"Climate Change\" and duration longer than 20 minutes",
+        "output": "{\"date_year\":[2021,2021],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Climate Change Explained\",\"Global Warming Documentary\",\"Environmental Science Footage\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[0,20], \"video_minute\":[20, 0]}"
+    },
+    {
+        "input": "Show the latest travel videos to the Maldives, less than 1 hour long.",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Maldives Travel Vlog\",\"Island Getaway Footage\",\"Snorkeling Adventure Video\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[0, 1],\"video_minute\":[]}"
+    },
+    {
+        "input": "Find the newest files on cloud storage, if can, with video duration of 5 to 10 minutes",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"File on cloud\"],\"file_type\":[\"Generic\"],\"video_hour\":[], \"video_minute\":[5, 10]}"
+    },
+    {
+        "input": "Find any file content related to \"effective communication\" downloaded within the last 6 months",
+        "output": "{\"date_year\":[-1,-1],\"date_month\":[0,6],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Effective Communication Guide\",\"Communication Skills Training\",\"Public Speaking Tips\"],\"file_type\":[\"pdf\",\"docx\",\"txt\",\"mp3\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the oldest engineering documents on quantum computing, created more than 3 months ago",
+        "output": "{\"date_year\":[0,0],\"date_month\"][-3,0], \"date_day\":[0,0],\"date_sort\":1,\"file_content\":[\"Quantum Computing Paper\",\"Quantum Mechanics Report\",\"Quantum Algorithms Document\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find my uploaded files in the last year that contain \"project status\"",
+        "output": "{\"date_year\":[-1,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Project Status Report\",\"Project Update Document\",\"Status Briefing\",\"Project Overview\"],\"file_type\":[\"pdf\",\"docx\",\"txt\",\"csv\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the latest 10-minute videos about deep learning released in the last 6 months.",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-6,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Deep Learning Tutorial\",\"AI Research Video\",\"Machine Learning Demo\"],\"file_type\":[\"mp4\",\"avi\"],\"video_hour\":[], \"video_minute\":[10,10]}"
+    },
+    {
+        "input": "Find the newest videos about space exploration with a duration of less than 10 minutes",
+        "output": "{\"date_year\":[2022, 2022],\"date_month\":[4,4],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Space Exploration Video\",\"Astronomy Documentary\",\"NASA Footage\",], \"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[0,10]}"
+    },
+    {
+        "input": "Find the oldest video tutorials for making coffee",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":1,\"file_content\":[\"Coffee Brewing Tutorial\",\"Espresso Making Guide\",\"Barista Training Video\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the newest 5 - 10 minute videos of pets",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Pets Video\",\"Animal Clips\",\"Cute Creature Footage\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[], \"video_minute\":[5, 10]}"
+    },
+    {
+        "input": "Find latest marketing presentations in February 2023 with \"digital\" in the title",
+        "output": "{\"date_year\":[2023, 2023],\"date_month\":[2,2],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Digital Marketing Presentation\",\"Online Marketing Deck\",\"E-Commerce Strategy Report\"],\"file_type\":[\"ppt\",\"pptx\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the newest videos related to space exploration",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Space Exploration Video\",\"Astronomy Documentary\",\"NASA Footage\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the newest documents related to genetic engineering",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Genetic Engineering Report\",\"DNA Modification Research\",\"Biotechnology Paper\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find any files related to cat breeds downloaded before last year.",
+        "output": "{\"date_year\":[0,2022],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Cat Breeds File\",\"Feline Information Document\",\"Pet Encyclopedia\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find me any astronomy documentary longer than 5 minutes",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Astronomy Documentary\",\"Space Exploration Video\",\"NASA Footage\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[], \"video_minute\":[5,0]}"
+    },
+    {
+        "input": "Find any photos backup files from last year's Japan trip, stored in my Documents folder",
+        "output": "{\"date_year\":[-1,-1],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Japan Travel Photos\",\"Vacation Snapshots\",\"Asia Pictures\"],\"file_type\":[\"jpg\",\"jpeg\",\"png\",\"heif\",\"tiff\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find any file content about bakery created after May 10th, 2023",
+        "output": "{\"date_year\":[2023, 0],\"date_month\":[5, 0],\"date_day\":[10, 0],\"date_sort\":0,\"file_content\":[\"Bakery Recipes\",\"Baking Techniques Guide\",\"Pastry Making Instructions\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find any files related to cat breeds, created last week",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[-7,0],\"date_sort\":0,\"file_content\":[\"Cat Breeds File\",\"Feline Information Document\",\"Pet Encyclopedia\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find any file containing the text \"electricity\" created after January 1st, 2023.",
+        "output": "{\"date_year\":[2023, 0], \"date_month\": [1, 0], \"date_day\": [1, 0], \"date_sort\": 0, \"file_content\": [\"Electricity Report\", \"Power Consumption Analysis\", \"Renewable Energy Document\"], \"file_type\": [\"pdf\", \"docx\", \"txt\"], \"video_hour\": [], \"video_minute\": []}"
+    },
+    {
+        "input": "Find all videos on basketball uploaded in 2019",
+        "output": "{\"date_year\":[2019,2019],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Basketball Highlights\",\"Game Footage\",\"Player Interviews\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Retrieve all videos or podcasts on space exploration from July to September 2022, with a combined duration of less than 1 hour",
+        "output": "{\"date_year\":[2022,2022],\"date_month\":[7,9],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Space Exploration Video\",\"Astronomy Documentary\",\"NASA Footage\",\"Personal Finance Podcast\",\"Investment Tips Audio\"],\"file_type\":[\"mp4\",\"avi\",\"mp3\"],\"video_hour\":[0, 1],\"video_minute\":[0, 0]}"
+    },
+    {
+        "input": "Find any videos about space exploration not older than 4 months, sorted by newest first.",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-4,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Space Exploration Video\",\"Astronomy Documentary\",\"NASA Footage\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find my newest videos about space exploration with a duration of less than 5 minutes",
+        "output": "{\"date_year\":[0, 0],\"date_month\":[0, 0],\"date_day\":[0, 0],\"date_sort\":-1,\"file_content\":[\"Space Exploration Video\",\"Astronomy Documentary\",\"NASA Footage\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[], \"video_minute\":[0, 5]}"
+    },
+    {
+        "input": "Find the latest marketing report created in January 2023, at least 30 minutes long",
+        "output": "{\"date_year\":[2023,2023],\"date_month\":[1,1],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Marketing Report\",\"Market Analysis Document\",\"Product Research Paper\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[0, 30], \"video_minute\":[0, 0]}"
+    },
+    {
+        "input": "Get the latest videos on deep learning, created within the last 3 days",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[-3,0],\"date_sort\":-1,\"file_content\":[\"Deep Learning Video\",\"Neural Networks Tutorial\",\"Machine Learning Lecture\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the oldest videos with a duration of less than 10 minutes released in the last 2 months",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-2,0],\"date_day\":[0,0],\"date_sort\":1,\"file_content\":[\"Video\",\"Footage\",\"Film\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[], \"video_minute\":[0, 10]}"
+    },
+    {
+        "input": "Find me any document or photo taken in San Jose in the past 2 years",
+        "output": "{\"date_year\":[-2,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"San Jose Photos\",\"San Jose Image\",\"San Jose Snapshot\",\"San Jose Picture\",\"San Jose Photograph\"],\"file_type\":[\"jpg\",\"jpeg\",\"png\",\"heif\",\"tiff\",\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find any files on dog training that have been downloaded after January 1st, 2023, and sort from newest to oldest",
+        "output": "{\"date_year\":[2023,0],\"date_month\":[1,0],\"date_day\":[1,0],\"date_sort\":-1,\"file_content\":[\"Dog Training Guide\",\"Canine Behavior Manual\",\"Pet Obedience Instructions\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find my finance files downloaded after June 12th, 2022, but no later than July 7th, 2022.",
+        "output": "{\"date_year\":[2022, 2022],\"date_month\":[6,7], \"date_day\":[12,7],\"date_sort\": 0,\"file_content\":[\"Finance Document\",\"Investment Report\",\"Budget Analysis\"],\"file_type\":[\"pdf\",\"xlsx\",\"csv\"],\"video_hour\":[], \"video_minute\": []}"
+    },
+    {
+        "input": "Find all the marketing documents from the last three months.",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-3,0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Marketing Document\",\"Marketing Analysis Report\",\"Marketing Campaign Plan\"],\"file_type\":[\"pdf\",\"docx\"], \"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find my recent photos of cats taken in the last 3 months",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-3,0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Cat Photos\",\"Feline Snapshots\",\"Pet Pictures\",\"Animal Portraits\"],\"file_type\":[\"jpg\",\"jpeg\",\"png\",\"heif\",\"tiff\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the latest AI research papers uploaded this summer",
+        "output": "{\"date_year\":[0,0],\"date_month\":[6,9],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"AI Research Paper\",\"Machine Learning Study\",\"Deep Learning Article\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the latest documents on artificial intelligence with more than 20 pages",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"AI Research Document\",\"Machine Learning Report\",\"Deep Learning Study\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[],\"page\": [20,0]}"
+    },
+    {
+        "input": "Find the latest marketing videos on how to use social media from last month",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-1,-1],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Social Media Mastery\",\"Beginner's Guide to Social Media\",\"Social Media Marketing Tips\",\"How to Use Social Media\",\"The Ultimate Guide to Social Media\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Get me the most recent covid-19 articles published in January",
+        "output": "{\"date_year\":[0,0],\"date_month\":[1,1],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"COVID-19 Research Paper\",\"Pandemic Report\",\"Virus Analysis Document\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "show me all excel files related to \"finance\" and created before March 10th, 2023",
+        "output": "{\"date_year\":[0,2023],\"date_month\":[0,3],\"date_day\":[0,10],\"date_sort\":0,\"file_content\":[\"finance\",\"financial\",\"budget\",\"money\",\"investment\"],\"file_type\":[\"xls\",\"xlsx\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find all documents on global warming created in the last 5 years",
+        "output": "{\"date_year\":[-5, 0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":0,\"file_content\":[\"Global Warming Report\",\"Climate Change Article\",\"Environmental Impact Analysis\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the latest marketing report created last month",
+        "output": "{\"date_year\":[0,0],\"date_month\":[-1,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Marketing Report\",\"Marketing Analysis\"],\"file_type\":[\"pdf\",\"docx\",\"txt\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the newest biology videos",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,0],\"date_sort\":-1,\"file_content\":[\"Biology Lesson Video\",\"Cell Structure Tutorial\",\"DNA Replication Explanation\"],\"file_type\":[\"mp4\",\"avi\"],\"video_hour\":[], \"video_minute\":[]}"
+    },
+    {
+        "input": "Find the latest videos about space exploration, filmed within 2 weeks",
+        "output": "{\"date_year\":[0,0],\"date_month\":[0,0],\"date_day\":[0,14],\"date_sort\":-1,\"file_content\":[\"Space Exploration Video\",\"Astronomy Documentary\",\"NASA Footage\"],\"file_type\":[\"mp4\",\"mov\"],\"video_hour\":[], \"video_minute\":[]}"
+    }
+]
