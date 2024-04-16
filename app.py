@@ -1,174 +1,193 @@
-from pathlib import Path
-import weaviate
-import weaviate.classes as wvc
-import streamlit as st
+# Import necessary libraries
 import base64
 from datetime import datetime
+from pathlib import Path
 
-client = weaviate.connect_to_local()
+import streamlit as st
+import weaviate
+import weaviate.classes as wvc
+from session_state import *
 
-logo_path = Path("assets/weaviate-logo-light-transparent-200.png")
-title_cols = st.columns([0.15, 0.85])
-with title_cols[0]:
-    st.write("")
-    st.image(logo_path.read_bytes(), width=75)
-with title_cols[1]:
-    st.title("Multi-Modality with Weaviate")
+import os
 
-st.subheader("Instructions")
-st.write(
-    """
-    Search the dataset by uploading an image or entering free text.
-    The model is multi-lingual as well - try searching in different languages!
+# Define the main application class
+class WeaviateApp:
+    def __init__(self):
+        # Connect to the local Weaviate client
+        self.client = weaviate.connect_to_local()
+        # Define the path to the logo
+        self.logo_path = Path("assets/logo.jpeg")
+        # Initialize an empty list to store the search results
+        self.big_response_list = []
 
-    (Note: If you enter both, only the image will be used.)
-    """
-)
+    # Function to display the title of the application
+    def display_title(self):
+        # Create columns for the title
+        title_cols = st.columns([0.15, 0.85])
+        with title_cols[0]:
+            # Display the logo
+            st.write("")
+            st.image(self.logo_path.read_bytes(), width=75)
+        with title_cols[1]:
+            # Display the title
+            st.title("Enhanced Local File Search")
 
-st.subheader("Search the dataset")
+    # Function to display the instructions for using the application
+    def display_instructions(self):
+        st.subheader("Instructions")
+        st.write(
+            """
+            Search through all your ingested data to find the most relevant results across text, documents, video and audio!
 
-srch_cols = st.columns(2)
-with srch_cols[0]:
-    search_text = st.text_area(label="Search by text")
-with srch_cols[1]:
-    img = st.file_uploader(label="Search by image")
+            (Note: If you enter both, only the image will be used.)
+            """
+        )
 
-sort_by = st.selectbox('Sort by', ['Relevance', 'Date'])
-filter_by_relevance = st.checkbox('Filter by Relevance')
-relevance_threshold = st.number_input('Relevance Threshold', value=0.0) if filter_by_relevance else None
-filter_by_date = st.checkbox('Filter by Date')
-date_before = st.text_input('Before Date (YYYY-MM-DD)') if filter_by_date else None
-date_after = st.text_input('After Date (YYYY-MM-DD)') if filter_by_date else None
+    # Function to get the search inputs from the user
+    def get_search_inputs(self):
+        st.subheader("Search")
+        srch_cols = st.columns(2)
+        with srch_cols[0]:
+            # Get the text input from the user
+            search_text = st.text_area(label="Search by text")
+        with srch_cols[1]:
+            # Get the image input from the user
+            img = st.file_uploader(label="Search by image")
+        return search_text, img
 
-if search_text != "" or img is not None:
-    
-    big_reponse_list = []
-    img_collection = client.collections.get('images')
-    wine_reviws_collection = client.collections.get('WineReviews')
-    pdf_collection = client.collections.get('pdf')
-    
-    if img is not None:
-        st.image(img, caption="Uploaded Image", use_column_width=True)
+    # Function to get the sort and filter inputs from the user
+    def get_sort_filter_inputs(self):
+        # Get the sort option from the user
+        sort_by = st.selectbox('Sort by', ['Relevance', 'Date'])
+        # Get the relevance filter option from the user
+        filter_by_relevance = st.checkbox('Filter by Relevance')
+        # Get the relevance threshold from the user
+        relevance_threshold = st.number_input('Relevance Threshold', value=0.0) if filter_by_relevance else None
+        # Get the date filter option from the user
+        filter_by_date = st.checkbox('Filter by Date')
+        # Get the before date from the user
+        date_before = st.text_input('Before Date (YYYY-MM-DD)') if filter_by_date else None
+        # Get the after date from the user
+        date_after = st.text_input('After Date (YYYY-MM-DD)') if filter_by_date else None
+        return sort_by, filter_by_relevance, relevance_threshold, filter_by_date, date_before, date_after
+
+    # Function to search by image
+    def search_by_image(self, img):
+        # Get the image collection from the client
+        img_collection = self.client.collections.get('images')
+        # Convert the image to base64
         imgb64 = base64.b64encode(img.read()).decode()
-
+        # Query the image collection with the image
         response = img_collection.query.near_image(
             near_image=imgb64,
-            return_properties=[
-                "filename",
-            ],
+            return_properties=["filename"],
             return_metadata=wvc.query.MetadataQuery(distance=True),
             limit=6,
         )
-        big_reponse_list.extend(response.objects)
+        # Extend the big response list with the response objects
+        self.big_response_list.extend(response.objects)
 
-    
+    # Function to search by text
+    def search_by_text(self, search_text):
+        # Define the collections to search in
+        collections = ['images', 'WineReviews', 'pdf']
+        for collection in collections:
+            # Get the collection object from the client
+            collection_obj = self.client.collections.get(collection)
+            # Query the collection with the search text
+            response = collection_obj.query.near_text(
+                query=search_text,
+                return_properties=["filename"],
+                return_metadata=wvc.query.MetadataQuery(distance=True),
+                limit=6,
+            )
+            # Extend the big response list with the response objects
+            self.big_response_list.extend(response.objects)
 
-    else:
+    # Function to sort and filter the results
+    def sort_and_filter_results(self, sort_by, filter_by_relevance, relevance_threshold, filter_by_date, date_before, date_after):
+        # Sort the results by relevance or date
+        if sort_by == 'Relevance':
+            self.big_response_list.sort(key=lambda x: x.metadata.distance, reverse=True)
+        elif sort_by == 'Date':
+            self.big_response_list.sort(key=lambda x: x.metadata.creation_time, reverse=True)
 
-        DISTANCE = 0.8
-        big_reponse_list = []
-        img_collection = client.collections.get('images')
-        wine_reviws_collection = client.collections.get('WineReviews')
-        pdf_collection = client.collections.get('pdf')
-        video_collection = client.collections.get('videos')
-       
-        response = img_collection.query.near_text(
-            query=search_text,
-            return_properties=[
-                "filename",
-            ],
-            return_metadata=wvc.query.MetadataQuery(distance=True),
-            limit=6,
-            distance=DISTANCE
-        )
-        
-        big_reponse_list.extend(response.objects)
+        # Filter the results by relevance or date
+        if filter_by_relevance:
+            self.big_response_list = [r for r in self.big_response_list if r.metadata.distance >= relevance_threshold]
+        if filter_by_date:
+            if date_before:
+                date_before = datetime.strptime(date_before, '%Y-%m-%d')
+                self.big_response_list = [r for r in self.big_response_list if r.metadata.creation_time <= date_before]
+            if date_after:
+                date_after = datetime.strptime(date_after, '%Y-%m-%d')
+                self.big_response_list = [r for r in self.big_response_list if r.metadata.creation_time >= date_after]
 
-        response = wine_reviws_collection.query.near_text(
-            query=search_text,
-            return_properties=[
-                "filename",
-            ],
-            return_metadata=wvc.query.MetadataQuery(distance=True),
-            limit=6,
-            distance=DISTANCE
-        )
+    # Function to display the results
+    def display_results(self):
+        st.subheader("Results found:")
+        for i, r in enumerate(self.big_response_list):
+            if i % 3 == 0:
+                with st.container():
+                    columns = st.columns(3)
+                    st.divider()
+            with columns[i % 3]:
+                try:
+                    st.write(r.properties["filename"])
+                except:
+                    st.write(r.properties["title"])
 
-        big_reponse_list.extend(response.objects)
+                try:
+                    imgpath = Path("data/images") / r.properties["filename"]
+                    img = imgpath.read_bytes()
+                    st.image(img)
+                    st.write(f"Relevance: {r.metadata.distance:.3f}")
+                except:
+                    pass
 
-        response = pdf_collection.query.near_text(
-            query=search_text,
-            return_properties=[
-                "filename",
-            ],
-            return_metadata=wvc.query.MetadataQuery(distance=True),
-            limit=6,
-            distance=DISTANCE
-        )
-        
-        big_reponse_list.extend(response.objects)
+                st.write(f"Properties: {r.properties}")
+                st.write(f"Metadata: {r.metadata}")
 
+    # Function to run the application
+    def run(self):
+        state = get_state()
 
-        response = video_collection.query.near_text(
-            query=search_text,
-            return_properties=[
-                "filename",
-                # "image"  # TODO - return blob when implemented to client
-            ],
-            return_metadata=wvc.query.MetadataQuery(distance=True),
-            limit=6,
-            distance=DISTANCE
-        )
-        big_reponse_list.extend(response.objects)
+        st.sidebar.title("Navigation")
+        app_mode = st.sidebar.selectbox("Choose the page", ["Data Ingestion Page", "Search Page"])
 
-    if sort_by == 'Relevance':
-        big_reponse_list.sort(key=lambda x: x.metadata.distance, reverse=True)
-    elif sort_by == 'Date':
-        big_reponse_list.sort(key=lambda x: x.metadata.creation_time, reverse=True)
+        if app_mode == "Data Ingestion Page":
+            self.data_ingestion_page(state)
+        elif app_mode == "Search Page":
+            self.search_page(state)
 
-    if filter_by_relevance:
-        big_reponse_list = [r for r in big_reponse_list if r.metadata.distance >= relevance_threshold]
-    if filter_by_date:
-        if date_before:
-            date_before = datetime.strptime(date_before, '%Y-%m-%d')
-            big_reponse_list = [r for r in big_reponse_list if r.metadata.creation_time <= date_before]
-        if date_after:
-            date_after = datetime.strptime(date_after, '%Y-%m-%d')
-            big_reponse_list = [r for r in big_reponse_list if r.metadata.creation_time >= date_after]
+    # Function to display the data ingestion page
+    def data_ingestion_page(self, state):
+        st.title("Data Ingestion Page")
 
-    st.subheader("Results found:")
-    for i, r in enumerate(big_reponse_list):
-        if i % 3 == 0:
-            with st.container():
-                columns = st.columns(3)
-                st.divider()
-        with columns[i % 3]:
+        state.data_dir = st.text_input("Enter the directory of your data", state.data_dir if hasattr(state, 'data_dir') else './data')
+        if st.button("Ingest & Process Data"):
+            st.write("Ingesting and processing data...")
+            os.system(f"python add_data.py --data-dir {state.data_dir}")
+            st.write("Data ingestion completed!")
 
-            try:
-                st.write(r.properties["filename"])
-            except:
-                st.write(r.properties["title"])
+    # Function to display the search page
+    def search_page(self, state):
+        self.display_title()
+        self.display_instructions()
+        search_text, img = self.get_search_inputs()
+        sort_by, filter_by_relevance, relevance_threshold, filter_by_date, date_before, date_after = self.get_sort_filter_inputs()
 
-            try:
-                imgpath = Path("data/images") / r.properties["filename"]
-                img = imgpath.read_bytes()
-                st.image(img)
+        if search_text != "" or img is not None:
+            if img is not None:
+                st.image(img, caption="Uploaded Image", use_column_width=True)
+                self.search_by_image(img)
+            else:
+                self.search_by_text(search_text)
 
-                st.write(f"Relevance: {r.metadata.distance:.3f}")
-            except:
-                pass
+            self.sort_and_filter_results(sort_by, filter_by_relevance, relevance_threshold, filter_by_date, date_before, date_after)
+            self.display_results()
 
-            st.write(f"Properties: {r.properties}")
-            st.write(f"Metadata: {r.metadata}")
-
-st.markdown("""
-    <style>
-        .reportview-container {
-            margin-top: -2em;
-        }
-        #MainMenu {visibility: hidden;}
-        .stDeployButton {display:none;}
-        footer {visibility: hidden;}
-        #stDecoration {display:none;}
-    </style>
-""", unsafe_allow_html=True)
+# Run the application
+if __name__ == "__main__":
+    app = WeaviateApp()
+    app.run()
