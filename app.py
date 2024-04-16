@@ -11,6 +11,9 @@ from session_state import *
 from datetime import datetime, timezone
 import os
 
+
+debug = True
+
 # Define the main application class
 class WeaviateApp:
     """
@@ -29,6 +32,14 @@ class WeaviateApp:
         self.logo_path = Path("assets/logo.jpeg")
         # Initialize an empty list to store the search results
         self.big_response_list = []
+
+        self.sort_by = None
+        self.filter_by_relevance = None
+        self.relevance_threshold = None
+        self.filter_by_date = None
+        self.date_before = None
+        self.date_after = None
+
 
     # Function to display the title of the application
     def display_title(self):
@@ -120,20 +131,51 @@ class WeaviateApp:
         Search by text. This function defines the collections to search in, gets the collection object from the client,
         queries the collection with the search text, and extends the big response list with the response objects.
         """
+    def search_by_text(self, search_text,llm_model):
         # Define the collections to search in
-        collections = ['images', 'WineReviews', 'pdf']
+        collections = ['images', 'pdf','videos']
+        # collections = ['pdf']
+
+        if llm_model == 'TinyLlamma':
+                from get_llama_inference import get_llama_inference
+                result = get_llama_inference(search_text)
+
         for collection in collections:
             # Get the collection object from the client
             collection_obj = self.client.collections.get(collection)
             # Query the collection with the search text
-            response = collection_obj.query.near_text(
-                query=search_text,
-                # return_properties=["filename"],
-                return_metadata=wvc.query.MetadataQuery(distance=True),
-                limit=6,
-            )
+            
+            if llm_model == 'TinyLlamma':
+                response = collection_obj.query.near_text(
+                    query=result['file content'],
+                    # return_properties=["filename"],
+                    return_metadata=wvc.query.MetadataQuery(distance=True),
+                    limit=6,
+                )
+                print(result)
+                if result['day'] == [0, 0] and result['month'] == [0, 0] and result['year'] == [2024, 2024]:
+                    self.sort_by = 'Date'
+
+
+            elif llm_model == 'BM25':
+                response = collection_obj.query.bm25(
+                    query=search_text,
+                    # return_properties=["filename"],
+                    # return_metadata=wvc.query.MetadataQuery(distance=True),
+                    limit=6,
+                )
+            elif llm_model == 'Vanilla':
+                response = collection_obj.query.near_text(
+                    query=search_text,
+                    # return_properties=["filename"],
+                    # return_metadata=wvc.query.MetadataQuery(distance=True),
+                    limit=6,
+                )
+
             # Extend the big response list with the response objects
             self.big_response_list.extend(response.objects)
+
+            # print(self.big_response_list)
 
 
     # Function to sort and filter the results
@@ -141,9 +183,13 @@ class WeaviateApp:
         """
         Sort and filter the results. This function sorts the results by relevance or date, and filters the results by relevance or date.
         """
+        default_date = datetime.min.replace(tzinfo=timezone.utc)
         # Sort the results by relevance or date
         if sort_by == 'Relevance':
-            self.big_response_list.sort(key=lambda x: x.metadata.distance)
+            try:
+                self.big_response_list.sort(key=lambda x: x.metadata.distance)
+            except:
+                pass
         elif sort_by == 'Date':
             # Use a default date for items without a 'date_modified' property
             default_date = datetime.min.replace(tzinfo=timezone.utc)
@@ -185,10 +231,34 @@ class WeaviateApp:
                     st.image(img)
                     st.write(f"Relevance: {r.metadata.distance:.3f}")
                 except:
-                    pass
+                    try:
+                        vidpath = Path("data/videos") / r.properties["filename"]
+                        vid = vidpath.read_bytes()
+                        st.video(vid)
+                        st.write(f"Relevance: {r.metadata.distance:.3f}")
+                    except:
+                        pass
 
-                st.write(f"Properties: {r.properties}")
-                st.write(f"Metadata: {r.metadata}")
+                    try:
+                        from streamlit import session_state as ss
+                        from streamlit_pdf_viewer import pdf_viewer
+
+                        binary_data = Path("data/pdf") / r.properties["filename"]
+                        binary_data = binary_data.read_bytes()
+                        # binary_data = ss.pdf_ref.getvalue()
+                        pdf_viewer(input=binary_data, width=250,height=250,pages_to_render=[1,2])
+
+                    except:
+                        pass
+
+                    if r.metadata.distance:
+                        st.write(f"Relevance: {r.metadata.distance:.3f}")
+                    pass
+                    
+                if debug==True:
+                    st.write(f"date_created: {r.properties['date_modified']}")
+                    st.write(f"date_modified: {r.properties['date_created']}")
+                    # st.write(f"Metadata: {r.metadata}")
 
 
     # Function to display the data ingestion page
@@ -223,10 +293,11 @@ class WeaviateApp:
             self.display_title()
             self.display_instructions()
             search_text, img = self.get_search_inputs()
-            sort_by, filter_by_relevance, relevance_threshold, filter_by_date, date_before, date_after = self.get_sort_filter_inputs()
+
+            self.sort_by, self.filter_by_relevance, self.relevance_threshold, self.filter_by_date, self.date_before, self.date_after = self.get_sort_filter_inputs()
 
             # Add a toggle for the LLM model
-            llm_model = st.selectbox('LLM Model', ['BM25', 'TinyLlamma'])
+            llm_model = st.selectbox('LLM Model', ['BM25', 'TinyLlamma','Vanilla'])
 
             # Add a search button
             if st.button('Search'):
@@ -235,22 +306,24 @@ class WeaviateApp:
                         st.image(img, caption="Uploaded Image", use_column_width=True)
                         self.search_by_image(img)
                     else:
-                        self.search_by_text(search_text)
+                        self.search_by_text(search_text,llm_model)
 
-                    self.sort_and_filter_results(sort_by, filter_by_relevance, relevance_threshold, filter_by_date, date_before, date_after)
+                    self.sort_and_filter_results(self.sort_by, self.filter_by_relevance, self.relevance_threshold, self.filter_by_date, self.date_before, self.date_after)
+                    
                     self.display_results()
 
                 # Display the selected sort and filter options
                 st.subheader("Selected Options")
-                st.write(f"Sort by: {sort_by}")
-                st.write(f"Filter by Relevance: {filter_by_relevance}")
-                if filter_by_relevance:
-                    st.write(f"Relevance Threshold: {relevance_threshold}")
-                st.write(f"Filter by Date: {filter_by_date}")
-                if filter_by_date:
-                    st.write(f"Before Date: {date_before}")
-                    st.write(f"After Date: {date_after}")
+                st.write(f"Sort by: {self.sort_by}")
+                st.write(f"Filter by Relevance: {self.filter_by_relevance}")
+                if self.filter_by_relevance:
+                    st.write(f"Relevance Threshold: {self.relevance_threshold}")
+                st.write(f"Filter by Date: {self.filter_by_date}")
+                if self.filter_by_date:
+                    st.write(f"Before Date: {self.date_before}")
+                    st.write(f"After Date: {self.date_after}")
                 st.write(f"LLM Model: {llm_model}")
+                self.sort_by = 'Relevance'
 
 # Run the application
 if __name__ == "__main__":

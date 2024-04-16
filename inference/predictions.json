@@ -1,0 +1,402 @@
+[
+    {
+        "prediction": "{'year': [2020, 2020], 'month': [0, 0], 'day': [0, 0], 'file content': ['Sales Reports for 2020', 'Yearly Sales Records 2020', 'Sales Figures for 2020', '2020 Sales Data', 'Yearly Sales Overview 2020'], 'file type': ['pdf', 'xlsx', 'xls', 'docx', 'doc']}",
+        "label": "{'year': [2020, 2020], 'month': [0, 0], 'day': [0, 0], 'file content': ['2020 Sales Report', 'Annual Revenue Summary 2020', '2020 Year-End Sales Recap', 'Sales Analysis 2020', '2020 Fiscal Year Sales Overview'], 'file type': ['pdf', 'docx', 'doc', 'xlsx', 'xls']}"
+    },
+    {
+        "prediction": "{'year': [2021, 2023], 'month': [0, 0], 'day': [0, 0], 'file content': ['Physics Research Documents', 'Mathematics Research Files', 'Physics Analysis Docs', 'Physics Research Materials', 'Physics Analysis Files'], 'file type': ['pdf', 'doc', 'docx', 'xls', 'xlsx']}",
+        "label": "{'year': [-2, 0], 'month': [0, 0], 'day': [0, 0], 'file content': ['Computational Physics Research', 'Quantum Mechanics Study', 'Theoretical Physics Research', 'Particle Physics Analysis', 'Nuclear Physics Investigation'], 'file type': ['doc', 'docx', 'pdf', 'txt', 'md']}"
+    },
+    {
+        "prediction": "{'year': [2023, 2023], 'month': [6, 6], 'day': [1, 30], 'file content': ['Product A Sales Reports', 'Sales Overview for Product A in June', 'Product A June Sales Details', 'Sales Figures for Product A', 'Product A June Revenue Reports'], 'file type': ['pdf', 'xls', 'xlsx', 'doc', 'docx']}",
+        "label": "{'year': [0, 0], 'month': [6, 6], 'day': [0, 0], 'file content': ['Product A Sales Report', 'Sales Performance of Product A', 'Product A Sales Overview', 'Sales Analysis of Product A', 'Sales Evaluation of Product A'], 'file type': ['pdf', 'xlsx', 'xls', 'docx', 'doc', 'csv']}"
+    },
+    {
+        "prediction": "{'year': [0, 0], 'month': [0, 0], 'day': [0, 0], 'file content': ['Library Module Code Files', 'Coding Files for the Library', 'Programming Files for the Library', 'Code Snippets for the Library', 'Coding Files for the Library'], 'file type': ['pdf', 'docx', 'pptx', 'txt', 'xls']}",
+        "label": "{'year': [0, 0], 'month': [-1, -1], 'day': [0, 0], 'file content': ['Library Module Code', 'Module Source Code', 'Library Code Files', 'Software Module Code', 'Programming Code for Library'], 'file type': ['c', 'cpp', 'java', 'py', 'js', 'cs', 'php']}"
+    },
+    {
+        "prediction": "{'year': [2023, 2024], 'month': [10, 12], 'day': [0, 0], 'file content': ['Marketing Strategy Reports', 'Marketing Plan Documentation', 'Marketing Blueprints', 'Marketing Roadmap', 'Marketing Strategy Docs'], 'file type': ['pdf', 'doc', 'docx']}",
+        "label": "{'year': [0, 0], 'month': [-3, 0], 'day': [0, 0], 'file content': ['Marketing Strategy Report', 'Promotion Plan Review', 'Marketing Tactics Analysis', 'Sales Approach Document', 'Marketing Method Evaluation'], 'file type': ['pdf', 'doc', 'docx', 'xls', 'xlsx']}"
+    },
+    {
+        "prediction": "{'year': [2023, 2024], 'month': [1, 12], 'day': [1, 31], 'file content': ['Marketing Strategy Docs', 'Quarterly Marketing Plan', 'Marketing Roadmap', 'Marketing Strategy Drafts', 'Marketing Plans'], 'file type': ['pdf', 'doc', 'docx', 'txt']}",
+        "label": "{'year': [0, 0], 'month': [0, 3], 'day': [0, 0], 'file content': ['Marketing Strategy', 'Marketing Plan', 'Market Approach Document', 'Promotional Strategy', 'Product Placement Plan'], 'file type': ['pdf', 'docx', 'doc', 'xlsx', 'pptx']}"
+    },
+    {
+        "prediction": "{'year': [2020, 2020], 'month': [0, 0], 'day': [0, 0], 'file content': ['Machine Learning Research Papers', 'ML Research Articles', 'AI Research Papers', 'Machine Learning Study', 'ML Research Findings'], 'file type': ['pdf', 'doc', 'docx', 'pptx', 'xls']}",
+        "label": "{'year': [2020, 2020], 'month': [1, 12], 'day': [1, 31], 'file content': ['Machine Learning Research Paper', 'ML Research Article', 'AI Learning Study', 'Machine Learning Academic Paper', 'Artificial Intelligence Learning Report'], 'file type': ['pdf', 'docx', 'doc', 'txt', 'md']}"
+    },
+    {
+        "prediction": "{'year': [2022, 2022], 'month': [1, 6], 'day': [0, 0], 'file content': ['Marketing Campaign Evaluations', 'Marketing Evaluation Documents', 'Marketing Evaluation Results', 'Marketing Evaluation Reviews', 'Marketing Campaign Evaluation Documentation'], 'file type': ['pdf', 'doc', 'docx', 'xls', 'xlsx']}",
+        "label": "{'year': [-1, -1], 'month': [1, 6], 'day': [0, 0], 'file content': ['Marketing Campaign Evaluation', 'Campaign Response Analysis', 'Marketing Feedback Summary', 'Campaign Assessment', 'Marketing Campaign Report'], 'file type': ['doc', 'docx', 'pdf', 'xls', 'xlsx']}"
+    },
+    {
+        "prediction": "{'year': [2015, 2015], 'month': [0, 0], 'day': [0, 0], 'file content': ['Sales Graphs from 2015', 'Sales Performance Graphs', 'Sales Metrics Dashboard', 'Sales Analysis Docs', 'Sales Data Visualization'], 'file type': ['pdf', 'doc', 'docx', 'pptx', 'xlsx']}",
+        "label": "{'year': [2015, 2015], 'month': [0, 12], 'day': [0, 0], 'file content': ['Sales Graph', 'Sales Chart', 'Sales Statistics', '2015 Sales Data', 'Sales Report'], 'file type': ['jpg', 'png', 'pdf', 'xlsx', 'xls']}"
+    },
+    {
+        "prediction": "{'year': [-1, -1], 'month': [3, 3], 'day': [0, 0], 'file content': ['Download School Activities Photos of Your Child', 'Child Activities Photographs', 'School Activities Pictures of Your Child', 'Child Activities Recordings', 'School Activities Photographs'], 'file type': ['jpg', 'jpeg', 'png', 'heif', 'tiff']}",
+        "label": "{'year': [-1, -1], 'month': [3, 3], 'day': [0, 0], 'file content': [\"Son's School Activity Picture\", 'School Event Image', 'Son\u2019s education snapshots', 'Image of School Activity', 'School Participation Photograph'], 'file type': ['jpg', 'jpeg', 'png', 'gif', 'heif']}"
+    },
+    {
+        "prediction": "{'year': [2023, 2023], 'month': [1, 3], 'day': [0, 0], 'file content': ['Marketing Analytics Report', 'Marketing Metrics for January to March', 'Marketing Performance Analysis', 'Marketing Insights Report', 'Marketing Metrics Report'], 'file type': ['pdf', 'xlsx', 'xls', 'docx', 'doc']}",
+        "label": "{'year': [0, 0], 'month': [1, 3], 'day': [0, 0], 'file content': ['Marketing Analytics Report', 'Marketing Data Analysis', 'Sales and Marketing Statistics Report', 'Promotion Evaluation Report', 'Advertising Performance Analysis'], 'file type': ['pdf', 'docx', 'xls', 'xlsx', 'csv']}"
+    },
+    {
+        "prediction": "{'year': [2023, 2023], 'month': [9, 10], 'day': [0, 0], 'file content': ['AI Class Recordings', 'Artificial Intelligence Class Materials', 'AI Seminar Recordings', 'AI Teaching Materials', 'AI Educational Resources'], 'file type': ['pdf', 'pptx', 'doc', 'docx', 'ppt']}",
+        "label": "{'year': [0, 0], 'month': [9, 12], 'day': [0, 0], 'file content': ['Artificial Intelligence Lecture', 'Class Recording on AI', 'Lecture Video on Artificial Intelligence', 'AI Class Clip', 'Artificial Intelligence Course Recording'], 'file type': ['mp4', 'mov', 'avi', 'flv', 'mkv']}"
+    },
+    {
+        "prediction": "{'year': [2020, 2020], 'month': [1, 12], 'day': [1, 31], 'file content': ['Partners Contracts Signed on January 2020', 'Contracts with Partners signed on January 1, 2020', 'Partnership Agreements Documentation', 'Partners Contracts Documentation', 'Partnership Contracts Signed on January'], 'file type': ['pdf', 'doc', 'docx', 'xls', 'xlsx']}",
+        "label": "{'year': [2020, 2020], 'month': [1, 1], 'day': [0, 0], 'file content': ['Partnership Contract', 'Partnership Agreement', 'Signed Contracts', 'Legal Document with Partners', 'Business Agreement'], 'file type': ['pdf', 'doc', 'docx', 'xls', 'xlsx']}"
+    },
+    {
+        "prediction": "{'year': [2020, 2020], 'month': [1, 12], 'day': [1, 31], 'file content': ['XYZ Contract Signed', 'XYZ Agreement Documentation', 'Contractual Details with XYZ', 'XYZ Contract Documentation', 'Legal Contract with XYZ'], 'file type': ['pdf', 'doc', 'docx', 'xls', 'xlsx']}",
+        "label": "{'year': [2020, 2020], 'month': [1, 1], 'day': [0, 0], 'file content': ['Contract with XYZ', 'Signed Agreement XYZ', '2020 XYZ Contract', 'Legally-Binding Document XYZ', 'XYZ Business Deal'], 'file type': ['doc', 'docx', 'pdf', 'txt', 'odt']}"
+    },
+    {
+        "prediction": "{'year': [0, 0], 'month': [0, 0], 'day': [0, 0], 'file content': ['Renaissance Manuscripts', 'Italian Renaissance Drafts', 'Renewed Manuscripts', 'Renovated Italian Manuscripts', 'Renovation Italian Manuscripts'], 'file type': ['pdf', 'docx', 'doc', 'doc', 'docx']}",
+        "label": "{'year': [0, 0], 'month': [0, 0], 'day': [0, 0], 'file content': ['Italian Renaissance Manuscript', 'Document on Renaissance Period', 'Renaissance Script in Italian', 'Italian Manuscript on Renaissance', 'Historical Renaissance Document in Italian'], 'file type': ['pdf', 'doc', 'docx', 'txt', 'jpg', 'jpeg', 'png']}"
+    },
+    {
+        "prediction": "{'year': [2023, 0], 'month': [1, 0], 'day': [0, 0], 'file content': ['Client A Conference Call Recording', 'Video recording of Client A Conference Call', 'Audio recording of Client A Conference Call', 'Video Call Summary', 'Conference Call Transcript'], 'file type': ['mp4', 'mp3', 'pdf', 'doc', 'docx']}",
+        "label": "{'year': [0, 0], 'month': [1, 1], 'day': [0, 0], 'file content': ['Conference Call with Client A', 'Client A Discussion Record', 'Client A Meeting Audio', 'Client A Call Documentation', 'Client A Conversation Archive'], 'file type': ['mp3', 'wav', 'wma', 'm4a', 'mp4']}"
+    },
+    {
+        "prediction": "{'year': [2020, 2020], 'month': [10, 12], 'day': [0, 0], 'file content': ['Sales Report ABC Company', 'ABC Sales Summary', 'Sales Details for ABC Company', 'ABC Company's Sales Report', 'Sales Analysis for ABC'], 'file type': ['pdf', 'xlsx', 'xls', 'docx', 'doc']}",
+        "label": "{'year': [2020, 2020], 'month': [10, 12], 'day': [0, 0], 'file content': ['ABC Company Sales Report', 'ABC Q4 Sales', 'ABC Company Fourth Quarter Sales', 'ABC Final Quarterly Report 2020', 'ABC Sales Analysis Q4'], 'file type': ['pdf', 'xlsx', 'xls', 'docx', 'doc', 'csv']}"
+    },
+    {
+        "prediction": "{'year': [2023, 2024], 'month': [10, 12], 'day': [10, 12], 'file content': ['Sales Data', 'Sales Statistics for the Last Quarter', 'Sales Performance Reports', 'Sales Metrics for the Last Quarter', 'Sales Figures for the Last Month'], 'file type': ['pdf', 'xlsx', 'xls', 'docx', 'doc']}",
+        "label": "{'year': [0, 0], 'month': [-3, 0], 'day': [0, 0], 'file content': ['Sales Data', 'Sales Statistics', 'Sales Figures', 'Sales Analysis', 'Sales Record'], 'file type': ['csv', 'xls', 'xlsx', 'pdf', 'txt']}"
+    },
+    {
+        "prediction": "{'year': [2021, 2021], 'month': [1, 12], 'day': [1, 31], 'file content': ['Gene Therapy Research Articles', 'Genetic Therapy Publication', 'Gene Therapy Study Findings', 'Research on gene therapy', 'Genetic Therapy Research'], 'file type': ['pdf', 'doc', 'docx']}",
+        "label": "{'year': [2021, 2021], 'month': [0, 0], 'day': [0, 0], 'file content': ['Gene Therapy Research Article', 'Genetic Treatment Study', 'Gene Modulation Research', 'Gene Therapy Paper', 'Genomic Medicine Article'], 'file type': ['pdf', 'docx', 'doc', 'txt', 'html']}"
+    },
+    {
+        "prediction": "{'year': [2022, 2022], 'month': [1, 3], 'day': [1, 31], 'file content': ['Sales Report of the First Quarter', 'First Quarter Sales Overview', 'Sales Summary for the First Quarter', 'Quarterly Sales Report', 'Sales Performance Report'], 'file type': ['pdf', 'xlsx', 'xls', 'docx', 'doc']}",
+        "label": "{'year': [2022, 2022], 'month': [1, 3], 'day': [0, 0], 'file content': ['Sales Report', 'Revenue Report', 'Sales Analysis', 'Quarterly Sales Summary', 'Sales Performance'], 'file type': ['pdf', 'docx', 'doc', 'xlsx', 'csv']}"
+    },
+    {
+        "prediction": "{'year': [0, 0], 'month': [0, 0], 'day': [0, 0], 'file content': ['Customer Feedback Forms', 'Online Customer Reviews', 'Customer Opinion Suggestions', 'Feedback Submission Forms', 'Online Feedback Documentation'], 'file type': ['pdf', 'docx', 'xls', 'xlsx']}",
+        "label": "{'year': [0, 0], 'month': [-1, -1], 'day': [0, 0], 'file content': ['Online Customer Feedback', 'Customer Response Forms', 'Client Reviews', 'Customer Satisfaction Reports', 'Customer Feedback Documents'], 'file type': ['pdf', 'docx', 'doc', 'txt', 'csv']}"
+    },
+    {
+        "prediction": "{'year': [], 'month': [], 'day': [], 'file content': [], 'file type': []}",
+        "label": "{'year': [0, 0], 'month': [-1, -1], 'day': [0, 0], 'file content': ['Cooking Recipe', 'Food Preparation Guide', 'Culinary Instructions', 'Food Recipe', 'Meal Preparation Steps'], 'file type': ['doc','docx','pdf', 'txt', 'jpg', 'jpeg', 'png']}"
+    },
+    {
+        "prediction": "{'year': [2023, 2023], 'month': [1, 3], 'day': [0, 0], 'file content': ['Contracts Signed in January to March 2023', 'January Contracts', 'February Contracts', 'March Contracts', 'Contracts Signed in 2023'], 'file type': ['pdf', 'docx', 'xls', 'xlsx']}",
+        "label": "{'year': [2023, 2023], 'month': [1, 3], 'day': [0, 0], 'file content': ['Signed Contracts', 'Executed Agreements', 'Concluded Deal Documents', 'Finalized Contracts', 'Completed Agreements'], 'file type': ['pdf', 'docx', 'doc', 'xls', 'xlsx', 'csv']}"
+    },
+    {
+        "prediction": "{'year': [2023, 2023], 'month': [10, 10], 'day': [10, 12], 'file content': ['Classical Music Concerts Audio Files', 'MP3 Files of Classical Concerts', 'Classical Music Audio Files', 'Concert Audio Recordings', 'Classical Music Sounds'], 'file type': ['mp3', 'mp4', 'wav', 'flac', 'm4a']}",
+        "label": "{'year': [-1, -1], 'month': [0, 0], 'day': [0, 0], 'file content': ['Classical Concert Recordings', 'Classical Music Live', 'Orchestra Concert Audio', 'Classical Performance Audio', 'Live Classical Music'], 'file type': ['mp3', 'flac', 'wav', 'aac', 'm4a']}"
+    },
+    {
+        "prediction": "{'year': [2021, 2023], 'month': [0, 0], 'day': [0, 0], 'file content': ['Machine Learning Conference Papers', 'ML Conference Papers', 'AI Conference Papers', 'Machine Learning Symposium Papers', 'AI Symposium Papers'], 'file type': ['pdf', 'docx', 'pptx', 'doc', 'txt']}",
+        "label": "{'year': [-2, 0], 'month': [0, 0], 'day': [0, 0], 'file content': ['Machine Learning Conference paper', 'AI Conference Proceedings', 'ML Conference Paper', 'Artificial Intelligence Discussion Paper', 'Machine Learning Symposium Paper'], 'file type': ['pdf', 'docx', 'doc', 'txt', 'pptx']}"
+    },
+    {
+        "prediction": "{'year': [0, 0], 'month': [0, 0], 'day': [0, 0], 'file content': ['Housing Scheme Project Plans', 'Housing Scheme Blueprints', 'Housing Scheme Designs', 'Housing Scheme Layouts', 'Housing Scheme Planning'], 'file type': ['pdf', 'docx', 'pptx', 'xls', 'xlsx']}",
+        "label": "{'year': [0, 0], 'month': [0, 0], 'day': [0, 0], 'file content': ['Housing Scheme Project Plan', 'Upcoming Scheme Blueprint', 'Housing Project Sketch', 'Project Draft for Housing', 'Residential Scheme Layout'], 'file type': ['pdf', 'doc', 'docx', 'png', 'jpeg']}"
+    },
+    {
+        "prediction": "{'year': [2022, 2023], 'month': [1, 3], 'day': [0, 0], 'file content': ['Supplier A Invoices', 'Billing statements for Supplier A', 'Payment Receipts for Supplier A', 'Supplier A Invoice Documents', 'Billing Documentation for Supplier A'], 'file type': ['pdf', 'xls', 'xlsx', 'doc', 'docx']}",
+        "label": "{'year': [-1, -1], 'month': [1, 3], 'day': [0, 0], 'file content': ['Supplier A Invoice', 'Invoice from Supplier A', 'Payment Request from Supplier A', 'Supplier A Bill', 'Charge from Supplier A'], 'file type': ['pdf', 'docx', 'doc', 'xlsx', 'csv', 'txt']}"
+    },
+    {
+        "prediction": "{'year': [2020, 2022], 'month': [0, 0], 'day': [0, 0], 'file content': ['ABC Company Contracts', 'Signed Contracts with ABC', 'ABC Contract Documentation', 'Agreements with ABC', 'ABC Company Agreements'], 'file type': ['pdf', 'docx', 'doc', 'xls', 'xlsx']}",
+        "label": "{'year': [-2, 0], 'month': [0, 0], 'day': [0, 0], 'file content': ['ABC Company Contract', 'Agreement with ABC', 'ABC Contract Documents', 'ABC Corporate Contract', 'ABC Business Agreement'], 'file type': ['pdf', 'doc', 'docx', 'odt', 'rtf']}"
+    },
+    {
+        "prediction": "{'year': [2023, 2023], 'month': [11, 11], 'day': [10, 30], 'file content': ['Blockchain Technology Whitepaper', 'White Paper on Blockchain', 'Blockchain Research Documentation', 'White Paper on Blockchain Technology', 'Blockchain Research Summary'], 'file type': ['pdf', 'doc', 'docx', 'pptx', 'txt']}",
+        "label": "{'year': [-1, -1], 'month': [11, 11], 'day': [0, 0], 'file content': ['Blockchain Technology Whitepaper', 'Blockchain Innovation Document', 'Cryptocurrency Whitepaper', 'Blockchain Research Paper', 'Distributed Ledger Technology Whitepaper'], 'file type': ['pdf', 'doc', 'docx', 'txt', 'epub']}"
+    },
+    {
+        "prediction": "{'year': [2019, 2019], 'month': [1, 3], 'day': [0, 0], 'file content': ['ABC Invoices', 'Supplier ABC Invoices', 'Billing Documents from ABC', 'Invoices from Supplier ABC', 'ABC Billing Statements'], 'file type': ['pdf', 'xlsx', 'xls', 'docx', 'doc']}",
+        "label": "{'year': [2019, 2019], 'month': [1, 3], 'day': [0, 0], 'file content': ['ABC Supplier Invoice', 'Payment Document for ABC', 'ABC Billing Statement', 'Invoice Document from ABC', 'ABC Payments'], 'file type': ['pdf', 'jpg', 'jpeg', 'xlsx', 'xls']}"
+    },
+    {
+        "prediction": "{'year': [-1, -1], 'month': [12, 12], 'day': [0, 0], 'file content': ['Sales Invoice from December', 'December Sales Receipt', 'Sales Invoice Document', 'December Payment Receipt', 'End of Year Sales Receipt'], 'file type': ['pdf', 'xlsx', 'xls', 'docx', 'doc']}",
+        "label": "{ 'year': [-1, -1], 'month': [12, 12], 'day': [0, 0], 'file content': ['Sales Invoice', 'Sales Billing Slip', 'Sales Receipt', 'Sales Bill', 'Transaction Invoice'], 'file type': ['pdf', 'docx', 'doc', 'xlsx', 'xls']}"
+    },
+    {
+        "prediction": "{'year': [2022, 2022], 'month': [1, 3], 'day': [0, 0], 'file content': ['Online Marketing Strategy Meeting Minutes', 'Online Marketing Meeting Documentation', 'Online Marketing Proceedings', 'Online Marketing Discussions', 'Online Marketing Meeting Notes'], 'file type': ['pdf', 'doc', 'docx', 'txt']}",
+        "label": "{'year': [2022, 2022], 'month': [1, 3], 'day': [0, 0], 'file content': ['Online Marketing Strategy Minutes', 'Digital Marketing Meeting Digest', 'Internet Marketing Strategy Summary', 'Online Advertising Minutes', 'Digital Marketing Discussion Summary'], 'file type': ['pdf', 'docx', 'doc', 'txt', 'xlsx']}"
+    },
+    {
+        "prediction": "{'year': [2023, 2024], 'month': [10, 12], 'day': [10, 12], 'file content': ['Sales Data Analysis Reports', 'Retail Sales Analysis Docs', 'Sales Analysis Reports', 'Retail Sales Analysis Materials', 'Sales Analysis Findings'], 'file type': ['pdf', 'doc', 'docx', 'xls']}",
+        "label": "{'year': [-1, -1], 'month': [-1, 0], 'day':[0, 0], 'file content':['Retail Sales Data Analysis', 'Analysis Report of Sales Data', 'Retail Sector Sales Report', 'Sales Data Examination', 'Retail Sales Evaluation'], 'file type':['csv', 'xlsx', 'xls', 'pdf', 'ppt', 'txt'] }"
+    },
+    {
+        "prediction": "{'year': [2023, 2023], 'month': [1, 3], 'day': [1, 31], 'file content': ['Company X Sales Reports', 'Sales Overview for Company X', 'Sales Performance Reports for Company X', 'Sales Analysis for Company X', 'Company X Sales Details'], 'file type': ['pdf', 'xls', 'xlsx', 'doc', 'docx']}",
+        "label": "{'year':[0,0], 'month':[1, 3], 'day':[0, 0], 'file content':['Sales Report', 'Revenue Overview', 'Earnings Report', 'Profit Statement', 'Sales Analysis'], 'file type':['pdf', 'xlsx', 'xls', 'docx', 'doc', 'csv', 'ppt', 'pptx', 'txt']}"
+    },
+    {
+        "prediction": "{'year': [2023, 2023], 'month': [10, 10], 'day': [10, 12], 'file content': ['Holiday Pictures from Hawaii', 'Hawaii Travel Photos', 'Holiday Family Shots', 'Hawaii Holiday Celebrations', 'Holiday Gifts Pictures'], 'file type': ['jpg', 'jpeg', 'png', 'tiff']}",
+        "label": "{'year': [-1, -1], 'month': [0, 0], 'day': [0, 0], 'file content': ['Holiday Pictures from Hawaii', 'Hawaii Vacation Photos', 'Hawaii Trip Images', 'Holiday Snaps from Hawaii', 'Hawaii Vacation Photographs'], 'file type': ['jpg', 'jpeg', 'png', 'heif', 'tiff']}"
+    },
+    {
+        "prediction": " ",
+        "label": "{'year': [2018, 2018], 'month': [0, 0], 'day': [0, 0], 'file content': ['Construction Plan', 'Building Blueprint', 'Project Design', 'Construction Blueprint', 'Project Layout'], 'file type': ['dwg', 'dxf', 'pdf', 'jpg', 'png']}"
+    },
+    {
+        "prediction": "{'year': [2023, 2024], 'month': [1, 12], 'day': [1, 31], 'file content': ['Sales Data for the Last Quarter', 'Sales Statistics for the Last Quarter', 'Quarterly Sales Report', 'Sales Performance for the Last Quarter', 'End of the Month Sales Data'], 'file type': ['pdf', 'xlsx', 'xls', 'docx', 'doc']}",
+        "label": "{ 'year': [0, 0], 'month': [-3, 0], 'day': [0, 0], 'file content': ['Sales Data', 'Sales Report', 'Quarterly Sales', 'Sales Statistics', 'Sales Figures'], 'file type': ['xls', 'xlsx', 'csv', 'pdf', 'docx']}"
+    },
+    {
+        "prediction": "{'year': [2018, 2018], 'month': [12, 12], 'day': [1, 31], 'file content': ['House Project Blueprints', 'Blueprints for House Project', 'House Construction Plans', 'Project Schematics', 'House Project Plans'], 'file type': ['pdf', 'doc', 'docx']}",
+        "label": "{'year': [2018, 2018], 'month': [12, 12], 'day': [0, 0], 'file content': ['House Project Blueprint', 'Home Design Blueprint', 'Residential Blueprint', 'Construction Blueprint', 'Architecture Layout'], 'file type': ['dwg', 'pdf', 'tif', 'jpg', 'png']}"
+    },
+    {
+        "prediction": "{'year': [2017, 2022], 'month': [0, 0], 'day': [0, 0], 'file content': ['Medical Research Papers on Diabetes', 'Diabetes Research Documentation', 'Medical Study Reports on Diabetes', 'Research Findings on Diabetes', 'Diabetes Research Literature'], 'file type': ['pdf', 'doc', 'docx', 'txt']}",
+        "label": "{'year': [-5, 0], 'month': [0, 0], 'day': [0, 0], 'file content': ['Diabetes Research Paper', 'Medical Study on Diabetes', 'Diabetes Clinical Research', 'Medical Analysis on Diabetes', 'Research Documentation on Diabetes'], 'file type': ['pdf', 'docx', 'doc', 'txt', 'xlsx']}"
+    },
+    {
+        "prediction": "{'year': [2023, 2023], 'month': [10, 12], 'day': [10, 12], 'file content': ['Vendor ABC Invoices', 'ABC Vendor Invoice Documents', 'Invoice Files from Vendor ABC', 'ABC Vendor Invoice Files', 'Vendor ABC Invoice Pages'], 'file type': ['pdf', 'xls', 'xlsx', 'doc', 'docx']}",
+        "label": "{'year': [0, 0], 'month': [-6, 0], 'day': [0, 0], 'file content': ['Vendor ABC Invoice', 'Billing Document from Vendor ABC', 'Purchase Invoice from ABC', 'ABC Vendor Payment Invoice', 'ABC Sale Invoice'], 'file type': ['pdf', 'docx', 'doc', 'csv', 'xlsx']}"
+    },
+    {
+        "prediction": "{'year': [2023, 2024], 'month': [1, 12], 'day': [1, 31], 'file content': ['Sales Reports', 'Sales Summary', 'Sales Overview', 'Sales Analysis', 'Sales Report'], 'file type': ['pdf', 'xlsx', 'xls', 'docx', 'doc']}",
+        "label": "{'year': [0, 0], 'month': [-3, 0], 'day': [0, 0], 'file content': ['Sales Report', 'Sales Overview', 'Sales Summary', 'Sales Analysis', 'Sales Details'], 'file type': ['pdf', 'xlsx', 'xls', 'docx', 'doc', 'csv', 'ppt', 'pptx', 'txt']}"
+    },
+    {
+        "prediction": "{'year': [2017, 2022], 'month': [0, 0], 'day': [0, 0], 'file content': ['Dark Matter Research Papers', 'Scientific Papers on Dwarf Matter', 'Research Documents on Dwarf Matter', 'Scientific Papers on Dwarf Matter', 'Research Findings on Dwarf Matter'], 'file type': ['pdf', 'doc', 'docx', 'xls', 'xlsx']}",
+        "label": "{'year': [-5, 0], 'month': [0, 0], 'day': [0, 0], 'file content': ['Dark Matter Paper', 'Cosmic Matter Research', 'Dark Matter Studies', 'Astrophysics Paper', 'Dark Matter Observations'], 'file type': ['pdf', 'doc', 'docx', 'txt', 'xml']}"
+    },
+    {
+        "prediction": "{'year': [2023, 2023], 'month': [1, 1], 'day': [1, 31], 'file content': ['Employee Training Videos', 'Onboarding Videos for Employees', 'Training Footage', 'Employee Learning Materials', 'Training Videos for New Hire'], 'file type': ['pdf', 'docx', 'pptx', 'mp4', 'mp3']}",
+        "label": "{'year': [-1, -1], 'month': [1, 1], 'day': [0, 0], 'file content': ['Employee Training Video', 'Staff Development Footage', 'Employee Upskilling Film', 'Staff Training Recordings', 'Worker's Guide Footage'], 'file type': ['mp4', 'm4v', 'mkv', 'avi', 'mov']}"
+    },
+    {
+        "prediction": "{'year': [2023, 2024], 'month': [1, 12], 'day': [1, 31], 'file content': ['2023 HR Annual Report', '2024 HR Yearly Overview', 'HR Annual Reports 2023', 'HR Year-end Reports 2024', 'HR Annual Reports 2023'], 'file type': ['pdf', 'xlsx', 'xls', 'docx', 'doc']}",
+        "label": "{'year': [0, 0], 'month': [0, 0], 'day': [0, 0], 'file content':['Annual HR Report', 'Yearly Human Resource Summary', 'Annual HR Overview', 'Yearly HR Roundup', 'HR Yearly Report'], 'file type':['pdf', 'docx', 'doc', 'xlsx', 'csv', 'ppt', 'pptx'] }"
+    },
+    {
+        "prediction": "{'year': [2023, 2023], 'month': [1, 3], 'day': [0, 0], 'file content': ['Client Sigma Correspondence', 'Sigma Client Correspondence', 'Correspondence with Client Sigma', 'Sigma Client Emails', 'Client SMS Correspondence'], 'file type': ['pdf', 'docx', 'doc', 'txt', 'xls']}",
+        "label": "{'year': [0, 0], 'month': [1, 3], 'day': [0, 0], 'file content': ['Communication with Sigma', 'Sigma Email Chain', 'Sigma Letter', 'Correspondence with Sigma', 'Sigma Client Communication'], 'file type': ['eml', 'msg', 'pdf', 'docx', 'txt']}"
+    },
+    {
+        "prediction": "{'year': [-1, -1], 'month': [0, 0], 'day': [0, 0], 'file content': ['Cloud Computing Research Papers', 'Cloud Computing Academic Papers', 'Cloud Computing Scientific Articles', 'Research Papers on Cloud Computing', 'Cloud Computing Academic Works'], 'file type': ['pdf', 'docx', 'doc', 'docm', 'xls']}",
+        "label": "{'year': [0, 0], 'month': [-1, 0], 'day': [0, 0], 'file content': ['Cloud Computing Research Paper', 'Cloud Technology Thesis', 'Cloud System Analysis', 'Cloud Computing Study', 'Cloud Infrastructure Research'], 'file type': ['pdf', 'docx', 'doc', 'txt', 'odt']}"
+    },
+    {
+        "prediction": "{'year': [0, 0], 'month': [0, 0], 'day': [0, 0], 'file content': ['Town Hall Meeting Recording', 'Corporate Meeting Video', 'Company-wide Meeting Footage', 'Town Hall Meeting Footage', 'Corporate Meeting Recording'], 'file type': ['mp4', 'mov', 'avi', 'flv', 'mkv']}",
+        "label": "{'year': [0, 0], 'month': [0, 0], 'day': [0, 0], 'file content': ['Company Town Hall Recording', 'Company-wide Meeting Audio', 'All Hands Meeting Recording', 'Corporate Town Hall Audio', 'Company Meeting Capture'], 'file type': ['mp3', 'wav', 'm4a', 'aac', 'flac']}"
+    },
+    {
+        "prediction": "{'year': [2018, 2018], 'month': [1, 12], 'day': [1, 31], 'file content': ['AI Research Papers', 'Research Articles on AI', 'AI Academic Papers', 'Study Reports on AI', 'AI Scholarly Papers'], 'file type': ['pdf', 'doc', 'docx', 'pptx', 'mp4']}",
+        "label": "{'year': [2018, 2018], 'month': [0, 0], 'day': [0, 0], 'file content': ['AI Research Paper', 'Artificial Intelligence Study', 'Computational Intelligence Paper', 'AI Theory Research', 'Artificial Intelligence Report'], 'file type': ['pdf', 'doc', 'docx']}"
+    },
+    {
+        "prediction": "{'year': [2022, 2022], 'month': [1, 2], 'day': [1, 31], 'file content': ['Sales Reports for January and February', 'Monthly Sales Reports', 'Sales Performance Reports', 'Sales Analysis Reports', 'Sales Summaries'], 'file type': ['pdf', 'xlsx', 'xls', 'docx', 'doc']}",
+        "label": "{'year': [2022, 2022], 'month': [1, 2], 'day': [0, 0], 'file content': ['Sales Report', 'Revenue Statement', 'Sales Performance Report', 'Sales Historical Data', 'Sales Overview'], 'file type': ['pdf', 'docx', 'doc', 'csv', 'xlsx', 'xls']}"
+    },
+    {
+        "prediction": "{'year': [last month], 'month': [0, 0], 'day': [0, 0], 'file content': ['Drafted Business Proposal', 'Proposal Draft', 'Business Proposal Creation', 'Pitch Drafts', 'Proposal Drafts'], 'file type': ['pdf', 'docx', 'doc', 'txt']}",
+        "label": "{'year': [0, 0], 'month': [-1, -1], 'day': [0, 0], 'file content': ['Business Proposal', 'Business Plan', 'Investment Proposal', 'Venture Plan', 'Business Outline'], 'file type': ['pdf', 'docx', 'doc', 'txt', 'xlsx']}"
+    },
+    {
+        "prediction": "{'year': [2020, 2020], 'month': [1, 2], 'day': [0, 0], 'file content': ['IT Department Performance Reports', 'IT Department Productivity Reports', 'IT Department Results', 'IT Department Achievements', 'IT Department Performance Metrics'], 'file type': ['pdf', 'doc', 'docx']}",
+        "label": "{'year': [2020, 2020], 'month': [1, 2], 'day': [0, 0], 'file content': ['IT Department Performance', 'IT Performance Review', 'Performance Report of IT', 'IT Evaluation Report', 'IT Department Review'], 'file type': ['pdf', 'docx', 'xlsx', 'ppt', 'txt']}"
+    },
+    {
+        "prediction": " ",
+        "label": "{'year': [2020, 2020], 'month': [1, 2], 'day': [0, 0], 'file content': ['Invoice Jan-Feb 2020', 'Billing Document 2020', 'Payment Request 2020', 'Charging Form 2020', 'Cost Sheet 2020'], 'file type': ['docx', 'doc', 'pdf', 'xlsx', 'xls', 'csv']}"
+    },
+    {
+        "prediction": "{'year': [0, 0], 'month': [0, 0], 'day': [0, 0], 'file content': ['New Book Manuscript', 'Book Manuscript Draft', 'Updated Version of Book Manuscript', 'New Book Version', 'Book Manuscript Version'], 'file type': ['pdf', 'docx', 'doc', 'doc', 'txt']}",
+        "label": "{'year': [0, 0], 'month': [0, 0], 'day': [0, 0], 'file content': ['Book Manuscript Draft', 'Novel Draft', 'Literary Work Draft', 'Unpublished Book Copy', 'Manuscript Preliminary Copy'], 'file type': ['doc', 'docx', 'pdf', 'txt', 'md']}"
+    },
+    {
+        "prediction": "{'year': [2019, 2019], 'month': [1, 12], 'day': [1, 31], 'file content': ['Property Purchase Legal Documents', 'Legal papers related to property purchase in 2019', 'Property legal files', 'Purchase Agreement', 'Property Legal Documentation'], 'file type': ['pdf', 'doc', 'docx', 'txt']}",
+        "label": "{'year': [2019, 2019], 'month': [0, 0], 'day': [0, 0], 'file content': ['Legal Property Document', 'Property Ownership Papers', 'Property Purchase Agreement', 'Property Sales Deed', 'Real Estate Legal Papers'], 'file type': ['pdf', 'docx', 'doc', 'jpg', 'png']}"
+    },
+    {
+        "prediction": "{'year': [-1, -1], 'month': [6, 8], 'day': [0, 0], 'file content': ['French Cuisine Food Recipes', 'French Food Preparation Documents', 'French Cuisine Cooking Instructions', 'French Food Recipe Documentation', 'French Cuisine Recipe Files'], 'file type': ['pdf', 'docx', 'doc', 'txt', 'doc']}",
+        "label": "{'year': [-1, -1], 'month': [0, 0], 'day': [0, 0], 'file content': ['French Cuisine Recipe', 'French Dish Preparation', 'French Cooking Document', 'Recipes of French Food', 'French Meal Instructions'], 'file type': ['doc', 'docx', 'pdf', 'txt', 'md']}"
+    },
+    {
+        "prediction": "{'year': [-1, -1], 'month': [6, 8], 'day': [0, 0], 'file content': ['Project Beta Film Script', 'Screenplay for Project Beta', 'Beta Film Script Draft', 'Project Beta Movie Script', 'Screenplay Version of Project Beta'], 'file type': ['pdf', 'docx', 'doc', 'txt', 'docx']}",
+        "label": "{'year': [0, 0], 'month': [4, 4], 'day': [0, 0], 'file content': ['Project Beta Scripts', 'Filming Drafts for Project Beta', 'Screenplays from Project Beta', 'Film Scripts of Project Beta', 'Cinematic Scripts of Project Beta'], 'file type': ['doc', 'docx', 'pdf', 'fdx', 'txt']}"
+    },
+    {
+        "prediction": "{'year': [2015, 2015], 'month': [0, 0], 'day': [0, 0], 'file content': ['University Transcript', 'Undergraduate Transcript', 'Graduate Transcript', 'All-year-transcript', 'Yearly Transcript'], 'file type': ['pdf', 'xlsx', 'xls', 'docx', 'doc']}",
+        "label": "{'year':[2015,2015], 'month': [0,0], 'day': [0,0], 'file content': ['University Transcript', 'Academic Record', 'Scholastic Transcript', 'Academic Transcript', 'Educational Record'], 'file type': ['doc', 'docx', 'pdf', 'txt', 'jpeg', 'jpg']}"
+    },
+    {
+        "prediction": "{'year': [2023, 2023], 'month': [10, 10], 'day': [10, 10], 'file content': ['Lecture Videos on Molarcular Biology', 'Movies on Molecular Biology Lecture', 'Biology Lecture Videos', 'Molology Lecture Recordings', 'Biology Lecture Docs'], 'file type': ['pdf', 'pptx', 'doc', 'docx', 'mp4']}",
+        "label": "{'year': [-1, 0], 'month': [8, 1], 'day': [0, 0], 'file content': ['Molecular Biology Lecture', 'Cell Biology Seminar', 'Genetics Studies Session', 'Biology Lesson', 'Genomics Class'], 'file type': ['mp4', 'mkv', 'avi', 'mov', 'flv']}"
+    },
+    {
+        "prediction": "{'year': [2022, 2022], 'month': [12, 12], 'day': [0, 0], 'file content': ['Project Y Plans', 'Finalized Project Y Documentation', 'Project Y Blueprints', 'Project Y Schematics', 'Project Y Construction Plans'], 'file type': ['pdf', 'doc', 'docx', 'jpg', 'jpeg']}",
+        "label": "{'year': [-1, -1], 'month': [12, 12], 'day': [0, 0], 'file content': ['Project Y Plan', 'Construction Project Y Blueprint', 'Project Y Strategy', 'Construction Y Detail Plan', 'Project Y Guidance'], 'file type': ['pdf', 'docx', 'doc', 'xls', 'xlsx']}"
+    },
+    {
+        "prediction": "{'year': [2022, 2022], 'month': [0, 0], 'day': [0, 0], 'file content': ['Marketing Strategy Plans', 'Marketing Blueprints', 'Marketing Plans for 2022', '2022 Marketing Strategy', 'Marketing Roadmap for 2022'], 'file type': ['pdf', 'docx', 'pptx', 'xls', 'xlsx']}",
+        "label": "{'year':[2022, 2022], 'month':[0, 0], 'day':[0, 0], 'file content': ['Marketing Strategy Plan', '2022 Marketing Protocol', 'Marketing Approach for 2022', 'Marketing Scheme Plan', 'Strategic Marketing Outline'], 'file type':['pdf', 'docx', 'doc', 'xlsx', 'pptx', 'ppt'] }"
+    },
+    {
+        "prediction": " ",
+        "label": "{'year': [2026, 2026], 'month': [7, 8], 'day': [5, 10], 'file content': ['Financial Reports', 'Financial Summaries', 'Finance Reviews', 'Economic Report', 'Monetary Reports'], 'file type': ['pdf', 'xls', 'xlsx']}"
+    },
+    {
+        "prediction": "{'year': [2024, 2024], 'month': [1, 12], 'day': [1, 31], 'file content': ['Product Launch Reports', 'Product Release Analyses', 'Product Rollout Reports', 'Product Launch Documentation', 'Product Introduction Reviews'], 'file type': ['pdf', 'docx', 'doc', 'txt']}",
+        "label": "{'year': [2024, 2024], 'month': [2, 2], 'day': [1, 29], 'file content': ['Product Launch Reports', 'Product Debut Summaries', 'Product Inception Evaluation', 'New Product Performance Reports', 'Product Kick-off Analysis'], 'file type': ['pdf', 'doc', 'xlsx']}"
+    },
+    {
+        "prediction": "{'year': [2023, 2024], 'month': [10, 12], 'day': [12, 12], 'file content': ['Financial Audit Reports', 'Audit Documentation', 'Audit Reports', 'Audit Files', 'Audit Documentation'], 'file type': ['pdf', 'doc', 'docx', 'xls', 'xlsx']}",
+        "label": "{'year': [2023, 2023], 'month': [10, 10], 'day': [12, 12], 'file content': ['Financial Year Audit Reports', 'Year-End Financial Audits', 'Annual Audit Documents', 'Financial Audit Reports', 'Yearly Financial Review'], 'file type': ['pdf', 'doc', 'docx', 'xls']}"
+    },
+    {
+        "prediction": "{'year': [2023, 7], 'month': [6, 9], 'day': [15, 31], 'file content': ['July 2023 Financial Reports', 'Financial Statements for July 2023', 'July 2023 Finance Documents', 'Monthly Financial Reports for July', 'July 2023 Financial Overview'], 'file type': ['pdf', 'xlsx', 'xls', 'docx', 'doc']}",
+        "label": "{'year': [2023, 2023], 'month': [7, 7], 'day': [16, 31], 'file content': ['Second Half July Financial Report', 'Mid to End July Finance Data', 'Finance Report for Late July', 'Monthly Finance Report \u2013 Late July', 'Financial Status \u2013 July 16-31, 2023'], 'file type': ['xlsx', 'pdf', 'docx']}"
+    },
+    {
+        "prediction": " ",
+        "label": "{'year': [2025, 2025], 'month': [3, 3], 'day': [1, 30], 'file content': ['Financial Reports', 'Financial Statements', 'Monthly Financial Data', 'Financial Documentation', 'Financial Analysis'], 'file type': ['pdf', 'xls', 'xlsx']}"
+    },
+    {
+        "prediction": "{'year': [2025, 2025], 'month': [5, 5], 'day': [1, 31], 'file content': ['Airline Industry Reports', 'Airline Market Analysis', 'Airline Industry Studies', 'Airline Market Reports', 'Airline Industry Analysis'], 'file type': ['pdf', 'docx', 'xls', 'xlsx']}",
+        "label": "{'year': [2025, 2025], 'month': [5, 5], 'day': [1, 31], 'file content': ['Airline Industry Reports', 'Air Travel Industry Overview', 'Aviation Industry Analysis', 'Airline Market Research Reports', 'Commercial Aviation Sector Reports'], 'file type': ['pdf', 'doc', 'docx', 'xlsx']}"
+    },
+    {
+        "prediction": "{'year': [2024, 2024], 'month': [6, 6], 'day': [11, 11], 'file content': ['Annual Shareholder Meeting Report', 'Yearly Meeting Summary', 'Annual Meeting Report', 'Meeting Report', 'Annual Meeting Analysis'], 'file type': ['pdf', 'docx', 'pptx', 'xls', 'xlsx']}",
+        "label": "{'year': [2024, 2024], 'month': [6, 6], 'day': [11, 11], 'file content': ['Annual Shareholder Meeting Report', 'Shareholder Meeting Minutes', 'Corporate Meeting Report', 'Shareholder Assembly Documents', 'Annual Meeting Transcripts'], 'file type': ['pdf', 'doc', 'docx']}"
+    },
+    {
+        "prediction": "{'year': [2025, 2025], 'month': [22, 30], 'day': [22, 30], 'file content': ['Sales Report', 'Sales Analysis', 'Sales Performance Overview', 'Sales Summary', 'Sales Review'], 'file type': ['pdf', 'xls', 'xlsx']}",
+        "label": "{'year': [2025, 2025], 'month': [4, 7], 'day': [22, 30], 'file content': ['Sales Report', 'Sales Overview', 'Sales Summary', 'Sales Metrics Report', 'Sales Status Report'], 'file type': ['pdf', 'xls', 'xlsx', 'csv']}"
+    },
+    {
+        "prediction": "{'year': [2022, 7], 'month': [7, 10], 'day': [1, 10], 'file content': ['New Behavioral Studies', 'July 10, 2022 Behavioral Studies', 'New Behavioral Research', 'July Behavioral Research', 'New Behavioral Studies'], 'file type': ['pdf', 'docx', 'doc', 'xls', 'xlsx']}",
+        "label": "{'year': [2022, 2022], 'month': [7, 7], 'day': [1, 10], 'file content': ['Behavioral Studies Data', 'Behaviour Research Findings', 'Behavioural Study Observations', 'Conduct Studies Data', 'Study on Human Behaviour Findings'], 'file type': ['csv', 'xlsx', 'json', 'xml']}"
+    },
+    {
+        "prediction": "{'year': [2025, 2025], 'month': [5, 6], 'day': [1, 15], 'file content': ['First Half of May Financial Reports', 'Monthly Financial Statements', 'May Financial Reports', 'Monthly Reports', 'Monthly Financial Documents'], 'file type': ['pdf', 'xlsx', 'xls', 'docx', 'doc']}",
+        "label": "{'year': [2025, 2025], 'month': [5, 5], 'day': [1, 15], 'file content': ['Financial Reports', 'Financial Statements', 'Financial Records', 'Finance Reports', 'Financial Documentation'], 'file type': ['pdf', 'xlsx', 'csv', 'docx']}"
+    },
+    {
+        "prediction": "{'year': [2022, 2022], 'month': [4, 4], 'day': [2, 30], 'file content': ['Due Diligence Reports', 'Updated Due Diligence Documents', 'Reviewed Due Diligence Documents', 'Latest Due Diligence Reports', 'Due Diligence Documentation'], 'file type': ['pdf', 'doc', 'docx', 'xls', 'xlsx']}",
+        "label": "{'year': [2022, 2022], 'month': [4, 4], 'day': [2, 30], 'file content': ['Due Diligence Reports', 'Due Diligence Documents', 'Due Diligence Findings', 'Due Diligence Analysis Docs', 'Due Diligence Investigations'], 'file type': ['pdf', 'doc', 'docx', 'xls']}"
+    },
+    {
+        "prediction": " ",
+        "label": "{'year': [2021, 2021], 'month': [12, 12], 'day': [1, 31], 'file content': ['Sales Report', 'Sales Records', 'Sales Documentation', 'Sales Data', 'Sales Analytics Report'], 'file type': ['xls', 'xlsx', 'csv']}"
+    },
+    {
+        "prediction": "{'year': [2022, 2022], 'month': [7, 7], 'day': [15, 20], 'file content': ['Software Development Workshop Manual', 'Training Handouts for Software Development', 'Software Development Workshop Instructions', 'Training Materials for Software Development', 'Software Development Practices Manual'], 'file type': ['pdf', 'doc', 'docx', 'pptx', 'txt']}",
+        "label": "{'year': [2022, 2022], 'month': [7, 7], 'day': [15, 20], 'file content': ['Software Development Workshop Manuals', 'Workshop Guides', 'Training Session Materials', 'Training Course Documents', 'Workshop Training Manuals'], 'file type': ['pdf', 'pptx', 'doc', 'docx']}"
+    },
+    {
+        "prediction": "{'year': [2023, 2023], 'month': [3, 3], 'day': [1, 31], 'file content': ['Partnership Contracts with ABC Corporation', 'ABC Corp. Contracts Details', 'Contractual Agreements with ABC', 'Legal Documents with ABC', 'Partnership Agreement Documentation'], 'file type': ['pdf', 'doc', 'docx', 'xls', 'xlsx']}",
+        "label": "{'year': [2023, 2023], 'month': [3, 3], 'day': [1, 31], 'file content': ['Partnership Contracts with ABC Corporation', 'ABC Corporation Agreement Documents', 'Partner Agreement with ABC Corporation', 'ABC Corporation Contractual Documents', 'ABC Corporation Partnership Paperwork'], 'file type': ['pdf', 'doc', 'docx']}"
+    },
+    {
+        "prediction": "{'year': [2025, 2025], 'month': [1, 6], 'day': [1, 30], 'file content': ['Financial Reports for the first half of 2025', 'First Half Financial Reports 2025', 'H1 Financial Documents 2025', 'H1st Financial Reports 2025', 'H1st Half Fiscal Reports 2025'], 'file type': ['pdf', 'xlsx', 'xls', 'docx', 'doc']}",
+        "label": "{'year': [2025, 2025], 'month': [1, 6], 'day': [1, 30], 'file content': ['First Half Financial Reports', 'H1 2025 Financial Documents', 'Finance Reports for H1 2025', 'Half-Year Financial Overview', 'Mid-Year Financial Reports'], 'file type': ['pdf', 'xls', 'xlsx']}"
+    },
+    {
+        "prediction": "{'year': [2023, 2023], 'month': [8, 8], 'day': [15, 25], 'file content': ['Development Meeting Minutes', 'Minutes of Development Meeting', 'Development Meeting Records', 'Meeting Documentation', 'Development Meeting Notes'], 'file type': ['pdf', 'doc', 'docx']}",
+        "label": "{'year': [2023, 2023], 'month': [8, 8], 'day': [15, 25], 'file content': ['Development Meeting Minutes', 'Development Conference Records', 'Meeting Minutes of Development Team', 'Minutes from Development Discussion', 'Documentation of Development Meeting'], 'file type': ['pdf', 'doc', 'docx']}"
+    },
+    {
+        "prediction": "{'year': [2024, 2024], 'month': [1, 12], 'day': [1, 31], 'file content': ['Invoices from April 2024', 'April Invoices', 'Monthly billing statements from April 2024', 'April Billing Documents', 'Invoice Records for April 2024'], 'file type': ['pdf', 'docx', 'xls', 'xlsx']}",
+        "label": "{'year': [2024, 2024], 'month': [4, 4], 'day': [1, 30], 'file content': ['April Invoices', 'Billing Statements for April', 'Monthly Invoice Files', 'Accounts Payable for April', 'Invoice Records'], 'file type': ['pdf', 'xlsx', 'docx']}"
+    },
+    {
+        "prediction": "{'year': [2023, 2023], 'month': [10, 12], 'day': [10, 12], 'file content': ['Quarterly Financial Reports', 'Financial Reports for the Last Quarter', 'End of Year Financial Documents', 'Q3 Financial Reports', 'End of the Month Financial Statements'], 'file type': ['pdf', 'xlsx', 'xls', 'docx', 'doc']}",
+        "label": "{'year': [2023, 2023], 'month': [10, 12], 'day': [1, 31], 'file content': ['Financial Reports', 'Quarterly Financial Statements', 'Q4 Financial Documents', 'Year-end Financial Reviews', 'Final Quarter Financials'], 'file type': ['xls', 'xlsx', 'pdf']}"
+    },
+    {
+        "prediction": "{'year': [2023, 2023], 'month': [8, 8], 'day': [25, 25], 'file content': ['Townhall Meeting Transcript', 'Transcript of the Hosted Meeting', 'Townhall Discussion Summary', 'Meeting Transcript', 'Townhall Debate Transcript'], 'file type': ['pdf', 'doc', 'docx', 'txt']}",
+        "label": "{'year': [2023, 2023], 'month': [8, 8], 'day': [25, 25], 'file content': ['Townhall Meeting Transcript', 'Meeting Transcription', 'Transcribed Townhall Meeting', 'Transcript of Townhall', 'Meeting Dialogue Transcript'], 'file type': ['pdf', 'doc', 'docx', 'txt']}"
+    },
+    {
+        "prediction": "{'year': [2024, 2024], 'month': [3, 3], 'day': [5, 10], 'file content': ['Updated Data Analysis Report', 'Newest Data Analysis Documentation', 'Data Analysis Analysis Files', 'Updated Data Analysis Documents', 'New Data Analysis Materials'], 'file type': ['pdf', 'doc', 'docx', 'xls', 'xlsx']}",
+        "label": "{'year': [2024, 2024], 'month': [3, 3], 'day': [5, 10], 'file content': ['Data Analysis Reports', 'Analysis Data Files', 'Data Review Documents', 'Data Inspection Reports', 'Data Investigation Records'], 'file type': ['pdf', 'doc', 'docx', 'xls']}"
+    },
+    {
+        "prediction": "{'year': [], 'month': [], 'day': [], 'file content': [], 'file type': []}",
+        "label": "{'year': [], 'month': [], 'day': [], 'file content': ['Corporate Carbon Reduction Plans', 'Green Business Practices', 'Sustainable Operations in Businesses', 'Reducing Company Emissions', 'Eco-friendly Corporate Strategies'], 'file type': ['pdf', 'docx', 'pptx', 'mp4', 'mp3']}"
+    },
+    {
+        "prediction": " ",
+        "label": "{'year': [], 'month': [], 'day': [], 'file content': ['Stress Management in the Workplace', 'Balancing Work and Life', 'Preventing Work-related Burnout', 'Healthy Coping Strategies at Work', 'Maintaining Wellness in High-stress Jobs'], 'file type': ['pdf', 'docx', 'pptx', 'mp4', 'mp3']}"
+    },
+    {
+        "prediction": " ",
+        "label": "{'year': [], 'month': [], 'day': [], 'file content': ['Climate Change and Agriculture', 'Crop Yields under Climate Change', 'Global Warming Impact on Crop Production', 'Environmental Change and Food Security', 'Adapting Farming Practices for Climate Change'], 'file type': ['pdf', 'docx', 'pptx', 'mp4', 'mp3']}"
+    },
+    {
+        "prediction": " ",
+        "label": "{'year': [], 'month': [], 'day': [], 'file content': ['Project Management Techniques', 'Efficient Project Planning', 'Project Execution Strategy', 'Performance Measuring and Monitoring', 'Project Risk Management'], 'file type': ['pdf', 'docx', 'pptx', 'mp4', 'mp3']}"
+    },
+    {
+        "prediction": " ",
+        "label": "{'year': [], 'month': [], 'day': [], 'file content': ['Sustainable Agriculture Fundamentals', 'Organic Farming Techniques', 'Methods of Conservation Agriculture', 'Permaculture Design Principles', 'Agroecology and Sustainable Food Systems'], 'file type': ['pdf', 'docx', 'pptx', 'mp4', 'mp3']}"
+    },
+    {
+        "prediction": "{'year': [], 'month': [], 'day': [], 'file content': [], 'file type': []}",
+        "label": "{'year': [], 'month': [], 'day': [], 'file content': ['Maximizing Online Learning', 'Strategies for Virtual Education', 'Effective E-Learning Habits', 'Success in Online Classes', 'Online Study Techniques'], 'file type': ['pdf', 'docx', 'pptx', 'mp4', 'mp3']}"
+    },
+    {
+        "prediction": " ",
+        "label": "{'year': [], 'month': [], 'day': [], 'file content': ['Recycling Plastic Waste Strategies', 'Innovation in Plastic Waste Reduction', 'Methods for Managing Plastic Waste', 'Eco-Friendly Practices for Plastic Recycling', 'Advancements in Plastic Waste Management'], 'file type': ['pdf', 'docx', 'pptx', 'mp4', 'mp3']}"
+    },
+    {
+        "prediction": " ",
+        "label": "{'year': [], 'month': [], 'day': [], 'file content': ['Yoga and Its Impact on Mental Health', 'Mental Benefits of Yoga Practice', 'How Yoga Contributes to Psychological Wellbeing', 'Yoga for Stress Management', 'Incorporating Yoga for a Balanced Mind'], 'file type': ['pdf', 'docx', 'pptx', 'mp4', 'mp3']}"
+    },
+    {
+        "prediction": " ",
+        "label": "{'year': [], 'month': [], 'day': [], 'file content': ['Leadership in Remote Work', 'Virtual Team Management Strategies', 'Communications Methods for Remote Teams', 'Building Trust in a Remote Work Environment', 'Remote Team Leadership Challenges'], 'file type': ['pdf', 'docx', 'pptx', 'mp4', 'mp3']}"
+    },
+    {
+        "prediction": "{'year': [], 'month': [], 'day': [], 'file content': [], 'file type': []}",
+        "label": "{'year': [], 'month': [], 'day': [], 'file content': ['Comparative Study of Renewable and Non-renewable Energy', 'Pros and Cons of Renewable Energy', 'Non-renewable Energy Types and Their Effects', 'Switching from Non-renewable to Renewable Energy', 'Understanding Energy Resources'], 'file type': ['pdf', 'docx', 'pptx', 'mp3', 'mp4']}"
+    },
+    {
+        "prediction": "{'year': [], 'month': [], 'day': [], 'file content': [], 'file type': []}",
+        "label": "{'year': [], 'month': [], 'day': [], 'file content': ['Managing Remote Teams', 'Productivity Practices for Remote Work', 'Virtual Meeting Etiquette', 'Remote Work and Mental Health', 'Maintaining Work-Life Balance at Home'], 'file type': ['pdf', 'docx', 'pptx', 'mp4', 'mp3']}"
+    },
+    {
+        "prediction": "{'year': [], 'month': [], 'day': [], 'file content': [], 'file type': []}",
+        "label": "{'year': [], 'month': [], 'day': [], 'file content': ['Understanding Stress Effects on Mental Health', 'Mental Health Connection to Chronic Stress', 'Coping with Stress for Mind Well-being', 'Impact of Stress on Depression and Anxiety', 'Stress Management for Healthy Mind'], 'file type': ['pdf', 'docx', 'pptx', 'mp4', 'mp3']}"
+    },
+    {
+        "prediction": " ",
+        "label": "{'year': [], 'month': [], 'day': [], 'file content': ['Climate Change and Agriculture', 'Global Warming's Effect on Farming', 'Adapting Agriculture to Climate Change', 'Impact of Climate Variability on Crop Production', 'Resilient Agricultural Practices'], 'file type': ['pdf', 'docx', 'pptx', 'mp4', 'mp3']}"
+    },
+    {
+        "prediction": "{'year': [], 'month': [], 'day': [], 'file content': [], 'file type': []}",
+        "label": "{'year': [], 'month': [], 'day': [], 'file content': ['Sustainable Manufacturing Practices', 'Carbon Reduction in Industrial Settings', 'Energy Efficiency in Factories', 'Reducing Emissions in the Manufacturing Sector', 'Green Industrial Strategies'], 'file type': ['pdf', 'docx', 'pptx', 'mp4', 'mp3']}"
+    },
+    {
+        "prediction": "{'year': [], 'month': [], 'day': [], 'file content': [], 'file type': []}",
+        "label": "{'year': [], 'month': [], 'day': [], 'file content': ['Content Marketing 101', 'Building a Content Strategy', 'Content Marketing for SEO', 'Social Media and Content Marketing', 'Storytelling in Content Marketing'], 'file type': ['pdf', 'docx', 'pptx', 'mp4', 'mp3']}"
+    },
+    {
+        "prediction": " ",
+        "label": "{'year': [], 'month': [], 'day': [], 'file content': ['Plastic Waste Reduction Techniques', 'Eco-friendly Alternatives for Everyday Items', 'Minimizing Plastic Usage at Home', 'Reducing Plastic in Your Daily Routine', 'Sustainable Lifestyle Tips'], 'file type': ['pdf', 'docx', 'pptx', 'mp4', 'mp3']}"
+    },
+    {
+        "prediction": "{'year': [2023, 2024], 'month': [1, 12], 'day': [1, 31], 'file content': ['Digital Marketing Trends', 'Evolving Digital Marketing Techniques', 'Changing Styles of Digital Marketing', 'Future Trends in Digital Marketing', 'Innovations in Digital Marketing'], 'file type': ['pdf', 'docx', 'pptx', 'mp4']}",
+        "label": "{'year': [], 'month': [], 'day': [], 'file content': ['Digital Marketing Strategies', 'SEO Best Practices', 'Social Media for Branding', 'Email Marketing Tactics', 'Content Marketing Trends'], 'file type': ['pdf', 'docx', 'pptx', 'mp4', 'mp3']}"
+    },
+    {
+        "prediction": " ",
+        "label": "{'year': [], 'month': [], 'day': [], 'file content': ['Public Speaking Techniques', 'Better Communication Skills', 'Speaking Confidence Strategies', 'Persuasive Speech Guide', 'Public Speaking Anxiety Management'], 'file type': ['pdf', 'docx', 'pptx', 'mp4', 'mp3']}"
+    },
+    {
+        "prediction": "{'year': [], 'month': [], 'day': [], 'file content': [], 'file type': ['pdf', 'docx', 'pptx', 'mp4', 'mp3']}",
+        "label": "{'year': [], 'month': [], 'day': [], 'file content': ['Django Web Development Guide', 'Effective Django Programming', 'Building Web Applications with Django', 'From Beginner to Expert: Django', 'Django Tips for Professional Developers'], 'file type': ['pdf', 'docx', 'pptx', 'mp4', 'mp3']}"
+    },
+    {
+        "prediction": " ",
+        "label": "{'year': [], 'month': [], 'day': [], 'file content': ['Mechanical Methods to Remove Ocean Plastic', 'Biodegradable Solutions for Plastic Waste', 'Ocean Cleanup Innovations', 'Plastic Waste Management in Marine Environment', 'Technological Advances in Plastic Waste Removal'], 'file type': ['pdf', 'docx', 'pptx', 'mp4', 'mp3']}"
+    }
+]
