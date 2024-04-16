@@ -61,7 +61,17 @@ if search_text != "" or img is not None:
         )
         big_reponse_list.extend(response.objects)
 
+    
+
     else:
+
+        DISTANCE = 0.8
+        big_reponse_list = []
+        img_collection = client.collections.get('images')
+        wine_reviws_collection = client.collections.get('WineReviews')
+        pdf_collection = client.collections.get('pdf')
+        video_collection = client.collections.get('videos')
+       
         response = img_collection.query.near_text(
             query=search_text,
             return_properties=[
@@ -69,7 +79,9 @@ if search_text != "" or img is not None:
             ],
             return_metadata=wvc.query.MetadataQuery(distance=True),
             limit=6,
+            distance=DISTANCE
         )
+        
         big_reponse_list.extend(response.objects)
 
         response = wine_reviws_collection.query.near_text(
@@ -79,7 +91,9 @@ if search_text != "" or img is not None:
             ],
             return_metadata=wvc.query.MetadataQuery(distance=True),
             limit=6,
+            distance=DISTANCE
         )
+
         big_reponse_list.extend(response.objects)
 
         response = pdf_collection.query.near_text(
@@ -89,6 +103,21 @@ if search_text != "" or img is not None:
             ],
             return_metadata=wvc.query.MetadataQuery(distance=True),
             limit=6,
+            distance=DISTANCE
+        )
+        
+        big_reponse_list.extend(response.objects)
+
+
+        response = video_collection.query.near_text(
+            query=search_text,
+            return_properties=[
+                "filename",
+                # "image"  # TODO - return blob when implemented to client
+            ],
+            return_metadata=wvc.query.MetadataQuery(distance=True),
+            limit=6,
+            distance=DISTANCE
         )
         big_reponse_list.extend(response.objects)
 
