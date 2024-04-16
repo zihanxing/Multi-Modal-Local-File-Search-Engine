@@ -5,7 +5,7 @@ from weaviate import WeaviateClient
 from weaviate.util import generate_uuid5
 import weaviate.classes as wvc
 from weaviate.collections.classes.batch import BatchObjectReturn
-from get_metadata import createFileRecords
+from scripts.get_metadata import createFileRecords
 
 def define_collection_videos(client: WeaviateClient, collection_name: str = 'videos') -> bool:
     # Define video collection

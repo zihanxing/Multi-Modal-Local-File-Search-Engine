@@ -107,7 +107,7 @@ class WeaviateApp:
         # collections = ['pdf']
 
         if llm_model == 'TinyLlamma':
-                from get_llama_inference import get_llama_inference
+                from scripts.get_llama_inference import get_llama_inference
                 result = get_llama_inference(search_text)
 
         for collection in collections:

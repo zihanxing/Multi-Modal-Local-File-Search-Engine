@@ -8,8 +8,8 @@ from pathlib import Path
 import pandas as pd
 import json
 from unstructured.partition.pdf import partition_pdf
-from AbstractExtractor import AbstractExtractor
-from get_metadata import createFileRecords 
+from scripts.AbstractExtractor import AbstractExtractor
+from scripts.get_metadata import createFileRecords 
 
 
 
