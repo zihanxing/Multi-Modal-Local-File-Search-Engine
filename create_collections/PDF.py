@@ -64,9 +64,9 @@ def define_collection_pdfs(client: WeaviateClient, collection_name: str = 'pdfs'
 
         ],
         vectorizer_config=wvc.config.Configure.Vectorizer.multi2vec_bind(
-            text_fields=[wvc.config.Multi2VecField(name='filename', weight=0.50),
-                         wvc.config.Multi2VecField(name='abstract', weight=0.50)],
-            vectorize_collection_name=False)
+            text_fields=[wvc.config.Multi2VecField(name='filename', weight=0.20),
+                         wvc.config.Multi2VecField(name='abstract', weight=0.80)],
+            vectorize_collection_name=True)
     )
 
 def import_data_pdf(client: WeaviateClient,  collection_name: str = 'pdf') -> BatchObjectReturn:
@@ -85,13 +85,14 @@ def import_data_pdf(client: WeaviateClient,  collection_name: str = 'pdf') -> Ba
         elements = partition_pdf(filename=path)
         meta_data = createFileRecords(path)
 
-        abstract_extractor = AbstractExtractor()
-        abstract_extractor.consume_elements(elements)
+        # abstract_extractor = AbstractExtractor()
+        # abstract_extractor.consume_elements(elements)
 
         # data_object = {"filename": path.name, "abstract": abstract_extractor.abstract()[:50]}
         data_object = {"filename": path.name, 
-                       "abstract": abstract_extractor.abstract()[:50], 
-                       "pages":[data.text for data in elements],
+                    #    "abstract": abstract_extractor.abstract()[:50], 
+                       "abstract": ' '.join([data.text for data in elements][:20]), 
+                    #    "pages":[data.text for data in elements],
                        "num_pages": 0,
                        "date_created":meta_data['Creation Date'].isoformat(),
                        "date_modified":meta_data['Modified Date'].isoformat(),

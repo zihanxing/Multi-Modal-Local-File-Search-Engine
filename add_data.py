@@ -84,29 +84,29 @@ def demo_query(client: WeaviateClient):
 def main():
     client = connect()
     
-    # Images
-    from create_collections.Images import define_collection_images,import_data_images
-    delete_existing('images',client)
-    define_collection_images(client)
-    import_data_images(client)
+    # # Images
+    # from create_collections.Images import define_collection_images,import_data_images
+    # delete_existing('images',client)
+    # define_collection_images(client)
+    # import_data_images(client)
 
-    # Wines -- csv
-    from create_collections.Wines import define_collection_wine_reviews, import_data_wine_reviews
-    delete_existing('WineReviews',client)
-    define_collection_wine_reviews(client)
-    import_data_wine_reviews(client)
+    # # Wines -- csv
+    # from create_collections.Wines import define_collection_wine_reviews, import_data_wine_reviews
+    # delete_existing('WineReviews',client)
+    # define_collection_wine_reviews(client)
+    # import_data_wine_reviews(client)
 
-    # Pdfs
+    # # Pdfs
     from create_collections.PDF import define_collection_pdfs,import_data_pdf
     delete_existing('pdf',client)
     define_collection_pdfs(client,'pdf')
     import_data_pdf(client)
 
 
-    # Videos
+    # # # Videos
     # from create_collections.Videos import define_collection_videos, import_data_videos
-    # delete_existing('video',client)
-    # define_collection_videos(client,'video')
+    # delete_existing('videos',client)
+    # define_collection_videos(client,'videos')
     # import_data_videos(client)
 
 
