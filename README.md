@@ -12,6 +12,26 @@ Also, if you want to search for images, audio, or video files, the current searc
 - Multi-modal search: using [Weaviate](https://weaviate.io/) as the vector search engine, where we set ImageBind as the vectorizer for every file type, including text, image, audio, and video.
 - Recommendation: using fine-tuned `TinyLlama-1.1B` model to recommend keywords based and structured data based on user queries.
 
+## Repo Structure
+
+## Repository Structure
+
+The repository is organized as follows, with each directory in the repository serving a specific purpose:
+
+- `Notebooks`: Contains python notebooks of experiments and specific parts of weaviate backend testing.
+- `assets`: Contains assets for the project
+- `create_collections`: Contains the code for creating collections for different modalities of data.
+- `data`: Contains the data used in the project.
+- `fine_tune`: Contains the fine-tuning code for the tinyllamma model.
+- `image`: Contains the images used in the project.
+- `inference`: Contains the inference code for tinyllamma.
+- `scripts`: Contains additional scripts for the project.
+- `app.py`: The main application file - launches streamlit application that interfaces with the dockerized weaviate container.
+- `docker-compose.yml`: The Docker Compose file for setting up the project environment on Windows.
+- `docker-compose_1.yml`: The Docker Compose file for setting up the project environment on Mac.
+- `requirementsc.txt`: The requirements file for the project.
+- `session_state.py`: A frontend helper script for app.py for managing session state in streamlit.
+
 ## Overall Architecture
 
 ![alt text](<image/overview.png>)
