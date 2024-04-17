@@ -43,14 +43,14 @@ git clone https://github.com/zihanxing/Multi-Modal-Local-File-Search-Engine.git
 ```
 2. Creat a virtual environment(using conda in this case) for the project
 ```bash
-conda create -n local-search-engine
-conda activate local-search-engine
+conda create -n searchengine
+conda activate searchengine
 ```
 3. Install the required packages
 ```bash
 pip install -r requirements.txt
 ```
-4. Compose the docker containers to start the Weaviate server
+4. Compose the docker containers to start the Weaviate server. Use docker-compose.yml for windows, and docker-compose_1.yml for mac   
 ```bash
 docker compose up -d
 ```
