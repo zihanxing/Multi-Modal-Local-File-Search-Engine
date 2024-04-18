@@ -116,13 +116,3 @@ def evaluate_by_llm(prediction_dir):
             else:
                 acc += 0
     return acc / len(results)
-
-
-
-# test_dir = "/home/featurize/work/TinyLLaMA/src/data/query_test.json"
-# save_dir = "/home/featurize/work/TinyLLaMA/src/eval_results/predictions.json"
-# pred_res = save_preds(ft_model, eval_tokenizer, test_dir, save_dir)
-
-prediction_dir = "/home/featurize/work/TinyLLaMA/src/eval_results/predictions_1000.json"
-print(evaluate_by_llm(prediction_dir))
-

@@ -35,8 +35,7 @@ def extract_answer(prediction):
         # Extract query and information string
         query, information_str = match.groups()
         # Convert information string into a Python dictionary
-        informatio_str = preprocess(information_str)
-        information = ast.literal_eval(information_str)
+        information = preprocess(information_str)
         extracted_information["query"] = query
         extracted_information["information"] = information
     return extracted_information
